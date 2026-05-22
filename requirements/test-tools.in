@@ -13,6 +13,9 @@ pyquery  # integrates with webtest
 requests-mock
 tblib
 vcrpy
+hypothesis
+hypothesis-jsonschema
+jsonschema-specifications
 
 # Code formatting
 ruff

@@ -17,7 +17,7 @@ asgiref==3.11.0
     #   django-structlog
 asn1crypto==1.5.1
     # via webauthn
-attrs==20.3.0
+attrs==25.4.0
     # via
     #   glom
     #   jsonschema

@@ -37,12 +37,13 @@ asn1crypto==1.5.1
     #   -c requirements/ci.txt
     #   -r requirements/ci.txt
     #   webauthn
-attrs==20.3.0
+attrs==25.4.0
     # via
     #   -c requirements/ci.txt
     #   -r requirements/ci.txt
     #   glom
     #   jsonschema
+    #   referencing
 autopep8==2.3.2
     # via django-silk
 babel==2.16.0
@@ -477,6 +478,15 @@ humanize==4.9.0
     #   -c requirements/ci.txt
     #   -r requirements/ci.txt
     #   flower
+hypothesis==6.151.9
+    # via
+    #   -c requirements/ci.txt
+    #   -r requirements/ci.txt
+    #   hypothesis-jsonschema
+hypothesis-jsonschema==0.22.1
+    # via
+    #   -c requirements/ci.txt
+    #   -r requirements/ci.txt
 identify==2.6.10
     # via pre-commit
 idna==3.7
@@ -527,6 +537,11 @@ jsonschema==4.17.3
     #   -c requirements/ci.txt
     #   -r requirements/ci.txt
     #   drf-spectacular
+    #   hypothesis-jsonschema
+jsonschema-specifications==2025.9.1
+    # via
+    #   -c requirements/ci.txt
+    #   -r requirements/ci.txt
 kombu==5.5.4
     # via
     #   -c requirements/ci.txt
@@ -865,6 +880,11 @@ redis==6.4.0
     #   -c requirements/ci.txt
     #   -r requirements/ci.txt
     #   django-redis
+referencing==0.37.0
+    # via
+    #   -c requirements/ci.txt
+    #   -r requirements/ci.txt
+    #   jsonschema-specifications
 requests==2.32.4
     # via
     #   -c requirements/ci.txt
@@ -890,6 +910,11 @@ rich==13.9.4
     #   rich-click
 rich-click==1.8.5
     # via bump-my-version
+rpds-py==0.30.0
+    # via
+    #   -c requirements/ci.txt
+    #   -r requirements/ci.txt
+    #   referencing
 ruamel-yaml==0.18.10
     # via
     #   -c requirements/ci.txt
@@ -934,6 +959,11 @@ snowballstemmer==2.2.0
     #   -c requirements/ci.txt
     #   -r requirements/ci.txt
     #   sphinx
+sortedcontainers==2.4.0
+    # via
+    #   -c requirements/ci.txt
+    #   -r requirements/ci.txt
+    #   hypothesis
 soupsieve==2.2.1
     # via
     #   -c requirements/ci.txt
@@ -1039,6 +1069,7 @@ typing-extensions==4.9.0
     #   psycopg-pool
     #   pydantic
     #   pydantic-core
+    #   referencing
     #   rich-click
     #   zgw-consumers
 tzdata==2025.2
