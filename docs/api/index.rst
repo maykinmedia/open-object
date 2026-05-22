@@ -15,8 +15,8 @@ API                     Specification version(s)
                         `Swagger <https://petstore.swagger.io/?url=https://raw.githubusercontent.com/maykinmedia/objecttypes-api/3.4.1/src/objecttypes/api/v2/openapi.yaml>`__
                         )
 `Objects API`_          2.6.0 (
-                        `Redoc <https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/maykinmedia/objects-api/3.6.0/src/objects/api/v2/openapi.yaml>`__,
-                        `Swagger <https://petstore.swagger.io/?url=https://raw.githubusercontent.com/maykinmedia/objects-api/3.6.0/src/objects/api/v2/openapi.yaml>`__
+                        `Redoc <https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/maykinmedia/objects-api/3.6.1/src/objects/api/v2/openapi.yaml>`__,
+                        `Swagger <https://petstore.swagger.io/?url=https://raw.githubusercontent.com/maykinmedia/objects-api/3.6.1/src/objects/api/v2/openapi.yaml>`__
                         )
 ======================  ==========================================
 

@@ -1,3 +1,4 @@
+# pragma: no cover
 import os
 import sys
 import warnings
@@ -124,8 +125,9 @@ if config("USE_PYINSTRUMENT", default=False, add_to_docs=False):  # pragma:no co
     MIDDLEWARE = ["objects.utils.middleware.PyInstrumentMiddleware"] + MIDDLEWARE
 
 
-if "test" in sys.argv:
-    NOTIFICATIONS_DISABLED = True
+NOTIFICATIONS_DISABLED = config(
+    "NOTIFICATIONS_DISABLED", default="test" in sys.argv, add_to_docs=False
+)
 
 # Override settings with local settings.
 try:  # noqa: SIM105

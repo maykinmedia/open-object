@@ -4,13 +4,23 @@ from django.core.management.base import BaseCommand, CommandError
 from django.db import transaction
 from django.utils.translation import gettext as _
 
-from djangorestframework_camel_case.util import underscoreize
+from djangorestframework_camel_case.util import camel_to_underscore
 from packaging.version import Version
 from requests.exceptions import RequestException
 from zgw_consumers.models import Service
 
 from objects.core.models import ObjectType, ObjectTypeVersion
 from objects.utils.client import get_objecttypes_client
+
+
+def _underscoreize_keys(data: dict[str, object]) -> dict[str, object]:
+    "Underscoreize only top-level keys, leaving values untouched."
+
+    # This will break on nested serialisations like "_expand", but this API
+    # has none of those. And if it does, hypothesis will show it in time.
+
+    return {camel_to_underscore(k): v for k, v in data.items()}
+
 
 # Minimum Objecttypes application version is 3.4.0, because that version added the
 # version header to the responses
@@ -136,7 +146,7 @@ class Command(BaseCommand):
             objecttype["service"] = service
             objecttype["is_imported"] = True
             objecttype["_name"] = objecttype["name"]
-            data.append(ObjectType(**underscoreize(objecttype)))
+            data.append(ObjectType(**_underscoreize_keys(objecttype)))
         return data
 
     def _parse_objectversion_data(
@@ -146,5 +156,5 @@ class Command(BaseCommand):
         for objecttype_version in objecttype_versions:
             objecttype_version.pop("url")
             objecttype_version["objectType"] = objecttype
-            data.append(ObjectTypeVersion(**underscoreize(objecttype_version)))
+            data.append(ObjectTypeVersion(**_underscoreize_keys(objecttype_version)))
         return data
