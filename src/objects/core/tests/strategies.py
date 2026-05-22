@@ -4,6 +4,7 @@ import hypothesis.strategies as st
 import jsonschema_specifications
 from hypothesis.extra.django import from_model
 from hypothesis_jsonschema import from_schema
+from zgw_consumers.models import Service
 
 from objects.core.models import ObjectType, ObjectTypeVersion
 
@@ -47,11 +48,18 @@ def objecttypes(
 ) -> ObjectType:
     # postgres can't store
 
+    service, _ = Service.objects.get_or_create(slug="objecttypes-api")
+
     object_type = draw(
         from_model(
             ObjectType,
             is_imported=st.just(False),
             contact_email=st.just("") | st.emails(),  # optional email
+            # Must be explicitly set, otherwise it will try None as well
+            # These field became required in 4.0
+            created_at=st.dates(),
+            modified_at=st.dates(),
+            service=st.just(service),
         )
     )
     # for better scr
@@ -68,6 +76,10 @@ def objecttypes(
                     st.just(schema),  # re-use same
                     schemata,  # change to a new schema
                 ),
+                # Must be explicitly set, otherwise it will try None as well.
+                # These field became required in 4.0
+                created_at=st.dates(),
+                modified_at=st.dates(),
                 # hypothesis infers the bounds correctly, but also tries 0
                 # and will bump into the auto gen going out of bounds
                 version=st.integers(min_value=1, max_value=(1 << 15) - 1),
