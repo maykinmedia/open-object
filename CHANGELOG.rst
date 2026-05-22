@@ -2,6 +2,13 @@
 Change history
 ==============
 
+4.0.1 (2026-05-22)
+------------------
+
+**Bugfixes**
+
+* [:open-object:`756`] Preserve camelcasing for jsonschema in ``import_objecttypes`` command
+
 4.0.0 (2026-04-13)
 ------------------
 
