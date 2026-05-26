@@ -9,10 +9,10 @@ This means that from version 4.0.0 onwards only objecttypes that exist in the da
 Version flow
 ------------
 
-Objects API versions below 3.6.0 first need be upgraded to 3.6.0 and then need to run the ``import_objecttypes`` command. After this is done, the instance can be safely upgraded to 4.0.0.
-If there are remaining external objecttypes the container will fail during startup (and block any database schema changes introduced in 4.0.0) and you will need to roll back to 3.6.0.
+Objects API versions below 3.6.1 first need be upgraded to 3.6.1 and then need to run the ``import_objecttypes`` command. After this is done, the instance can be safely upgraded to 4.0.0.
+If there are remaining external objecttypes the container will fail during startup (and block any database schema changes introduced in 4.0.0) and you will need to roll back to 3.6.1.
 
-If it is on ``latest`` it should ideally go to 3.6.0 before upgrading to 4.0.0. If the latest tag is pulled and the container is updated,
+If it is on ``latest`` it should ideally go to 3.6.1 before upgrading to 4.0.0. If the latest tag is pulled and the container is updated,
 it will not fail for remaining external objecttypes. This can be fixed by running ``import_objecttypes`` in 4.0.0 for each objecttype service.
 
 Importing objecttype data

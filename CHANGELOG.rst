@@ -18,7 +18,7 @@ Major release
 
     This version combines the Objects API and Objecttypes into a single application named
     Open Object. This application no longer supports objecttypes hosted in an external application.
-    Before upgrading to 4.0.0, it is required to first update to Objects API version 3.6.0 and run an import command
+    Before upgrading to 4.0.0, it is required to first update to Objects API version 3.6.1 and run an import command
     to locally import the objecttypes (make sure to read :ref:`objecttype_migration` for more details).
 
 .. warning::
@@ -102,6 +102,13 @@ Major release
 **Documentation**
 
 * [:open-api-framework:`205`] Describe version policy + supported versions in documentation (see :ref:`versioning_policy`)
+
+3.6.1 (2026-05-22)
+------------------
+
+**Bugfixes**
+
+* [:open-object:`756`] Preserve camelcasing for jsonschema in ``import_objecttypes`` command
 
 3.6.0 (2026-02-06)
 ------------------

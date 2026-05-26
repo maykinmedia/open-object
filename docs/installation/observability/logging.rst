@@ -171,7 +171,7 @@ Data migrations
 Migration checks
 ----------------
 
-* ``unimported_objecttypes``: when upgrading from Objects API 3.6.0 to Open Object 4.0.0,
+* ``unimported_objecttypes``: when upgrading from Objects API 3.6.1 to Open Object 4.0.0,
   objecttypes where found that have not been imported with the ``import_objecttypes`` command (see :ref:`objecttype_migration`).
   Additional context: ``uuids``.
 

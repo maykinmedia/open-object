@@ -190,7 +190,7 @@ LOGIN_URLS = [reverse_lazy("admin:login")]
 
 UPGRADE_CHECK_PATHS: UpgradePaths = {
     "4.0.0": UpgradeCheck(
-        VersionRange(minimum="3.6.0"),
+        VersionRange(minimum="3.6.1"),
         code_checks=[CommandCheck("check_for_external_objecttypes")],
     ),
 }
