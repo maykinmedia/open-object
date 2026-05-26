@@ -36,7 +36,7 @@ class TestUpgradeCheckBefore40(BaseMigrationTest):
     @override_settings(RELEASE="4.0.0")
     def test_upgrade_from_30_to_40(self):
         """
-        from 3.0.0 directly to 4.0.0 is not allowed, 3.6.0 is the minimum version
+        from 3.0.0 directly to 4.0.0 is not allowed, 3.6.1 is the minimum version
 
         """
         Version.objects.create(version="3.0.0", git_sha="test")
@@ -49,7 +49,7 @@ class TestUpgradeCheckBefore40(BaseMigrationTest):
         """
         import should fail because non-imported objecttypes exist
         """
-        Version.objects.create(version="3.6.0", git_sha="test")
+        Version.objects.create(version="3.6.1", git_sha="test")
         self.ObjectType.objects.create(
             is_imported=False, uuid=uuid.uuid4(), service=self.service
         )
@@ -62,7 +62,7 @@ class TestUpgradeCheckBefore40(BaseMigrationTest):
         """
         import should succeed because all objecttypes are imported
         """
-        Version.objects.create(version="3.6.0", git_sha="test")
+        Version.objects.create(version="3.6.1", git_sha="test")
         self.ObjectType.objects.create(
             is_imported=True, uuid=uuid.uuid4(), service=self.service
         )
@@ -98,7 +98,7 @@ class TestUpgradeCheckBefore40(BaseMigrationTest):
 class TestUpgradeCheckAfter40(TestCase):
     @override_settings(RELEASE="4.0.0")
     def test_upgrade_from_36_to_40_with_non_imported(self):
-        Version.objects.create(version="3.6.0", git_sha="test")
+        Version.objects.create(version="3.6.1", git_sha="test")
         ObjectTypeFactory.create(is_imported=False)
 
         with self.assertRaises(SystemCheckError):
@@ -106,7 +106,7 @@ class TestUpgradeCheckAfter40(TestCase):
 
     @override_settings(RELEASE="4.0.0")
     def test_upgrade_from_36_to_40_with_imported(self):
-        Version.objects.create(version="3.6.0", git_sha="test")
+        Version.objects.create(version="3.6.1", git_sha="test")
         ObjectTypeFactory.create(is_imported=True)
 
         call_command("check")

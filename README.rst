@@ -38,7 +38,10 @@ latest                  n/a             `ReDoc <https://redocly.github.io/redoc/
                                         (`diff <https://github.com/maykinmedia/open-object/compare/4.0.0..4.0.1>`_)
 4.0.0                   2026-04-13      `ReDoc <https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/maykinmedia/open-object/4.0.0/src/objects/api/v2/openapi.yaml>`_,
                                         `Swagger <https://petstore.swagger.io/?url=https://raw.githubusercontent.com/maykinmedia/open-object/4.0.0/src/objects/api/v2/openapi.yaml>`_
-                                        (`diff <https://github.com/maykinmedia/open-object/compare/3.6.0..4.0.0>`_)
+                                        (`diff <https://github.com/maykinmedia/open-object/compare/3.6.1..4.0.0>`_)
+3.6.1                   2026-05-22      `ReDoc <https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/maykinmedia/open-object/3.6.1/src/objects/api/v2/openapi.yaml>`_,
+                                        `Swagger <https://petstore.swagger.io/?url=https://raw.githubusercontent.com/maykinmedia/open-object/3.6.1/src/objects/api/v2/openapi.yaml>`_
+                                        (`diff <https://github.com/maykinmedia/open-object/compare/3.6.0..3.6.1>`_)
 3.6.0                   2026-02-06      `ReDoc <https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/maykinmedia/open-object/3.6.0/src/objects/api/v2/openapi.yaml>`_,
                                         `Swagger <https://petstore.swagger.io/?url=https://raw.githubusercontent.com/maykinmedia/open-object/3.6.0/src/objects/api/v2/openapi.yaml>`_
                                         (`diff <https://github.com/maykinmedia/open-object/compare/3.5.0..3.6.0>`_)
