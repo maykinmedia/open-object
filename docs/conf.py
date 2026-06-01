@@ -36,7 +36,7 @@ django.setup()
 # -- Project information -----------------------------------------------------
 
 project = "Open Object"
-copyright = "2020, Maykin Media"
+copyright = "2020, Maykin"
 author = objects.__author__
 
 # The full version, including alpha/beta/rc tags

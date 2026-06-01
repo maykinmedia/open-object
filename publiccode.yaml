@@ -57,8 +57,8 @@ description:
 
 legal:
   license: EUPL-1.2
-  mainCopyrightOwner: Maykin Media
-  repoOwner: Maykin Media
+  mainCopyrightOwner: Maykin
+  repoOwner: Maykin
 
 dependsOn:
   open:
@@ -97,9 +97,9 @@ localisation:
 maintenance:
   type: contract
   contractors:
-  - name: Maykin Media
-    email: info@maykinmedia.nl
-    website: https://www.maykinmedia.nl/
+  - name: Maykin
+    email: info@maykin.nl
+    website: https://www.maykin.nl/
   contacts:
   - name: Joeri Bekker
-    affiliation: Maykin Media
+    affiliation: Maykin

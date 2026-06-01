@@ -95,8 +95,8 @@ SPECTACULAR_SETTINGS = {
     "SERVE_INCLUDE_SCHEMA": False,
     "CONTACT": {
         "url": "https://github.com/maykinmedia/open-object",
-        "email": "support@maykinmedia.nl",
-        "name": "Maykin Media",
+        "email": "support@maykin.nl",
+        "name": "Maykin",
     },
     "LICENSE": {"name": "EUPL-1.2"},
     "EXTERNAL_DOCS": {

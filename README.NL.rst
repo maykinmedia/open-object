@@ -15,7 +15,7 @@ Open Object
 API om objecten te beheren die behoren bij een bepaald objecttype.
 (`English version`_)
 
-Ontwikkeld door `Maykin Media B.V.`_ in opdracht van de gemeente Utrecht.
+Ontwikkeld door `Maykin B.V.`_ in opdracht van de gemeente Utrecht.
 
 
 Introductie
@@ -165,14 +165,14 @@ Links
 Licentie
 ========
 
-Copyright © Maykin Media, 2020 - 2021
+Copyright © Maykin, 2020 - 2021
 
 Licensed under the EUPL_
 
 
 .. _`English version`: README.rst
 
-.. _`Maykin Media B.V.`: https://www.maykinmedia.nl
+.. _`Maykin B.V.`: https://www.maykin.nl
 
 .. _`EUPL`: LICENSE.md
 

@@ -1,6 +1,6 @@
 # Licence
 
-Copyright © Maykin Media, 2020
+Copyright © Maykin, 2020
 
 Licensed under the EUPL
 
@@ -215,15 +215,15 @@ Deze openbare licentie van de Europese Unie („EUPL”) is van toepassing op he
 of op een andere wijze zijn bereidheid te kennen heeft gegeven krachtens de EUPL in licentie te geven.
 
 1.Definities
-In deze licentie wordt verstaan onder:  
-— „de licentie”:de onderhavige licentie;  
-— „het oorspronkelijke werk”:het werk dat of de software die door de licentiegever krachtens deze licentie wordt verspreid of medegedeeld, en dat/die beschikbaar is als broncode en, in voorkomend geval, ook als uitvoerbare code;  
-— „bewerkingen”:de werken of software die de licentiehouder kan creëren op grond van het oorspronkelijke werk of wijzigingen ervan. In deze licentie wordt niet gedefinieerd welke mate van wijziging of afhankelijkheid van het oorspronkelijke werk vereist is om een werk als een bewerking te kunnen aanmerken; dat wordt bepaald conform het auteursrecht dat van toepassing is in de in artikel 15 bedoelde staat;  
-— „het werk”:het oorspronkelijke werk of de bewerkingen ervan;  
-— „de broncode”:de voor mensen leesbare vorm van het werk, die het gemakkelijkste door mensen kan worden bestudeerd en gewijzigd;  
-— „de uitvoerbare code”:elke code die over het algemeen is gecompileerd en is bedoeld om door een computer als een programma te worden uitgevoerd;  
-— „de licentiegever”:de natuurlijke of rechtspersoon die het werk krachtens de licentie verspreidt of mededeelt;  
-— „bewerker(s)”:elke natuurlijke of rechtspersoon die het werk krachtens de licentie wijzigt of op een andere wijze bijdraagt tot de totstandkoming van een bewerking;  
+In deze licentie wordt verstaan onder:
+— „de licentie”:de onderhavige licentie;
+— „het oorspronkelijke werk”:het werk dat of de software die door de licentiegever krachtens deze licentie wordt verspreid of medegedeeld, en dat/die beschikbaar is als broncode en, in voorkomend geval, ook als uitvoerbare code;
+— „bewerkingen”:de werken of software die de licentiehouder kan creëren op grond van het oorspronkelijke werk of wijzigingen ervan. In deze licentie wordt niet gedefinieerd welke mate van wijziging of afhankelijkheid van het oorspronkelijke werk vereist is om een werk als een bewerking te kunnen aanmerken; dat wordt bepaald conform het auteursrecht dat van toepassing is in de in artikel 15 bedoelde staat;
+— „het werk”:het oorspronkelijke werk of de bewerkingen ervan;
+— „de broncode”:de voor mensen leesbare vorm van het werk, die het gemakkelijkste door mensen kan worden bestudeerd en gewijzigd;
+— „de uitvoerbare code”:elke code die over het algemeen is gecompileerd en is bedoeld om door een computer als een programma te worden uitgevoerd;
+— „de licentiegever”:de natuurlijke of rechtspersoon die het werk krachtens de licentie verspreidt of mededeelt;
+— „bewerker(s)”:elke natuurlijke of rechtspersoon die het werk krachtens de licentie wijzigt of op een andere wijze bijdraagt tot de totstandkoming van een bewerking;
 — „de licentiehouder” of „u”:elke natuurlijke of rechtspersoon die het werk onder de voorwaarden van de licentie gebruikt;  — „verspreiding” of „mededeling”:het verkopen, geven, uitlenen, verhuren, verspreiden, mededelen, doorgeven, of op een andere wijze online of offline beschikbaar stellen van kopieën van het werk of het verlenen van toegang tot de essentiële functies ervan ten behoeve van andere natuurlijke of rechtspersonen.
 
 2.Draagwijdte van de uit hoofde van de licentie verleende rechten
@@ -263,7 +263,7 @@ De oorspronkelijke licentiegever garandeert dat hij houder is van het hierbij ve
 Het werk is een werk in ontwikkeling, dat voortdurend door vele bewerkers wordt verbeterd. Het is een onvoltooid werk, dat bijgevolg nog tekortkomingen of programmeerfouten („bugs”) kan vertonen, die onlosmakelijk verbonden zijn met dit soort ontwikkeling. Om die reden wordt het werk op grond van de licentie verstrekt „zoals het is” en zonder enige garantie met betrekking tot het werk te geven, met inbegrip van, maar niet beperkt tot garanties met betrekking tot de verhandelbaarheid, de geschiktheid voor een specifiek doel, de afwezigheid van tekortkomingen of fouten, de nauwkeurigheid, de eerbiediging van andere intellectuele-eigendomsrechten dan het in artikel 6 van deze licentie bedoelde auteursrecht. Deze uitsluiting van garantie is een essentieel onderdeel van de licentie en een voorwaarde voor de verlening van rechten op het werk.
 
 8.Uitsluiting van aansprakelijkheid
-Behoudens in het geval van een opzettelijke fout of directe schade aan natuurlijke personen, is de licentiegever in geen enkel geval aansprakelijk voor ongeacht welke directe of indirecte, materiële of immateriële schade die voortvloeit uit de licentie of het gebruik van het werk, met inbegrip van, maar niet beperkt tot schade als gevolg van het verlies van goodwill, verloren werkuren, een computerdefect of computerfout, het verlies van gegevens, of enige andere commerciële schade, zelfs indien de licentiegever werd gewezen op de mogelijkheid van dergelijke schade. De licentiegever is echter aansprakelijk op grond van de wetgeving inzake productaansprakelijkheid, voor zover deze wetgeving op het werk van toepassing is. 
+Behoudens in het geval van een opzettelijke fout of directe schade aan natuurlijke personen, is de licentiegever in geen enkel geval aansprakelijk voor ongeacht welke directe of indirecte, materiële of immateriële schade die voortvloeit uit de licentie of het gebruik van het werk, met inbegrip van, maar niet beperkt tot schade als gevolg van het verlies van goodwill, verloren werkuren, een computerdefect of computerfout, het verlies van gegevens, of enige andere commerciële schade, zelfs indien de licentiegever werd gewezen op de mogelijkheid van dergelijke schade. De licentiegever is echter aansprakelijk op grond van de wetgeving inzake productaansprakelijkheid, voor zover deze wetgeving op het werk van toepassing is.
 
 9.Aanvullende overeenkomsten
 Bij de verspreiding van het werk kunt u ervoor kiezen een aanvullende overeenkomst te sluiten, waarin de verplichtingen of diensten overeenkomstig deze licentie worden omschreven. Indien deze verplichtingen worden aanvaard, kunt u echter alleen in eigen naam en onder eigen verantwoordelijkheid handelen, en dus niet in naam van de oorspronkelijke licentiegever of een bewerker, en kunt u voorts alleen handelen indien u ermee instemt alle bewerkers schadeloos te stellen, te verdedigen of te vrijwaren met betrekking tot de aansprakelijkheid van of vorderingen tegen deze bewerkers op grond van het feit dat u een garantie of aanvullende aansprakelijkheid hebt aanvaard.

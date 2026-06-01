@@ -15,7 +15,7 @@ Open Object
 API to manage objecttypes and objects.
 (`Nederlandse versie`_)
 
-Developed by `Maykin Media B.V.`_ commissioned by the Municipality of Utrecht.
+Developed by `Maykin B.V.`_ commissioned by the Municipality of Utrecht.
 
 
 Introduction
@@ -163,14 +163,14 @@ References
 License
 =======
 
-Copyright © Maykin Media, 2020 - 2021
+Copyright © Maykin, 2020 - 2021
 
 Licensed under the EUPL_
 
 
 .. _`Nederlandse versie`: README.NL.rst
 
-.. _`Maykin Media B.V.`: https://www.maykinmedia.nl
+.. _`Maykin B.V.`: https://www.maykin.nl
 
 .. _`EUPL`: LICENSE.md
 
