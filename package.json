@@ -24,6 +24,7 @@
     "microscope-sass": "latest",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
+    "react-select": "^5.10.2",
     "tough-cookie": "^6.0.0"
   },
   "devDependencies": {

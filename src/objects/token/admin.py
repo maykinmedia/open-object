@@ -70,7 +70,7 @@ class PermissionAdmin(admin.ModelAdmin):
         ]
         object_type_choices = [EMPTY_FIELD_CHOICE] + [
             (str(object_type.uuid), str(object_type))
-            for object_type in ObjectType.objects.all()
+            for object_type in ObjectType.objects.order_by("name")
         ]
         return {
             "object_fields": self.get_object_fields(),

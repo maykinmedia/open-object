@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import { CheckboxInput, TextInput, SelectInput } from "../../forms/inputs";
 import { versionAuthFields } from "./auth-fields";
+import {SearchableSelectInput} from "../../forms/searchable-select-input";
 
 
 const PermissionForm = ({objectFields, tokenChoices, objecttypeChoices, modeChoices, formData}) => {
@@ -72,7 +73,7 @@ const PermissionForm = ({objectFields, tokenChoices, objecttypeChoices, modeChoi
         </div>
 
         <div className="form-row">
-            <SelectInput
+            <SearchableSelectInput
                 name="object_type"
                 id="id_object_type"
                 label="Object type:"

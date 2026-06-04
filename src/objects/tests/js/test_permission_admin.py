@@ -47,7 +47,11 @@ class PermissionAdminTests(PlaywrightSyncLiveServerTestCase):
 
         page.wait_for_selector("#id_token_auth", timeout=15000)
         page.select_option("#id_token_auth", str(token.pk))
-        page.select_option("#id_object_type", str(object_type.uuid))
+
+        page.locator("#id_object_type").click()
+        page.locator("#id_object_type").fill(str(object_type))
+
+        page.get_by_role("option", name=str(object_type)).click()
         page.select_option("#id_mode", "read_only")
 
         expect(page.locator("#id_use_fields")).to_be_enabled(timeout=5000)
@@ -112,7 +116,9 @@ class PermissionAdminTests(PlaywrightSyncLiveServerTestCase):
         page.wait_for_selector("#id_token_auth", timeout=15000)
 
         expect(page.locator("#id_token_auth")).to_have_value(str(token.pk))
-        expect(page.locator("#id_object_type")).to_have_value(str(object_type.uuid))
+        expect(page.locator('input[type="hidden"][name="object_type"]')).to_have_value(
+            str(object_type.uuid)
+        )
 
         expect(page.locator("#id_use_fields")).to_be_checked()
 
