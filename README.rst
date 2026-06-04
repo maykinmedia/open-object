@@ -2,6 +2,10 @@
 Open Object
 =============
 
+.. image:: https://raw.githubusercontent.com/maykinmedia/open-object/refs/heads/master/.github/assets/open-object-logo.svg
+    :height: 100px
+    :alt: Open Object
+
 :Version: 4.0.1
 :Source: https://github.com/maykinmedia/open-object
 :Keywords: objects, assets, zaakobjecten
