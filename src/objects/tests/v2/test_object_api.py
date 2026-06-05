@@ -314,6 +314,65 @@ class ObjectApiTests(TokenAuthMixin, APITestCase):
         self.assertEqual(initial_record.corrected, current_record)
         self.assertEqual(initial_record.end_at, date(2020, 1, 1))
 
+    def test_patch_object_with_uuid_in_body(self):
+        """Regression test for PATCH/PUT with uuid field in body.
+
+        In 3.6.0, including the uuid in the request body during PATCH/PUT
+        worked correctly. In 4.0.0, it returned a 400 error:
+        "An object with this UUID already exists."
+        """
+        # Explicitly set different IDs so Object.pk != ObjectRecord.pk.
+        # The default UniqueValidator excludes by pk=instance.pk (ObjectRecord.pk) from
+        # Object.objects, which fails when the PKs don't match.
+        initial_record = ObjectRecordFactory.create(
+            id=100,
+            object__id=1,
+            object__object_type=self.object_type,
+            version=1,
+            start_at=date.today(),
+            data={"name": "Name", "diameter": 20},
+        )
+        obj = initial_record.object
+
+        url = reverse("object-detail", args=[obj.uuid])
+        data = {
+            "uuid": str(obj.uuid),
+            "record": {
+                "data": {"diameter": 30},
+            },
+        }
+
+        response = self.client.patch(url, data, **GEO_WRITE_KWARGS)
+
+        self.assertEqual(response.status_code, status.HTTP_200_OK, response.data)
+
+    def test_put_object_with_uuid_in_body(self):
+        """PUT with uuid field in body should work (same UUID as existing object)."""
+        initial_record = ObjectRecordFactory.create(
+            id=100,
+            object__id=1,
+            object__object_type=self.object_type,
+            version=1,
+            start_at=date.today(),
+            data={"name": "Name", "diameter": 20},
+        )
+        obj = initial_record.object
+
+        url = reverse("object-detail", args=[obj.uuid])
+        data = {
+            "uuid": str(obj.uuid),
+            "type": f"http://testserver{reverse('objecttype-detail', args=[self.object_type.uuid])}",
+            "record": {
+                "typeVersion": 1,
+                "data": {"name": "Name", "diameter": 30},
+                "startAt": "2020-01-01",
+            },
+        }
+
+        response = self.client.put(url, data, **GEO_WRITE_KWARGS)
+
+        self.assertEqual(response.status_code, status.HTTP_200_OK, response.data)
+
     def test_patch_validates_merged_object_rather_than_partial_object(self):
         initial_record = ObjectRecordFactory.create(
             version=1,
