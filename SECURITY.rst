@@ -12,11 +12,11 @@ Reporting security issues
 -------------------------
 
 **Short version: please report security issues by emailing
-security@maykinmedia.nl.**
+security@maykin.nl.**
 
 If you discover security issues in Open Object or related
 projects under the same organization, we request you to disclose these in a
-*responsible* way by mailing to security@maykinmedia.nl.
+*responsible* way by mailing to security@maykin.nl.
 
 It is extremely useful if you have a reproducible test case and/or clear steps
 on how to reproduce the vulnerability.
@@ -63,4 +63,4 @@ The community support team is responsible for the handling of security issues.
 
 .. _`CVE identifier`: https://cve.mitre.org/cve/identifiers/
 .. _`commonground.nl`: https://commonground.nl
-.. _`Maykin`: https://www.maykinmedia.nl
+.. _`Maykin`: https://www.maykin.nl

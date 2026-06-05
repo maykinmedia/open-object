@@ -2,6 +2,10 @@
 Open Object
 =============
 
+.. image:: https://raw.githubusercontent.com/maykinmedia/open-object/refs/heads/master/.github/assets/open-object-logo.svg
+    :height: 100px
+    :alt: Open Object
+
 :Version: 4.0.1
 :Source: https://github.com/maykinmedia/open-object
 :Keywords: objects, assets, zaakobjecten
@@ -11,7 +15,7 @@ Open Object
 API to manage objecttypes and objects.
 (`Nederlandse versie`_)
 
-Developed by `Maykin Media B.V.`_ commissioned by the Municipality of Utrecht.
+Developed by `Maykin B.V.`_ commissioned by the Municipality of Utrecht.
 
 
 Introduction
@@ -159,14 +163,14 @@ References
 License
 =======
 
-Copyright © Maykin Media, 2020 - 2021
+Copyright © Maykin, 2020 - 2021
 
 Licensed under the EUPL_
 
 
 .. _`Nederlandse versie`: README.NL.rst
 
-.. _`Maykin Media B.V.`: https://www.maykinmedia.nl
+.. _`Maykin B.V.`: https://www.maykin.nl
 
 .. _`EUPL`: LICENSE.md
 

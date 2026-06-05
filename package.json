@@ -16,9 +16,9 @@
     "type": "git",
     "url": "https://github.com/maykinmedia/open-object.git"
   },
-  "author": "Maykin Media",
+  "author": "Maykin",
   "license": "UNLICENSED",
-  "homepage": "https://maykinmedia.nl",
+  "homepage": "https://maykin.nl",
   "dependencies": {
     "@fortawesome/fontawesome-free": "^7.0.0",
     "microscope-sass": "latest",

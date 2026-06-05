@@ -1,19 +1,19 @@
 The Objects and Objecttypes API were originally created in late 2020 and had
-its initial release on January 13, 2021. The project covers an the API 
+its initial release on January 13, 2021. The project covers an the API
 specifications and implementation as re-usable components.
 
 Here is an inevitably incomplete list of MUCH-APPRECIATED CONTRIBUTORS --
 people who laid the groundwork, have submitted patches, reported bugs, added
-translations, helped answer questions, and generally made the components that 
+translations, helped answer questions, and generally made the components that
 much better:
 
-    Anna Shamray <anna@maykinmedia.nl>
-    Joeri Bekker <joeri@maykinmedia.nl>
-    Steven Bal <steven@maykinmedia.nl>
+    Anna Shamray <anna@maykin.nl>
+    Joeri Bekker <joeri@maykin.nl>
+    Steven Bal <steven@maykin.nl>
 
 A big THANK YOU goes to:
 
-    The municipality of Utrecht for its consistent support and technical 
+    The municipality of Utrecht for its consistent support and technical
     freedom to create and innovate within this project.
 
     The team and stakeholders for providing valuable business insights and

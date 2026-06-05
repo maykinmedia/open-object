@@ -1,3 +1,8 @@
+.. image:: https://raw.githubusercontent.com/maykinmedia/open-object/refs/heads/master/.github/assets/open-object-logo.svg
+    :height: 100px
+    :alt: Open Object
+    :class: no-scaled-link product-logo
+
 Documentation
 =============
 
