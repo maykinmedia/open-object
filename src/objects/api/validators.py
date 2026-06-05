@@ -4,11 +4,36 @@ from django.utils.translation import gettext_lazy as _
 from rest_framework import serializers
 from rest_framework.fields import get_attribute
 
+from objects.core.models import Object
 from objects.core.utils import check_json_schema, check_objecttype
 
 from ..core.constants import ObjectTypeVersionStatus
 from .constants import Operators
 from .utils import merge_patch, string_to_value
+
+
+class ObjectUUIDUniqueValidator:
+    """
+    Validate that the UUID is unique, but only on create.
+
+    On update, the IsImmutableValidator ensures the UUID doesn't change,
+    so we don't need to check uniqueness (and the standard UniqueValidator
+    can't properly exclude the current instance because the serializer's
+    instance is an ObjectRecord, not an Object).
+    """
+
+    message = _("An object with this UUID already exists.")
+    code = "unique"
+    requires_context = True
+
+    def __call__(self, value, serializer_field):
+        instance = getattr(serializer_field.parent, "instance", None)
+        # no instance -> it's a create, check uniqueness
+        if instance is not None:
+            return
+
+        if Object.objects.filter(uuid=value).exists():
+            raise serializers.ValidationError(self.message, code=self.code)
 
 
 class VersionUpdateValidator:
