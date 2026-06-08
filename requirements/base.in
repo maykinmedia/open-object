@@ -2,7 +2,7 @@ open-api-framework[celery,cors,markup,geo,csp,commonground,inclusions,sanitizati
 
 # Core python libraries
 glom # data represenation based on spec
-jsonschema
+jsonschema[format-nongpl]
 furl
 
 # Django libraries
