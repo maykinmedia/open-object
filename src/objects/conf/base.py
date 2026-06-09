@@ -164,7 +164,6 @@ CELERY_TASK_TIME_LIMIT = config(
     default=15 * 60,
     documentation=DocumentationParams(
         help_text=(
-            "Defaults to: ``900`` seconds. "
             "If a celery task exceeds this time limit, the worker processing the task will "
             "be killed and replaced with a new one."
         ),
