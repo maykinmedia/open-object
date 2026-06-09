@@ -11,22 +11,24 @@ os.environ["_USE_STRUCTLOG"] = "True"
 
 from django.core.exceptions import ImproperlyConfigured
 
+from maykin_common.config import ENVVAR_REGISTRY, config
 from open_api_framework.conf.base import *  # noqa
-from open_api_framework.conf.utils import ENVVAR_REGISTRY, config
 
 from .api import *  # noqa
 
 DATABASES["default"]["DISABLE_SERVER_SIDE_CURSORS"] = config(
     "DB_DISABLE_SERVER_SIDE_CURSORS",
-    False,
-    help_text=(
-        "Whether or not server side cursors should be disabled for Postgres connections. "
-        "Setting this to true is required when using a connection pooler in "
-        "transaction mode (like PgBouncer). "
-        "**WARNING:** the effect of disabling server side cursors on performance has not "
-        "been thoroughly tested yet."
+    default=False,
+    documentation=DocumentationParams(
+        help_text=(
+            "Whether or not server side cursors should be disabled for Postgres connections. "
+            "Setting this to true is required when using a connection pooler in "
+            "transaction mode (like PgBouncer). "
+            "**WARNING:** the effect of disabling server side cursors on performance has not "
+            "been thoroughly tested yet."
+        ),
+        group="Database",
     ),
-    group="Database",
 )
 
 DATABASES["default"]["ENGINE"] = "django.contrib.gis.db.backends.postgis"
@@ -76,8 +78,10 @@ SHOW_ALERT = True
 # TODO remove this once https://github.com/maykinmedia/open-object/issues/621 is fixed
 OBJECTS_ADMIN_SEARCH_DISABLED = config(
     "OBJECTS_ADMIN_SEARCH_DISABLED",
-    help_text=(
-        "Indicates whether or not searching in the Objects admin should be disabled"
+    documentation=DocumentationParams(
+        help_text=(
+            "Indicates whether or not searching in the Objects admin should be disabled"
+        ),
     ),
     default=False,
 )
@@ -110,15 +114,19 @@ NOTIFICATIONS_KANAAL = "objecten"
 
 ENABLE_CLOUD_EVENTS = config(
     "ENABLE_CLOUD_EVENTS",
-    default=False,
+    default="False",
     cast=bool,
-    help_text="**EXPERIMENTAL**: indicates whether or not cloud events should be sent to the configured endpoint for specific operations on Zaak (not ready for use in production)",
+    documentation=DocumentationParams(
+        help_text="**EXPERIMENTAL**: indicates whether or not cloud events should be sent to the configured endpoint for specific operations on Zaak (not ready for use in production)",
+    ),
 )
 
 NOTIFICATIONS_SOURCE = config(
     "NOTIFICATIONS_SOURCE",
     default="",
-    help_text="**EXPERIMENTAL**: the identifier of this application to use as the source in notifications and cloudevents",
+    documentation=DocumentationParams(
+        help_text="**EXPERIMENTAL**: the identifier of this application to use as the source in notifications and cloudevents",
+    ),
 )
 
 if ENABLE_CLOUD_EVENTS and not NOTIFICATIONS_SOURCE:
@@ -132,29 +140,35 @@ if ENABLE_CLOUD_EVENTS and not NOTIFICATIONS_SOURCE:
 # moved to OAF once all projects have made this breaking change
 CELERY_BROKER_URL = config(
     "CELERY_BROKER_URL",
-    "redis://localhost:6379/1",
-    group="Celery",
-    help_text="the URL of the broker that will be used by Celery to send the notifications",
+    default="redis://localhost:6379/1",
+    documentation=DocumentationParams(
+        help_text="the URL of the broker that will be used by Celery to send the notifications",
+        group="Celery",
+    ),
 )
 CELERY_RESULT_EXPIRES = config(
     "CELERY_RESULT_EXPIRES",
-    3600,
-    help_text=(
-        "How long the results of tasks will be stored in Redis (in seconds),"
-        " this can be set to a lower duration to lower memory usage for Redis."
+    default=3600,
+    documentation=DocumentationParams(
+        help_text=(
+            "How long the results of tasks will be stored in Redis (in seconds),"
+            " this can be set to a lower duration to lower memory usage for Redis."
+        ),
+        group="Celery",
     ),
-    group="Celery",
 )
 
 # Add (by default) 5 (soft), 15 (hard) minute timeouts to all Celery tasks.
 CELERY_TASK_TIME_LIMIT = config(
     "CELERY_TASK_HARD_TIME_LIMIT",
     default=15 * 60,
-    help_text=(
-        "Task hard time limit in seconds. The worker processing the task will be "
-        "killed and replaced with a new one when this is exceeded."
+    documentation=DocumentationParams(
+        help_text=(
+            "If a celery task exceeds this time limit, the worker processing the task will "
+            "be killed and replaced with a new one."
+        ),
+        group="Celery",
     ),
-    group="Celery",
 )  # hard
 
 #
@@ -203,11 +217,13 @@ UPGRADE_CHECK_PATHS: UpgradePaths = {
 LOG_OUTGOING_REQUESTS = config(
     "LOG_OUTGOING_REQUESTS",
     default=False,
-    help_text=(
-        "enable logging of the outgoing requests. "
-        "This must be enabled along with `LOG_OUTGOING_REQUESTS_DB_SAVE` to save outgoing request logs in the database."
+    documentation=DocumentationParams(
+        help_text=(
+            "enable logging of the outgoing requests. "
+            "This must be enabled along with `LOG_OUTGOING_REQUESTS_DB_SAVE` to save outgoing request logs in the database."
+        ),
+        group="Logging",
     ),
-    group="Logging",
 )
 LOGGING["loggers"]["log_outgoing_requests"]["handlers"] = (
     ["log_outgoing_requests", "save_outgoing_requests"] if LOG_OUTGOING_REQUESTS else []
@@ -217,17 +233,16 @@ LOGGING["loggers"]["log_outgoing_requests"]["handlers"] = (
 # DJANGO-STRUCTLOG
 #
 # Make sure the old envvar no longer shows up in the documentation
-for i, var in enumerate(ENVVAR_REGISTRY):
-    if var.name == "ENABLE_STRUCTLOG_REQUESTS":
-        ENVVAR_REGISTRY.pop(i)
-
+ENVVAR_REGISTRY.pop("ENABLE_STRUCTLOG_REQUESTS", None)
 # XXX: Overrides to bring envvars in line with Open Forms, this is currently defined in
 # open-api-framework using `ENABLE_STRUCTLOG_REQUESTS`
 LOG_REQUESTS = config(
     "LOG_REQUESTS",
     default=True,
-    help_text=("enable structured logging of requests"),
-    group="Logging",
+    documentation=DocumentationParams(
+        help_text=("enable structured logging of requests"),
+        group="Logging",
+    ),
 )
 
 LOGGING["loggers"]["django.server"]["level"] = "WARNING" if LOG_REQUESTS else "INFO"
@@ -248,5 +263,7 @@ if LOG_REQUESTS:
 # Override because SITE_DOMAIN has become required in 4.0.0
 SITE_DOMAIN = config(
     "SITE_DOMAIN",
-    help_text=("Defines the primary domain where the application is hosted."),
+    documentation=DocumentationParams(
+        help_text=("Defines the primary domain where the application is hosted."),
+    ),
 )

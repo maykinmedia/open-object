@@ -3,6 +3,8 @@ import os
 import sys
 import warnings
 
+from maykin_common.config import no_doc
+
 os.environ.setdefault("DEBUG", "yes")
 os.environ.setdefault("ALLOWED_HOSTS", "*")
 os.environ.setdefault(
@@ -115,19 +117,21 @@ warnings.filterwarnings(
 #
 # DJANGO-SILK
 #
-if config("PROFILE", default=False, add_to_docs=False):
+if config("PROFILE", default=False, documentation=no_doc):
     INSTALLED_APPS += ["silk"]
     MIDDLEWARE = ["silk.middleware.SilkyMiddleware"] + MIDDLEWARE
     security_index = MIDDLEWARE.index("django.middleware.security.SecurityMiddleware")
     MIDDLEWARE.insert(security_index + 1, "whitenoise.middleware.WhiteNoiseMiddleware")
 
 
-if config("USE_PYINSTRUMENT", default=False, add_to_docs=False):  # pragma:no cover
+if config("USE_PYINSTRUMENT", default=False, documentation=no_doc):  # pragma:no cover
     MIDDLEWARE = ["objects.utils.middleware.PyInstrumentMiddleware"] + MIDDLEWARE
 
 
 NOTIFICATIONS_DISABLED = config(
-    "NOTIFICATIONS_DISABLED", default="test" in sys.argv, add_to_docs=False
+    "NOTIFICATIONS_DISABLED",
+    default="test" in sys.argv,
+    documentation=no_doc,
 )
 
 # Override settings with local settings.

@@ -59,6 +59,7 @@ extensions = [
     "django_setup_configuration.documentation.setup_config_example",
     "django_setup_configuration.documentation.setup_config_usage",
     "vng_api_common.diagrams.uml_images",
+    "maykin_common.documentation.config_directives",
 ]
 
 # Add any paths that contain templates here, relative to this directory.
