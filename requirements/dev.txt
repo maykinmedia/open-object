@@ -154,7 +154,7 @@ coverage==7.10.1
     #   -c requirements/ci.txt
     #   -r requirements/ci.txt
     #   codecov
-cryptography==46.0.6
+cryptography==46.0.7
     # via
     #   -c requirements/ci.txt
     #   -r requirements/ci.txt
@@ -169,7 +169,7 @@ cssselect==1.1.0
     #   pyquery
 distlib==0.3.9
     # via virtualenv
-django==5.2.13
+django==5.2.15
     # via
     #   -c requirements/ci.txt
     #   -r requirements/ci.txt
@@ -500,7 +500,7 @@ hypothesis-jsonschema==0.22.1
     #   -r requirements/ci.txt
 identify==2.6.10
     # via pre-commit
-idna==3.7
+idna==3.18
     # via
     #   -c requirements/ci.txt
     #   -r requirements/ci.txt
@@ -553,7 +553,7 @@ kombu==5.5.4
     #   -c requirements/ci.txt
     #   -r requirements/ci.txt
     #   celery
-lxml==4.9.4
+lxml==6.1.1
     # via
     #   -c requirements/ci.txt
     #   -r requirements/ci.txt
@@ -743,7 +743,7 @@ phonenumberslite==8.13.30
     #   -c requirements/ci.txt
     #   -r requirements/ci.txt
     #   django-two-factor-auth
-pip==26.0.1
+pip==26.1.2
     # via pip-tools
 pip-tools==7.4.1
     # via -r requirements/dev.in
@@ -831,6 +831,7 @@ pygments==2.20.0
     #   -c requirements/ci.txt
     #   -r requirements/ci.txt
     #   django-log-outgoing-requests
+    #   pytest
     #   rich
     #   sphinx
     #   sphinx-tabs
@@ -863,7 +864,7 @@ pyrsistent==0.17.3
     #   -c requirements/ci.txt
     #   -r requirements/ci.txt
     #   jsonschema
-pytest==8.3.3
+pytest==9.0.3
     # via
     #   -c requirements/ci.txt
     #   -r requirements/ci.txt
@@ -886,7 +887,7 @@ python-decouple==3.8
     #   -c requirements/ci.txt
     #   -r requirements/ci.txt
     #   maykin-common
-python-dotenv==1.0.0
+python-dotenv==1.2.2
     # via
     #   -c requirements/ci.txt
     #   -r requirements/ci.txt
@@ -1135,7 +1136,7 @@ uritemplate==3.0.1
     #   -c requirements/ci.txt
     #   -r requirements/ci.txt
     #   drf-spectacular
-urllib3==2.6.3
+urllib3==2.7.0
     # via
     #   -c requirements/ci.txt
     #   -r requirements/ci.txt
@@ -1182,7 +1183,7 @@ webencodings==0.5.1
     #   -c requirements/ci.txt
     #   -r requirements/ci.txt
     #   bleach
-webob==1.8.8
+webob==1.8.10
     # via
     #   -c requirements/ci.txt
     #   -r requirements/ci.txt
