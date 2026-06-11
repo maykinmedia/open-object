@@ -27,6 +27,7 @@ from .validators import (
     IsImmutableValidator,
     JsonSchemaValidator,
     ObjectTypeSchemaValidator,
+    ObjectUUIDUniqueValidator,
     VersionUpdateValidator,
 )
 
@@ -244,10 +245,7 @@ class ObjectSerializer(DynamicFieldsMixin, serializers.HyperlinkedModelSerialize
         required=False,
         validators=[
             IsImmutableValidator(),
-            UniqueValidator(
-                queryset=Object.objects.all(),
-                message=_("An object with this UUID already exists."),
-            ),
+            ObjectUUIDUniqueValidator(),
         ],
         help_text=_("Unique identifier (UUID4)"),
     )
