@@ -503,7 +503,7 @@ Major release
 * Fixed admin logout button
 * [:open-object:`550`] Implement cache for objecttypes
 * [:open-object:`550`] add OBJECTTYPE_VERSION_CACHE_TIMEOUT environment variable (see `documentation for environment variables for caching <https://open-object.readthedocs.io/en/latest/installation/config.html>`_)
-* [:open-object:`572`] Add db connection pooling environment variables (see `documentation for environment variables for database <https://open-object.readthedocs.io/en/latest/installation/config.html#database>`_)
+* [:open-object:`572`] Add db connection pooling environment variables (see `documentation for environment variables for database <https://open-object.readthedocs.io/en/latest/installation/config.html#Database>`_)
 
   * DB_POOL_ENABLED
   * DB_POOL_MIN_SIZE
@@ -522,7 +522,7 @@ Major release
     Use this feature cautiously and test thoroughly before deployment.
     See the :ref:`documentation <database_connections>` for details.
 
-* [:open-object:`566`] Add DB_CONN_MAX_AGE environment variable (see `documentation for environment variables for database <https://open-object.readthedocs.io/en/latest/installation/config.html#database>`_)
+* [:open-object:`566`] Add DB_CONN_MAX_AGE environment variable (see `documentation for environment variables for database <https://open-object.readthedocs.io/en/latest/installation/config.html#Database>`_)
 
 .. warning::
 
