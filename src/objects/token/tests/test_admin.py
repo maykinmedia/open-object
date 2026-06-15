@@ -41,3 +41,16 @@ class PermissionAdminTests(VCRMixin, TestCase):
             choices[1][1],
             str(object_type),
         )
+
+    @tag("gh-518")
+    def test_object_type_choices_are_sorted_alphabetically(self):
+        ObjectTypeFactory.create(name="Quokka")
+        ObjectTypeFactory.create(name="Alpaca")
+        ObjectTypeFactory.create(name="Bumblebee")
+
+        response = self.client.get(self.url)
+        choices = response.context["object_type_choices"]
+
+        labels = [label for _, label in choices if label and label != "---------"]
+
+        self.assertEqual(labels, sorted(labels))
