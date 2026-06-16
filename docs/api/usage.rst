@@ -21,7 +21,7 @@ will have and to design JSON schema for trees. You can take a look at provided
 .. code-block:: json
 
     {
-      "$schema": "http://json-schema.org/draft-07/schema",
+      "$schema": "https://json-schema.org/draft/2020-12/schema#",
       "$id": "https://api.vng.nl/objecttypes/boom/schema.json",
       "type": "object",
       "title": "Boom",
@@ -140,7 +140,7 @@ Now we can add our JSON schema to the created object type as its version:
     {
         "status": "draft",
         "jsonSchema": {
-            "$schema": "http://json-schema.org/draft-07/schema",
+            "$schema": "https://json-schema.org/draft/2020-12/schema#",
             "$id": "https://api.vng.nl/objecttypes/boom/schema.json",
             <...>
         }
@@ -158,7 +158,7 @@ The response contains the url of the created version of the object type.
         "objectType": "http://<open-objecten-host>/api/v2/objecttypes/<object-type-uuid>",
         "status": "draft",
         "jsonSchema": {
-            "$schema": "http://json-schema.org/draft-07/schema",
+            "$schema": "https://json-schema.org/draft/2020-12/schema#",
             "$id": "https://api.vng.nl/objecttypes/boom/schema.json",
             <...>
         },
@@ -198,7 +198,7 @@ In the response you can see that ``publishedAt`` attribute now contains the curr
         "objectType": "http://<open-objecten-host>/api/v2/objecttypes/<object-type-uuid>",
         "status": "published",
         "jsonSchema": {
-            "$schema": "http://json-schema.org/draft-07/schema",
+            "$schema": "https://json-schema.org/draft/2020-12/schema#",
             "$id": "https://api.vng.nl/objecttypes/boom/schema.json",
             <...>
         },
@@ -218,7 +218,7 @@ For example:
 
     {
         "jsonSchema": {
-        "$schema": "http://json-schema.org/draft-07/schema",
+        "$schema": "https://json-schema.org/draft/2020-12/schema#",
         "$id": "https://api.vng.nl/objecttypes/boom/schema.json",
         <...>
         "required": []

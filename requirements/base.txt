@@ -245,7 +245,9 @@ grpcio==1.74.0
 humanize==4.9.0
     # via flower
 idna==3.18
-    # via requests
+    # via
+    #   jsonschema
+    #   requests
 importlib-metadata==8.7.0
     # via opentelemetry-api
 inflection==0.5.1

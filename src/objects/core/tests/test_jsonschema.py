@@ -63,7 +63,7 @@ class TestValidateJsonSchema(TestCase):
 
     def test_format_checker(self):
         self.schema = {
-            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "$schema": "https://json-schema.org/draft/2020-12/schema#",
             "type": "object",
             "properties": {"email": {"type": "string", "format": "email"}},
             "required": ["email"],

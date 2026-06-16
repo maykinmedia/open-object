@@ -20,7 +20,7 @@ will have and to design JSON schema for trees. You can take a look at provided
 .. code-block:: json
 
     {
-      "$schema": "http://json-schema.org/draft-07/schema",
+      "$schema": "https://json-schema.org/draft/2020-12/schema#",
       "$id": "https://api.vng.nl/objecttypes/boom/schema.json",
       "type": "object",
       "title": "Boom",

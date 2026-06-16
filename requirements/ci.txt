@@ -489,6 +489,11 @@ kombu==5.5.4
     #   -c requirements/base.txt
     #   -r requirements/base.txt
     #   celery
+lark==1.3.1
+    # via
+    #   -c requirements/base.txt
+    #   -r requirements/base.txt
+    #   rfc3987-syntax
 lxml==6.1.1
     # via pyquery
 markupsafe==2.1.3
@@ -745,11 +750,6 @@ pyopenssl==26.0.0
     #   webauthn
 pyquery==1.4.3
     # via -r requirements/test-tools.in
-pyrsistent==0.17.3
-    # via
-    #   -c requirements/base.txt
-    #   -r requirements/base.txt
-    #   jsonschema
 pytest==9.0.3
     # via
     #   -r requirements/performance-tests.in
