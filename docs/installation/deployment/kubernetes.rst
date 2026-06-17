@@ -18,13 +18,17 @@ database, installed using a `subchart`_.
 Installation
 ============
 
+.. note:: The ``openobject`` Helm chart is available from version 4 onwards.
+   For older versions (< 4.0), use the ``objecten`` chart instead:
+   ``helm install my-release maykinmedia/objecten``
+
 Install the Helm chart with following commands:
 
 .. code:: shell
 
    helm repo add maykinmedia https://maykinmedia.github.io/charts/
    helm search repo maykinmedia
-   helm install my-release maykinmedia/objecten
+   helm install my-release maykinmedia/openobject
 
 
 Use Kubernetes CLI to monitor the status of deployment:
@@ -47,4 +51,4 @@ of the application:
 
 .. _`Helm`: https://helm.sh/
 .. _`subchart`: https://github.com/bitnami/charts/tree/master/bitnami/postgresql
-.. _`Helm chart`: https://github.com/maykinmedia/charts/tree/main/charts/objecten
+.. _`Helm chart`: https://github.com/maykinmedia/charts/tree/main/charts/openobject

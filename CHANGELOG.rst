@@ -2,6 +2,42 @@
 Change history
 ==============
 
+4.1.0 (2026-06-17)
+------------------
+
+.. note::
+
+  The defaults for several environment variables for the ``django-log-outgoing-requests``
+  configuration have changed (see :ref:`installation_env_config` > Logging)
+
+  * ``LOG_REQUESTS`` is now ``True`` by default, instead of ``False``
+  * ``LOG_OUTGOING_REQUESTS_DB_SAVE_BODY`` is now ``False`` by default, instead of ``True``
+  * ``LOG_OUTGOING_REQUESTS_RESET_DB_SAVE_AFTER`` (previously not configurable) has a default of ``60`` minutes
+
+**New features**
+
+* [:open-object:`518`] Added a searchable objectType selector to the permissions view in the admin interface.
+
+**Bugfixes**
+
+* [:open-object:`765`] Fix bug where **PUT/PATCH** requests with a UUID in the request body incorrectly returned an error.
+
+**Maintenance**
+
+* [:open-api-framework:`218`] Add Zizmor GitHub Actions security scanning and updated workflows
+* [:open-api-framework:`83`] Replace OAF config helper with config helper from maykin-common
+* Upgrade python dependencies
+
+    * ``django`` to 5.2.15
+    * ``maykin-common`` to 0.19.0
+    * ``open-api-framework`` to 0.14.0
+    * ``django-log-outgoing-requests`` to 0.9.1
+    * ``cryptography`` to 46.0.7
+
+**Documentation**
+
+* [:open-api-framework:`217`] Update application and repository branding by applying the new icons and logos.
+
 4.0.1 (2026-05-22)
 ------------------
 
@@ -26,6 +62,12 @@ Major release
   From version 4.0.0 onward, the Docker images for Open Object will be published under the
   Dockerhub repository ``maykinmedia/open-object``. If you want to use Open Object and you are
   using ``maykinmedia/objects-api``, make sure to change to the new repository before deploying.
+
+.. warning::
+
+  From version 4.0.0 onward, the Helm chart to be used is ``maykinmedia/openobject``.
+  The old ``maykinmedia/objecten`` chart should only be used for versions < 4.0.
+  See :ref:`deployment_objects_kubernetes` for more details.
 
 **💥 Breaking changes**
 
