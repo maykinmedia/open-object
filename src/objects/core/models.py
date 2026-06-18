@@ -4,6 +4,7 @@ import datetime
 import uuid
 from typing import ClassVar
 
+from django.conf import settings
 from django.contrib.gis.db.models import GeometryField
 from django.contrib.postgres.indexes import GinIndex
 from django.core.exceptions import ValidationError
@@ -183,6 +184,13 @@ class ObjectTypeVersion(models.Model):
     json_schema = models.JSONField(
         _("JSON schema"), help_text=_("JSON schema for Object validation"), default=dict
     )
+    strict_format_checker = models.BooleanField(
+        null=True,
+        help_text=_(
+            "When enabled, JSON Schema validation enforces format constraints "
+            "Defaults to the JSONSCHEMA_USE_FORMAT_CHECKER setting."
+        ),
+    )
     status = models.CharField(
         _("status"),
         max_length=20,
@@ -203,6 +211,9 @@ class ObjectTypeVersion(models.Model):
         check_json_schema(self.json_schema)
 
     def save(self, *args, **kwargs):
+        if self.strict_format_checker is None:
+            self.strict_format_checker = settings.JSONSCHEMA_USE_FORMAT_CHECKER
+
         if not self.version:
             self.version = self.generate_version_number()
 
