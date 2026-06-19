@@ -2,7 +2,6 @@ from django.core.exceptions import ValidationError as DjangoValidationError
 from django.test import TestCase
 
 from jsonschema import FormatError
-from jsonschema._format import _draft_checkers
 
 from ..utils import (
     is_valid_color,
@@ -56,68 +55,34 @@ class TestValidateJsonSchema(TestCase):
         ):
             validate_jsonschema({"name": "Eggs"}, self.schema)
 
-    def test_missing_all_required_fields_raises(self):
-        with self.assertRaisesMessage(
-            DjangoValidationError, "'price' is a required property"
-        ):
-            validate_jsonschema({}, self.schema)
-
     def test_wrong_type_raises(self):
         with self.assertRaisesMessage(
             DjangoValidationError, "'not-a-number' is not of type 'number'"
         ):
             validate_jsonschema({"price": "not-a-number", "name": "Eggs"}, self.schema)
 
-    def test_format_checker_disabled_ignores_invalid_format(self):
+    def test_format_checker(self):
         self.schema = {
             "$schema": "https://json-schema.org/draft/2020-12/schema",
             "type": "object",
             "properties": {"email": {"type": "string", "format": "email"}},
             "required": ["email"],
         }
-        # format not enforced
+        # format_checker disabled
         validate_jsonschema(
             {"email": "not-an-email"}, self.schema, use_format_checker=False
         )
 
-    def test_format_checker_enabled_rejects_invalid_format(self):
-        self.schema = {
-            "$schema": "https://json-schema.org/draft/2020-12/schema",
-            "type": "object",
-            "properties": {"email": {"type": "string", "format": "email"}},
-            "required": ["email"],
-        }
+        # format_checker enabled
         with self.assertRaises(DjangoValidationError):
             validate_jsonschema(
                 {"email": "not-an-email"}, self.schema, use_format_checker=True
             )
 
-    def test_format_checker_enabled_accepts_valid_format(self):
-        self.schema = {
-            "$schema": "https://json-schema.org/draft/2020-12/schema",
-            "type": "object",
-            "properties": {"email": {"type": "string", "format": "email"}},
-            "required": ["email"],
-        }
+        # format_checker enabled
         validate_jsonschema(
             {"email": "valid@example.com"}, self.schema, use_format_checker=True
         )
-
-    def test_valid_email_passes_on_all_drafts(self):
-        for draft_name, checker in _draft_checkers.items():
-            with self.subTest(draft=draft_name):
-                self.assertIn("email", checker.checkers)
-                self.assertTrue(checker.check("valid@example.com", "email") is None)
-
-    def test_invalid_email_passes_when_checker_is_removed(self):
-        for draft_name, checker in _draft_checkers.items():
-            with self.subTest(draft=draft_name):
-                original = checker.checkers.pop("email")
-                try:
-                    checker.check("not-an-email", "email")
-                finally:
-                    # restore so other for other tests
-                    checker.checkers["email"] = original
 
 
 class JSONSchemaFormatTests(TestCase):

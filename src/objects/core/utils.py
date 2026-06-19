@@ -17,8 +17,7 @@ from jsonschema.exceptions import SchemaError
 from jsonschema.validators import validator_for
 
 from objects.core import models
-
-from .typing import JSONObject
+from objects.typing import JSONObject
 
 logger = structlog.stdlib.get_logger(__name__)
 

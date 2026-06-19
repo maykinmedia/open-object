@@ -1,7 +1,9 @@
-from typing import TypeAlias
+from __future__ import annotations
 
-JSONPrimitive: TypeAlias = "str | int | float | bool | None"
+from collections.abc import MutableMapping, Sequence
 
-JSONValue: TypeAlias = "JSONPrimitive | JSONObject | list[JSONValue]"
+type JSONPrimitive = str | int | float | bool | None
 
-JSONObject: TypeAlias = dict[str, JSONValue]
+type JSONValue = JSONPrimitive | JSONObject | Sequence[JSONValue]
+
+type JSONObject = MutableMapping[str, JSONValue]
