@@ -234,3 +234,42 @@ class ObjectAdminTests(WebTest):
                 list_url, params={"q": "plantDate__lte__2025-06-15"}, user=self.user
             )
             self.assertCountEqual(get_row_pks(response), [object1.pk, object2.pk])
+
+
+@disable_admin_mfa()
+class ObjectTypeAdminTest(WebTest):
+    def setUp(self):
+        super().setUp()
+
+        self.user = UserFactory.create(superuser=True)
+
+    def test_objecttype_has_format_checker(self):
+        with self.subTest("strict_format_checker is True"):
+            object_type = ObjectTypeFactory.create()
+            ObjectTypeVersionFactory.create(
+                object_type=object_type, strict_format_checker=True
+            )
+
+            list_url = reverse("admin:core_objecttype_changelist")
+            response = self.app.get(list_url, user=self.user)
+            result_list = response.html.find("table", {"id": "result_list"})
+            rows = result_list.find("tbody").find_all("tr")
+            cell = rows[0].find("td", {"class": "field-has_format_checker_display"})
+
+            self.assertIsNotNone(cell.find("img", {"alt": "True"}))
+            object_type.delete()
+
+        with self.subTest("has_format_checker is False"):
+            object_type = ObjectTypeFactory.create()
+            ObjectTypeVersionFactory.create(
+                object_type=object_type, strict_format_checker=False
+            )
+
+            list_url = reverse("admin:core_objecttype_changelist")
+            response = self.app.get(list_url, user=self.user)
+            result_list = response.html.find("table", {"id": "result_list"})
+            rows = result_list.find("tbody").find_all("tr")
+            cell = rows[0].find("td", {"class": "field-has_format_checker_display"})
+
+            self.assertIsNotNone(cell.find("img", {"alt": "False"}))
+            object_type.delete()

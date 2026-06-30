@@ -272,6 +272,9 @@ JSONSCHEMA_USE_FORMAT_CHECKER = config(
     "JSONSCHEMA_USE_FORMAT_CHECKER",
     default=True,
     documentation=DocumentationParams(
-        help_text=("Enable JSON Schema format validation."),
+        help_text=(
+            "Whether or not JSON Schema format validation for objects is enabled by default. "
+            "This can be overridden per objecttype."
+        ),
     ),
 )

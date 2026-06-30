@@ -154,6 +154,13 @@ class ObjectType(models.Model):
         return self.versions.order_by("-version").first()
 
     @property
+    def has_format_checker(self):
+        if not self.last_version:
+            return False
+
+        return bool(self.last_version.strict_format_checker)
+
+    @property
     def ordered_versions(self):
         return self.versions.order_by("-version")
 

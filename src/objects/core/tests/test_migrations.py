@@ -157,7 +157,7 @@ class TestBackfillStrictFormatChecker(BaseMigrationTest):
         object_type = ObjectType.objects.create(
             uuid="5741f306-0b6d-4597-9bab-c7d5dafe6d75"
         )
-
+        # strict_format_checker is None
         with override_settings(JSONSCHEMA_USE_FORMAT_CHECKER=True):
             version = ObjectTypeVersion.objects.create(
                 object_type=object_type, version=1
@@ -171,3 +171,17 @@ class TestBackfillStrictFormatChecker(BaseMigrationTest):
             )
             version.refresh_from_db()
             self.assertFalse(version.strict_format_checker)
+
+        # strict_format_checker is False
+        version = ObjectTypeVersion.objects.create(
+            object_type=object_type, version=3, strict_format_checker=False
+        )
+        version.refresh_from_db()
+        self.assertFalse(version.strict_format_checker)
+
+        # strict_format_checker is True
+        version = ObjectTypeVersion.objects.create(
+            object_type=object_type, version=4, strict_format_checker=True
+        )
+        version.refresh_from_db()
+        self.assertTrue(version.strict_format_checker)

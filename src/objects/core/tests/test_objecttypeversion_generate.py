@@ -54,24 +54,38 @@ class GenerateVersionTests(TestCase):
 class ObjectTypeVersionJsonSchemaValidationTestCase(TestCase):
     def test_strict_format_checker_defaults_from_settings(self):
         with override_settings(JSONSCHEMA_USE_FORMAT_CHECKER=False):
+            # strict_format_checker not specified
             version = ObjectTypeVersionFactory.create()
             self.assertFalse(version.strict_format_checker)
 
-            version.strict_format_checker = True
-            version.save()
-            self.assertTrue(version.strict_format_checker)
+            # strict_format_checker is None
+            version = ObjectTypeVersionFactory.create(strict_format_checker=None)
+            self.assertFalse(version.strict_format_checker)
 
-        with override_settings(JSONSCHEMA_USE_FORMAT_CHECKER=False):
+            # strict_format_checker = False
+            version = ObjectTypeVersionFactory.create(strict_format_checker=False)
+            self.assertFalse(version.strict_format_checker)
+
+            # strict_format_checker = True
             version = ObjectTypeVersionFactory.create(strict_format_checker=True)
             self.assertTrue(version.strict_format_checker)
 
         with override_settings(JSONSCHEMA_USE_FORMAT_CHECKER=True):
+            # strict_format_checker not specified
             version = ObjectTypeVersionFactory.create()
             self.assertTrue(version.strict_format_checker)
 
-            version.strict_format_checker = False
-            version.save()
+            # strict_format_checker is None
+            version = ObjectTypeVersionFactory.create(strict_format_checker=None)
+            self.assertTrue(version.strict_format_checker)
+
+            # strict_format_checker = False
+            version = ObjectTypeVersionFactory.create(strict_format_checker=False)
             self.assertFalse(version.strict_format_checker)
+
+            # strict_format_checker = True
+            version = ObjectTypeVersionFactory.create(strict_format_checker=True)
+            self.assertTrue(version.strict_format_checker)
 
     def test_invalid_email(self):
         object_type = ObjectTypeFactory.create()

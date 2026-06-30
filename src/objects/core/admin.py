@@ -108,7 +108,12 @@ class ObjectTypeVersionInline(admin.StackedInline):
 
 @admin.register(ObjectType)
 class ObjectTypeAdmin(admin.ModelAdmin):
-    list_display = ("name", "name_plural", "allow_geometry")
+    list_display = (
+        "name",
+        "name_plural",
+        "allow_geometry",
+        "has_format_checker_display",
+    )
     search_fields = ("name", "name_plural", "uuid")
     inlines = [ObjectTypeVersionInline]
 
@@ -139,6 +144,12 @@ class ObjectTypeAdmin(admin.ModelAdmin):
             readonly_fields = ("uuid",) + readonly_fields
 
         return readonly_fields
+
+    def has_format_checker_display(self, obj):
+        return obj.has_format_checker
+
+    has_format_checker_display.boolean = True
+    has_format_checker_display.short_description = "Format Checker Enabled"
 
     def publish(self, request, obj):
         last_version = obj.last_version
