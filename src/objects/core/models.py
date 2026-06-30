@@ -187,7 +187,7 @@ class ObjectTypeVersion(models.Model):
     strict_format_checker = models.BooleanField(
         null=True,
         help_text=_(
-            "When enabled, JSON Schema validation enforces format constraints "
+            "When enabled, JSON Schema validation enforces format constraints. "
             "Defaults to the JSONSCHEMA_USE_FORMAT_CHECKER setting."
         ),
     )
