@@ -157,7 +157,7 @@ class TestBackfillStrictFormatChecker(BaseMigrationTest):
         object_type = ObjectType.objects.create(
             uuid="5741f306-0b6d-4597-9bab-c7d5dafe6d75"
         )
-        # strict_format_checker is None
+        # strict_format_checker from settings
         with override_settings(JSONSCHEMA_USE_FORMAT_CHECKER=True):
             version = ObjectTypeVersion.objects.create(
                 object_type=object_type, version=1

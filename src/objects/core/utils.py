@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import re
 
+from django.conf import settings
 from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
 
@@ -20,6 +21,10 @@ from objects.core import models
 from objects.typing import JSONObject
 
 logger = structlog.stdlib.get_logger(__name__)
+
+
+def get_strict_format_checker_default():
+    return settings.JSONSCHEMA_USE_FORMAT_CHECKER
 
 
 @draft202012_format_checker.checks("color")

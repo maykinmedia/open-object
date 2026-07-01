@@ -19,7 +19,11 @@ from .constants import (
     UpdateFrequencyChoices,
 )
 from .query import ObjectQuerySet, ObjectRecordQuerySet, ObjectTypeQuerySet
-from .utils import check_json_schema, check_objecttype
+from .utils import (
+    check_json_schema,
+    check_objecttype,
+    get_strict_format_checker_default,
+)
 
 
 class ObjectType(models.Model):
@@ -192,7 +196,7 @@ class ObjectTypeVersion(models.Model):
         _("JSON schema"), help_text=_("JSON schema for Object validation"), default=dict
     )
     strict_format_checker = models.BooleanField(
-        null=True,
+        default=get_strict_format_checker_default,
         help_text=_(
             "When enabled, JSON Schema validation enforces format constraints. "
             "Defaults to the JSONSCHEMA_USE_FORMAT_CHECKER setting."
