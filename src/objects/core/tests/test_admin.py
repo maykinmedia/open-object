@@ -273,3 +273,46 @@ class ObjectTypeAdminTest(WebTest):
 
             self.assertIsNotNone(cell.find("img", {"alt": "False"}))
             object_type.delete()
+
+    def test_objecttype_filter_has_format_checker(self):
+        object_type_true = ObjectTypeFactory.create()
+        ObjectTypeVersionFactory.create(
+            object_type=object_type_true, strict_format_checker=True
+        )
+
+        object_type_false = ObjectTypeFactory.create()
+        ObjectTypeVersionFactory.create(
+            object_type=object_type_false, strict_format_checker=False
+        )
+
+        list_url = reverse("admin:core_objecttype_changelist")
+
+        with self.subTest("filter all"):
+            response = self.app.get(list_url, user=self.user)
+            result_list = response.html.find("table", {"id": "result_list"})
+            rows = result_list.find("tbody").find_all("tr")
+            self.assertEqual(len(rows), 2)
+            link_0 = rows[0].find("th", {"class": "field-name"}).find("a")
+            link_1 = rows[1].find("th", {"class": "field-name"}).find("a")
+            self.assertIn(f"/{object_type_false.pk}/change/", link_0["href"])
+            self.assertIn(f"/{object_type_true.pk}/change/", link_1["href"])
+
+        with self.subTest("filter true"):
+            response = self.app.get(
+                list_url, {"has_format_checker": "true"}, user=self.user
+            )
+            result_list = response.html.find("table", {"id": "result_list"})
+            rows = result_list.find("tbody").find_all("tr")
+            self.assertEqual(len(rows), 1)
+            link = rows[0].find("th", {"class": "field-name"}).find("a")
+            self.assertIn(f"/{object_type_true.pk}/change/", link["href"])
+
+        with self.subTest("filter false"):
+            response = self.app.get(
+                list_url, {"has_format_checker": "false"}, user=self.user
+            )
+            result_list = response.html.find("table", {"id": "result_list"})
+            rows = result_list.find("tbody").find_all("tr")
+            self.assertEqual(len(rows), 1)
+            link = rows[0].find("th", {"class": "field-name"}).find("a")
+            self.assertIn(f"/{object_type_false.pk}/change/", link["href"])

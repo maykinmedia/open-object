@@ -10,6 +10,7 @@ from django.conf import settings
 from django.contrib import admin, messages
 from django.contrib.gis.db.models import GeometryField
 from django.db import models
+from django.db.models import OuterRef, Subquery
 from django.http import HttpRequest, HttpResponse, HttpResponseRedirect
 from django.shortcuts import redirect, render
 from django.urls import path, reverse
@@ -106,6 +107,36 @@ class ObjectTypeVersionInline(admin.StackedInline):
         css = READONLY_WIDGET_MEDIA_CSS
 
 
+class HasFormatCheckerFilter(admin.SimpleListFilter):
+    title = _("Has format checker")
+    parameter_name = "has_format_checker"
+
+    def lookups(self, request, model_admin):
+        return (
+            ("false", "No"),
+            ("true", "Yes"),
+        )
+
+    def queryset(self, request, queryset):
+        if self.value() is None:
+            return queryset
+
+        latest_checker = (
+            ObjectTypeVersion.objects.filter(object_type=OuterRef("pk"))
+            .order_by("-version")
+            .values("strict_format_checker")[:1]
+        )
+        queryset = queryset.annotate(
+            latest_version_has_checker=Subquery(latest_checker)
+        )
+        if self.value() == "false":
+            queryset = queryset.filter(latest_version_has_checker=False)
+        if self.value() == "true":
+            queryset = queryset.filter(latest_version_has_checker=True)
+
+        return queryset
+
+
 @admin.register(ObjectType)
 class ObjectTypeAdmin(admin.ModelAdmin):
     list_display = (
@@ -114,6 +145,7 @@ class ObjectTypeAdmin(admin.ModelAdmin):
         "allow_geometry",
         "has_format_checker_display",
     )
+    list_filter = [HasFormatCheckerFilter]
     search_fields = ("name", "name_plural", "uuid")
     inlines = [ObjectTypeVersionInline]
 
@@ -149,7 +181,7 @@ class ObjectTypeAdmin(admin.ModelAdmin):
         return obj.has_format_checker
 
     has_format_checker_display.boolean = True
-    has_format_checker_display.short_description = "Format Checker Enabled"
+    has_format_checker_display.short_description = "Has Format Checker"
 
     def publish(self, request, obj):
         last_version = obj.last_version

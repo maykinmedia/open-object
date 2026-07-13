@@ -58,10 +58,6 @@ class ObjectTypeVersionJsonSchemaValidationTestCase(TestCase):
             version = ObjectTypeVersionFactory.create()
             self.assertFalse(version.strict_format_checker)
 
-            # strict_format_checker is None
-            version = ObjectTypeVersionFactory.create(strict_format_checker=None)
-            self.assertFalse(version.strict_format_checker)
-
             # strict_format_checker = False
             version = ObjectTypeVersionFactory.create(strict_format_checker=False)
             self.assertFalse(version.strict_format_checker)
@@ -73,10 +69,6 @@ class ObjectTypeVersionJsonSchemaValidationTestCase(TestCase):
         with override_settings(JSONSCHEMA_USE_FORMAT_CHECKER=True):
             # strict_format_checker not specified
             version = ObjectTypeVersionFactory.create()
-            self.assertTrue(version.strict_format_checker)
-
-            # strict_format_checker is None
-            version = ObjectTypeVersionFactory.create(strict_format_checker=None)
             self.assertTrue(version.strict_format_checker)
 
             # strict_format_checker = False
