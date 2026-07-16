@@ -2,6 +2,25 @@
 Change history
 ==============
 
+4.1.1 (2026-07-16)
+------------------
+
+**Security patches**
+
+* [CVE ID pending] See `GHSA-55w6-rqp5-j5wx`_ for more information.
+
+  * Ensure authorizations linked to API token are properly applied to the object history detail endpoint
+
+.. _GHSA-55w6-rqp5-j5wx: https://github.com/maykinmedia/open-object/security/advisories/GHSA-55w6-rqp5-j5wx
+
+**Project maintenance**
+
+* Upgrade python dependencies
+
+  * ``maykin-common`` to 0.19.1
+
+* Move admin privilege escalation logic to ``maykin-common``
+
 4.1.0 (2026-06-17)
 ------------------
 
@@ -37,6 +56,17 @@ Change history
 **Documentation**
 
 * [:open-api-framework:`217`] Update application and repository branding by applying the new icons and logos.
+
+4.0.2 (2026-07-16)
+------------------
+
+**Security patches**
+
+* [CVE ID pending] See `GHSA-55w6-rqp5-j5wx`_ for more information.
+
+  * Ensure authorizations linked to API token are properly applied to the object history detail endpoint
+
+.. _GHSA-55w6-rqp5-j5wx: https://github.com/maykinmedia/open-object/security/advisories/GHSA-55w6-rqp5-j5wx
 
 4.0.1 (2026-05-22)
 ------------------
@@ -144,6 +174,17 @@ Major release
 **Documentation**
 
 * [:open-api-framework:`205`] Describe version policy + supported versions in documentation (see :ref:`versioning_policy`)
+
+3.6.2 (2026-07-16)
+------------------
+
+**Security patches**
+
+* [CVE ID pending] See `GHSA-55w6-rqp5-j5wx`_ for more information.
+
+  * Ensure authorizations linked to API token are properly applied to the object history detail endpoint
+
+.. _GHSA-55w6-rqp5-j5wx: https://github.com/maykinmedia/open-object/security/advisories/GHSA-55w6-rqp5-j5wx
 
 3.6.1 (2026-05-22)
 ------------------
@@ -646,6 +687,17 @@ Major release
 **Breaking changes**
 
 * removed objects-api V1 [#453]
+
+2.5.1 (2026-07-16)
+------------------
+
+**Security patches**
+
+* [CVE ID pending] See `GHSA-55w6-rqp5-j5wx`_ for more information.
+
+  * Ensure authorizations linked to API token are properly applied to the object history detail endpoint
+
+.. _GHSA-55w6-rqp5-j5wx: https://github.com/maykinmedia/open-object/security/advisories/GHSA-55w6-rqp5-j5wx
 
 2.5.0 (2025-01-09)
 ------------------
