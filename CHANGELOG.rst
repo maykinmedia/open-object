@@ -2,6 +2,17 @@
 Change history
 ==============
 
+4.0.2 (2026-07-16)
+------------------
+
+**Security patches**
+
+* [CVE ID pending] See `GHSA-55w6-rqp5-j5wx`_ for more information.
+
+  * Ensure authorizations linked to API token are properly applied to the object history detail endpoint
+
+.. _GHSA-55w6-rqp5-j5wx: https://github.com/maykinmedia/open-object/security/advisories/GHSA-55w6-rqp5-j5wx
+
 4.0.1 (2026-05-22)
 ------------------
 
@@ -102,6 +113,24 @@ Major release
 **Documentation**
 
 * [:open-api-framework:`205`] Describe version policy + supported versions in documentation (see :ref:`versioning_policy`)
+
+3.6.2 (2026-07-16)
+------------------
+
+**Security patches**
+
+* [CVE ID pending] See `GHSA-55w6-rqp5-j5wx`_ for more information.
+
+  * Ensure authorizations linked to API token are properly applied to the object history detail endpoint
+
+.. _GHSA-55w6-rqp5-j5wx: https://github.com/maykinmedia/open-object/security/advisories/GHSA-55w6-rqp5-j5wx
+
+3.6.1 (2026-05-22)
+------------------
+
+**Bugfixes**
+
+* [:open-object:`756`] Preserve camelcasing for jsonschema in ``import_objecttypes`` command
 
 3.6.0 (2026-02-06)
 ------------------
@@ -496,7 +525,7 @@ Major release
 * Fixed admin logout button
 * [:open-object:`550`] Implement cache for objecttypes
 * [:open-object:`550`] add OBJECTTYPE_VERSION_CACHE_TIMEOUT environment variable (see `documentation for environment variables for caching <https://open-object.readthedocs.io/en/latest/installation/config.html>`_)
-* [:open-object:`572`] Add db connection pooling environment variables (see `documentation for environment variables for database <https://open-object.readthedocs.io/en/latest/installation/config.html#database>`_)
+* [:open-object:`572`] Add db connection pooling environment variables (see `documentation for environment variables for database <https://open-object.readthedocs.io/en/latest/installation/config.html#Database>`_)
 
   * DB_POOL_ENABLED
   * DB_POOL_MIN_SIZE
@@ -515,7 +544,7 @@ Major release
     Use this feature cautiously and test thoroughly before deployment.
     See the :ref:`documentation <database_connections>` for details.
 
-* [:open-object:`566`] Add DB_CONN_MAX_AGE environment variable (see `documentation for environment variables for database <https://open-object.readthedocs.io/en/latest/installation/config.html#database>`_)
+* [:open-object:`566`] Add DB_CONN_MAX_AGE environment variable (see `documentation for environment variables for database <https://open-object.readthedocs.io/en/latest/installation/config.html#Database>`_)
 
 .. warning::
 
@@ -597,6 +626,18 @@ Major release
 **Breaking changes**
 
 * removed objects-api V1 [#453]
+
+2.5.1 (2026-07-16)
+------------------
+
+**Security patches**
+
+* [CVE ID pending] See `GHSA-55w6-rqp5-j5wx`_ for more information.
+
+  * Ensure authorizations linked to API token are properly applied to the object history detail endpoint
+
+.. _GHSA-55w6-rqp5-j5wx: https://github.com/maykinmedia/open-object/security/advisories/GHSA-55w6-rqp5-j5wx
+
 
 2.5.0 (2025-01-09)
 ------------------

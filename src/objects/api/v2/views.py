@@ -494,6 +494,7 @@ class ObjectViewSet(
         """Retrieve a RECORD of an OBJECT."""
         queryset = self.get_queryset()
         record = get_object_or_404(queryset, object__uuid=uuid, index=index)
+        self.check_object_permissions(self.request, record)
         serializer = self.get_serializer(record)
         return Response(serializer.data)
 
