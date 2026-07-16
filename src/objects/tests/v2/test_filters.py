@@ -162,6 +162,70 @@ class FilterDataAttrsTests(TokenAuthMixin, APITestCase):
             f"http://testserver{reverse('object-detail', args=[record.object.uuid])}",
         )
 
+    def test_filter_exact_datetime(self):
+        record = ObjectRecordFactory.create(
+            data={"startdatetime": "2026-01-01T08:00:00"},
+            object__object_type=self.object_type,
+        )
+        ObjectRecordFactory.create(
+            data={"startdatetime": "2026-06-01T18:00:00"},
+            object__object_type=self.object_type,
+        )
+
+        response = self.client.get(
+            self.url, {"data_attrs": "startdatetime__exact__2026-01-01T08:00:00"}
+        )
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+        data = response.json()["results"]
+        self.assertEqual(len(data), 1)
+        self.assertEqual(
+            data[0]["url"],
+            f"http://testserver{reverse('object-detail', args=[record.object.uuid])}",
+        )
+
+    def test_filter_exact_duration(self):
+        record = ObjectRecordFactory.create(
+            data={"duration": "P1D"},
+            object__object_type=self.object_type,
+        )
+        ObjectRecordFactory.create(
+            data={"duration": "P7D"},
+            object__object_type=self.object_type,
+        )
+
+        response = self.client.get(self.url, {"data_attrs": "duration__exact__P1D"})
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+        data = response.json()["results"]
+        self.assertEqual(len(data), 1)
+        self.assertEqual(
+            data[0]["url"],
+            f"http://testserver{reverse('object-detail', args=[record.object.uuid])}",
+        )
+
+    def test_filter_exact_time(self):
+        record = ObjectRecordFactory.create(
+            data={"startdatetime": "08:00:00"},
+            object__object_type=self.object_type,
+        )
+        ObjectRecordFactory.create(
+            data={"startdatetime": "18:00:00"},
+            object__object_type=self.object_type,
+        )
+
+        response = self.client.get(
+            self.url, {"data_attrs": "startdatetime__exact__08:00:00"}
+        )
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+        data = response.json()["results"]
+        self.assertEqual(len(data), 1)
+        self.assertEqual(
+            data[0]["url"],
+            f"http://testserver{reverse('object-detail', args=[record.object.uuid])}",
+        )
+
     def test_filter_lte(self):
         record1 = ObjectRecordFactory.create(
             data={"diameter": 4}, object__object_type=self.object_type
@@ -257,6 +321,96 @@ class FilterDataAttrsTests(TokenAuthMixin, APITestCase):
             data[0]["url"],
             f"http://testserver{reverse('object-detail', args=[record.object.uuid])}",
         )
+
+    def test_filter_datetime_comparisons(self):
+        record_early = ObjectRecordFactory.create(
+            data={"startdatetime": "2026-01-01T08:00:00"},
+            object__object_type=self.object_type,
+        )
+        record_late = ObjectRecordFactory.create(
+            data={"startdatetime": "2026-06-01T18:00:00"},
+            object__object_type=self.object_type,
+        )
+
+        early_url = f"http://testserver{reverse('object-detail', args=[record_early.object.uuid])}"
+        late_url = f"http://testserver{reverse('object-detail', args=[record_late.object.uuid])}"
+
+        with self.subTest("gt"):
+            response = self.client.get(
+                self.url, {"data_attrs": "startdatetime__gt__2026-01-01T08:00:00"}
+            )
+            self.assertEqual(response.status_code, status.HTTP_200_OK)
+            data = response.json()["results"]
+            self.assertEqual(len(data), 1)
+            self.assertEqual(data[0]["url"], late_url)
+
+        with self.subTest("gte"):
+            response = self.client.get(
+                self.url, {"data_attrs": "startdatetime__gte__2026-01-01T08:00:00"}
+            )
+            self.assertEqual(response.status_code, status.HTTP_200_OK)
+            self.assertEqual(len(response.json()["results"]), 2)
+
+        with self.subTest("lt"):
+            response = self.client.get(
+                self.url, {"data_attrs": "startdatetime__lt__2026-06-01T18:00:00"}
+            )
+            self.assertEqual(response.status_code, status.HTTP_200_OK)
+            data = response.json()["results"]
+            self.assertEqual(len(data), 1)
+            self.assertEqual(data[0]["url"], early_url)
+
+        with self.subTest("lte"):
+            response = self.client.get(
+                self.url, {"data_attrs": "startdatetime__lte__2026-06-01T18:00:00"}
+            )
+            self.assertEqual(response.status_code, status.HTTP_200_OK)
+            self.assertEqual(len(response.json()["results"]), 2)
+
+    def test_filter_time_comparisons(self):
+        record_early = ObjectRecordFactory.create(
+            data={"startdatetime": "08:00:00"},
+            object__object_type=self.object_type,
+        )
+        record_late = ObjectRecordFactory.create(
+            data={"startdatetime": "18:00:00"},
+            object__object_type=self.object_type,
+        )
+
+        early_url = f"http://testserver{reverse('object-detail', args=[record_early.object.uuid])}"
+        late_url = f"http://testserver{reverse('object-detail', args=[record_late.object.uuid])}"
+
+        with self.subTest("gt"):
+            response = self.client.get(
+                self.url, {"data_attrs": "startdatetime__gt__08:00:00"}
+            )
+            self.assertEqual(response.status_code, status.HTTP_200_OK)
+            data = response.json()["results"]
+            self.assertEqual(len(data), 1)
+            self.assertEqual(data[0]["url"], late_url)
+
+        with self.subTest("gte"):
+            response = self.client.get(
+                self.url, {"data_attrs": "startdatetime__gte__08:00:00"}
+            )
+            self.assertEqual(response.status_code, status.HTTP_200_OK)
+            self.assertEqual(len(response.json()["results"]), 2)
+
+        with self.subTest("lt"):
+            response = self.client.get(
+                self.url, {"data_attrs": "startdatetime__lt__18:00:00"}
+            )
+            self.assertEqual(response.status_code, status.HTTP_200_OK)
+            data = response.json()["results"]
+            self.assertEqual(len(data), 1)
+            self.assertEqual(data[0]["url"], early_url)
+
+        with self.subTest("lte"):
+            response = self.client.get(
+                self.url, {"data_attrs": "startdatetime__lte__18:00:00"}
+            )
+            self.assertEqual(response.status_code, status.HTTP_200_OK)
+            self.assertEqual(len(response.json()["results"]), 2)
 
     def test_filter_invalid_operator(self):
         response = self.client.get(self.url, {"data_attrs": "diameter__not__value"})

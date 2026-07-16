@@ -6,7 +6,7 @@ from objects.core.tests.factories import ObjectTypeFactory, ObjectTypeVersionFac
 JSON_SCHEMA = {
     "type": "object",
     "title": "Tree",
-    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$schema": "https://json-schema.org/draft/2020-12/schema#",
     "required": ["diameter"],
     "properties": {"diameter": {"type": "integer", "description": "size in cm."}},
 }

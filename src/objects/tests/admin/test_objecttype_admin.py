@@ -22,7 +22,7 @@ from objects.core.models import ObjectType
 from objects.core.tests.factories import ObjectTypeFactory, ObjectTypeVersionFactory
 
 JSON_SCHEMA = {
-    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$schema": "https://json-schema.org/draft/2020-12/schema#",
     "type": "object",
     "title": "Tree",
     "description": (
@@ -167,7 +167,7 @@ class AdminAddTests(WebTest):
         form["versions-0-json_schema"] = json.dumps(
             {
                 "title": "Tree",
-                "$schema": "http://json-schema.org/draft-07/schema#",
+                "$schema": "https://json-schema.org/draft/2020-12/schema#",
                 "type": "any",
             }
         )
@@ -225,7 +225,7 @@ class AdminAddTests(WebTest):
             "https://example.com/tree.json",
             json={
                 "title": "Tree",
-                "$schema": "http://json-schema.org/draft-07/schema#",
+                "$schema": "https://json-schema.org/draft/2020-12/schema#",
                 "type": "any",
             },
         )
@@ -411,7 +411,7 @@ class AdminDetailTests(WebTest):
         old_schema = {
             "type": "object",
             "title": "Tree",
-            "$schema": "http://json-schema.org/draft-07/schema#",
+            "$schema": "https://json-schema.org/draft/2020-12/schema#",
             "properties": {
                 "diameter": {"type": "integer", "description": "size in cm."}
             },
@@ -440,7 +440,7 @@ class AdminDetailTests(WebTest):
         old_schema = {
             "type": "object",
             "title": "Tree",
-            "$schema": "http://json-schema.org/draft-07/schema#",
+            "$schema": "https://json-schema.org/draft/2020-12/schema#",
             "properties": {
                 "diameter": {"type": "integer", "description": "size in cm."}
             },

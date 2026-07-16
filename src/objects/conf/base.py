@@ -267,3 +267,14 @@ SITE_DOMAIN = config(
         help_text=("Defines the primary domain where the application is hosted."),
     ),
 )
+
+JSONSCHEMA_USE_FORMAT_CHECKER = config(
+    "JSONSCHEMA_USE_FORMAT_CHECKER",
+    default=True,
+    documentation=DocumentationParams(
+        help_text=(
+            "Whether or not JSON Schema format validation for objects is enabled by default. "
+            "This can be overridden per objecttype."
+        ),
+    ),
+)

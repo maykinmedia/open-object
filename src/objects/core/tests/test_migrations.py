@@ -3,6 +3,8 @@ import threading
 import time
 from unittest.mock import patch
 
+from django.test import override_settings
+
 from objects.token.tests.test_migrations import BaseMigrationTest
 
 
@@ -119,3 +121,67 @@ class TestBackfillDenormalizedObjectType(BaseMigrationTest):
         self.assertEqual(record3._object_type, record3.object.object_type, object_type2)
         # Assert that the inserted row was also backfilled
         self.assertEqual(record4._object_type, record4.object.object_type, object_type2)
+
+
+class TestBackfillStrictFormatChecker(BaseMigrationTest):
+    app = "core"
+    migrate_from = "0039_alter_objecttype_unique_together_and_more"
+    migrate_to = "0040_objecttypeversion_strict_format_checker"
+
+    def test_existing_records_are_set_to_false(self):
+        ObjectType = self.old_app_state.get_model("core", "ObjectType")
+        ObjectTypeVersion = self.old_app_state.get_model("core", "ObjectTypeVersion")
+        object_type = ObjectType.objects.create(
+            uuid="5741f306-0b6d-4597-9bab-c7d5dafe6d75"
+        )
+
+        ObjectTypeVersion.objects.create(object_type=object_type, version=1)
+        ObjectTypeVersion.objects.create(object_type=object_type, version=2)
+        ObjectTypeVersion.objects.create(object_type=object_type, version=3)
+
+        self._perform_migration()
+
+        ObjectTypeVersion = self.apps.get_model("core", "ObjectTypeVersion")
+
+        versions = ObjectTypeVersion.objects.order_by("pk")
+        self.assertEqual(versions.count(), 3)
+
+        for version in versions:
+            self.assertFalse(version.strict_format_checker)
+
+    def test_field_is_set_from_settings_after_migration(self):
+        self._perform_migration()
+
+        from objects.core.models import ObjectType, ObjectTypeVersion
+
+        object_type = ObjectType.objects.create(
+            uuid="5741f306-0b6d-4597-9bab-c7d5dafe6d75"
+        )
+        # strict_format_checker from settings
+        with override_settings(JSONSCHEMA_USE_FORMAT_CHECKER=True):
+            version = ObjectTypeVersion.objects.create(
+                object_type=object_type, version=1
+            )
+            version.refresh_from_db()
+            self.assertTrue(version.strict_format_checker)
+
+        with override_settings(JSONSCHEMA_USE_FORMAT_CHECKER=False):
+            version = ObjectTypeVersion.objects.create(
+                object_type=object_type, version=2
+            )
+            version.refresh_from_db()
+            self.assertFalse(version.strict_format_checker)
+
+        # strict_format_checker is False
+        version = ObjectTypeVersion.objects.create(
+            object_type=object_type, version=3, strict_format_checker=False
+        )
+        version.refresh_from_db()
+        self.assertFalse(version.strict_format_checker)
+
+        # strict_format_checker is True
+        version = ObjectTypeVersion.objects.create(
+            object_type=object_type, version=4, strict_format_checker=True
+        )
+        version.refresh_from_db()
+        self.assertTrue(version.strict_format_checker)

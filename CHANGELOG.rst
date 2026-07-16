@@ -2,6 +2,20 @@
 Change history
 ==============
 
+4.2.0 (XXXX-XX-XX)
+------------------
+
+.. note::
+
+    A new ``JSONSCHEMA_USE_FORMAT_CHECKER`` setting has been introduced (default: ``False`` for existing objecttypes when upgrading to 4.2.0, default: ``True`` for newly created objecttypes after that).
+    A new boolean field, ``strict_format_checker``, has also been added to the ObjectType model to control
+    whether JSON Schema ``format`` validation is applied for that specific objecttype.
+    When set to ``None``, the value of the ``JSONSCHEMA_USE_FORMAT_CHECKER`` setting is used.
+    To preserve backward compatibility, existing object types have ``strict_format_checker`` set to ``False``,
+    effectively disabling JSON Schema ``format`` validation unless it is explicitly enabled for that objecttype.
+
+* [:open-object:`731`] Add validation for custom JSON Schema ``format`` attributes, introduce per objecttype control over ``format`` validation, and update the ``data_attrs`` filter accordingly.
+
 4.1.1 (2026-07-16)
 ------------------
 

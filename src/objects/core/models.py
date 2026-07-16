@@ -18,7 +18,11 @@ from .constants import (
     UpdateFrequencyChoices,
 )
 from .query import ObjectQuerySet, ObjectRecordQuerySet, ObjectTypeQuerySet
-from .utils import check_json_schema, check_objecttype
+from .utils import (
+    check_json_schema,
+    check_objecttype,
+    get_strict_format_checker_default,
+)
 
 
 class ObjectType(models.Model):
@@ -153,6 +157,13 @@ class ObjectType(models.Model):
         return self.versions.order_by("-version").first()
 
     @property
+    def has_format_checker(self):
+        if not self.last_version:
+            return False
+
+        return bool(self.last_version.strict_format_checker)
+
+    @property
     def ordered_versions(self):
         return self.versions.order_by("-version")
 
@@ -182,6 +193,13 @@ class ObjectTypeVersion(models.Model):
     )
     json_schema = models.JSONField(
         _("JSON schema"), help_text=_("JSON schema for Object validation"), default=dict
+    )
+    strict_format_checker = models.BooleanField(
+        default=get_strict_format_checker_default,
+        help_text=_(
+            "When enabled, JSON Schema validation enforces format constraints. "
+            "Defaults to the JSONSCHEMA_USE_FORMAT_CHECKER setting."
+        ),
     )
     status = models.CharField(
         _("status"),

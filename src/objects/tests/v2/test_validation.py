@@ -397,7 +397,7 @@ class ObjectTypeVersionValidationTests(TokenAuthMixin, APITestCase):
         data = {
             "jsonSchema": {
                 "title": "Tree",
-                "$schema": "http://json-schema.org/draft-07/schema#",
+                "$schema": "https://json-schema.org/draft/2020-12/schema#",
                 "type": "any",
             }
         }
@@ -418,7 +418,7 @@ class ObjectTypeVersionValidationTests(TokenAuthMixin, APITestCase):
         data = {
             "jsonSchema": {
                 "title": "Tree",
-                "$schema": "http://json-schema.org/draft-07/schema#",
+                "$schema": "https://json-schema.org/draft/2020-12/schema#",
                 "properties": {
                     "diameter": {"type": "integer", "description": "size in cm."}
                 },
@@ -446,7 +446,7 @@ class ObjectTypeVersionValidationTests(TokenAuthMixin, APITestCase):
         new_json_schema = {
             "type": "object",
             "title": "Tree",
-            "$schema": "http://json-schema.org/draft-07/schema#",
+            "$schema": "https://json-schema.org/draft/2020-12/schema#",
             "required": ["diameter"],
             "properties": {"diameter": {"type": "number"}},
         }

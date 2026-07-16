@@ -234,3 +234,85 @@ class ObjectAdminTests(WebTest):
                 list_url, params={"q": "plantDate__lte__2025-06-15"}, user=self.user
             )
             self.assertCountEqual(get_row_pks(response), [object1.pk, object2.pk])
+
+
+@disable_admin_mfa()
+class ObjectTypeAdminTest(WebTest):
+    def setUp(self):
+        super().setUp()
+
+        self.user = UserFactory.create(superuser=True)
+
+    def test_objecttype_has_format_checker(self):
+        with self.subTest("strict_format_checker is True"):
+            object_type = ObjectTypeFactory.create()
+            ObjectTypeVersionFactory.create(
+                object_type=object_type, strict_format_checker=True
+            )
+
+            list_url = reverse("admin:core_objecttype_changelist")
+            response = self.app.get(list_url, user=self.user)
+            result_list = response.html.find("table", {"id": "result_list"})
+            rows = result_list.find("tbody").find_all("tr")
+            cell = rows[0].find("td", {"class": "field-has_format_checker_display"})
+
+            self.assertIsNotNone(cell.find("img", {"alt": "True"}))
+            object_type.delete()
+
+        with self.subTest("has_format_checker is False"):
+            object_type = ObjectTypeFactory.create()
+            ObjectTypeVersionFactory.create(
+                object_type=object_type, strict_format_checker=False
+            )
+
+            list_url = reverse("admin:core_objecttype_changelist")
+            response = self.app.get(list_url, user=self.user)
+            result_list = response.html.find("table", {"id": "result_list"})
+            rows = result_list.find("tbody").find_all("tr")
+            cell = rows[0].find("td", {"class": "field-has_format_checker_display"})
+
+            self.assertIsNotNone(cell.find("img", {"alt": "False"}))
+            object_type.delete()
+
+    def test_objecttype_filter_has_format_checker(self):
+        object_type_true = ObjectTypeFactory.create()
+        ObjectTypeVersionFactory.create(
+            object_type=object_type_true, strict_format_checker=True
+        )
+
+        object_type_false = ObjectTypeFactory.create()
+        ObjectTypeVersionFactory.create(
+            object_type=object_type_false, strict_format_checker=False
+        )
+
+        list_url = reverse("admin:core_objecttype_changelist")
+
+        with self.subTest("filter all"):
+            response = self.app.get(list_url, user=self.user)
+            result_list = response.html.find("table", {"id": "result_list"})
+            rows = result_list.find("tbody").find_all("tr")
+            self.assertEqual(len(rows), 2)
+            link_0 = rows[0].find("th", {"class": "field-name"}).find("a")
+            link_1 = rows[1].find("th", {"class": "field-name"}).find("a")
+            self.assertIn(f"/{object_type_false.pk}/change/", link_0["href"])
+            self.assertIn(f"/{object_type_true.pk}/change/", link_1["href"])
+
+        with self.subTest("filter true"):
+            response = self.app.get(
+                list_url, {"has_format_checker": "true"}, user=self.user
+            )
+            result_list = response.html.find("table", {"id": "result_list"})
+            rows = result_list.find("tbody").find_all("tr")
+            self.assertEqual(len(rows), 1)
+            link = rows[0].find("th", {"class": "field-name"}).find("a")
+            self.assertIn(f"/{object_type_true.pk}/change/", link["href"])
+
+        with self.subTest("filter false"):
+            response = self.app.get(
+                list_url, {"has_format_checker": "false"}, user=self.user
+            )
+            result_list = response.html.find("table", {"id": "result_list"})
+            rows = result_list.find("tbody").find_all("tr")
+            self.assertEqual(len(rows), 1)
+            link = rows[0].find("th", {"class": "field-name"}).find("a")
+            self.assertIn(f"/{object_type_false.pk}/change/", link["href"])
