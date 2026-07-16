@@ -8,8 +8,8 @@ API-specifications
 API                     Specification version(s)
 ======================  ==========================================
 `Open Object`_          2.7.0 (
-                        `Redoc <https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/maykinmedia/open-object/4.1.0/src/objects/api/v2/openapi.yaml>`__,
-                        `Swagger <https://petstore.swagger.io/?url=https://raw.githubusercontent.com/maykinmedia/open-object/4.1.0/src/objects/api/v2/openapi.yaml>`__
+                        `Redoc <https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/maykinmedia/open-object/4.1.1/src/objects/api/v2/openapi.yaml>`__,
+                        `Swagger <https://petstore.swagger.io/?url=https://raw.githubusercontent.com/maykinmedia/open-object/4.1.1/src/objects/api/v2/openapi.yaml>`__
                         )
 ======================  ==========================================
 
