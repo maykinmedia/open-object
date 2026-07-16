@@ -2,6 +2,17 @@
 Change history
 ==============
 
+2.5.1 (2026-07-16)
+------------------
+
+**Security patches**
+
+* [CVE ID pending] See `GHSA-55w6-rqp5-j5wx`_ for more information.
+
+  * Ensure authorizations linked to API token are properly applied to the object history detail endpoint
+
+.. _GHSA-55w6-rqp5-j5wx: https://github.com/maykinmedia/open-object/security/advisories/GHSA-55w6-rqp5-j5wx
+
 2.5.0 (2025-01-09)
 ------------------
 
