@@ -146,7 +146,7 @@ jobs:
         run: |
           bencher run --adapter python_pytest \
                       --project objects-ed2ce35-z71n5gf8t4f40 \
-                      --token '${{ secrets.BENCHER_API_TOKEN }}' \
+                      --key '${{ secrets.BENCHER_API_TOKEN }}' \
                       --branch master \
                       --testbed ubuntu-latest \
                       --average median \
@@ -160,7 +160,7 @@ jobs:
         run: |
           bencher run --adapter python_pytest \
                       --project objects-ed2ce35-z71n5gf8t4f40 \
-                      --token '${{ secrets.BENCHER_API_TOKEN }}' \
+                      --key '${{ secrets.BENCHER_API_TOKEN }}' \
                       --branch "$GITHUB_HEAD_REF" \
                       --start-point "$GITHUB_BASE_REF" \
                       --start-point-reset \
