@@ -7,8 +7,8 @@ publiccodeYmlVersion: '0.2'
 name: Objects API
 url: 'http://github.com/maykinmedia/objects-api.git'
 softwareType: standalone/backend
-softwareVersion: 3.6.1
-releaseDate: '2026-05-22'
+softwareVersion: 3.6.2
+releaseDate: '2026-07-16'
 logo: 'https://github.com/maykinmedia/objects-api/blob/master/docs/logo.png'
 platforms:
   - web

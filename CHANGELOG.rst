@@ -2,6 +2,17 @@
 Change history
 ==============
 
+3.6.2 (2026-07-16)
+------------------
+
+**Security patches**
+
+* [CVE ID pending] See `GHSA-55w6-rqp5-j5wx`_ for more information.
+
+  * Ensure authorizations linked to API token are properly applied to the object history detail endpoint
+
+.. _GHSA-55w6-rqp5-j5wx: https://github.com/maykinmedia/open-object/security/advisories/GHSA-55w6-rqp5-j5wx
+
 3.6.1 (2026-05-22)
 ------------------
 
@@ -402,7 +413,7 @@ Change history
 * Fixed admin logout button
 * [:objects-api:`550`] Implement cache for objecttypes
 * [:objects-api:`550`] add OBJECTTYPE_VERSION_CACHE_TIMEOUT environment variable (see `documentation for environment variables for caching <https://objects-and-objecttypes-api.readthedocs.io/en/latest/installation/config.html>`_)
-* [:objects-api:`572`] Add db connection pooling environment variables (see `documentation for environment variables for database <https://objects-and-objecttypes-api.readthedocs.io/en/latest/installation/config.html#database>`_)
+* [:objects-api:`572`] Add db connection pooling environment variables (see `documentation for environment variables for database <https://objects-and-objecttypes-api.readthedocs.io/en/latest/installation/config.html#Database>`_)
 
   * DB_POOL_ENABLED
   * DB_POOL_MIN_SIZE
@@ -421,7 +432,7 @@ Change history
     Use this feature cautiously and test thoroughly before deployment.
     See the :ref:`documentation <database_connections>` for details.
 
-* [:objects-api:`566`] Add DB_CONN_MAX_AGE environment variable (see `documentation for environment variables for database <https://objects-and-objecttypes-api.readthedocs.io/en/latest/installation/config.html#database>`_)
+* [:objects-api:`566`] Add DB_CONN_MAX_AGE environment variable (see `documentation for environment variables for database <https://objects-and-objecttypes-api.readthedocs.io/en/latest/installation/config.html#Database>`_)
 
 .. warning::
 
@@ -503,6 +514,17 @@ Change history
 **Breaking changes**
 
 * removed objects-api V1 [#453]
+
+2.5.1 (2026-07-16)
+------------------
+
+**Security patches**
+
+* [CVE ID pending] See `GHSA-55w6-rqp5-j5wx`_ for more information.
+
+  * Ensure authorizations linked to API token are properly applied to the object history detail endpoint
+
+.. _GHSA-55w6-rqp5-j5wx: https://github.com/maykinmedia/open-object/security/advisories/GHSA-55w6-rqp5-j5wx
 
 2.5.0 (2025-01-09)
 ------------------

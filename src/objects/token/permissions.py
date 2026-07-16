@@ -53,7 +53,7 @@ class ObjectTypeBasedPermission(BasePermission):
 
         # forbid showing history if there is field based auth
         if (
-            view.action == "history"
+            view.action in ["history", "history_detail"]
             and object_permission.mode == PermissionModes.read_only
             and object_permission.use_fields
         ):
