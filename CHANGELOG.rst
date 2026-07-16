@@ -402,7 +402,7 @@ Change history
 * Fixed admin logout button
 * [:objects-api:`550`] Implement cache for objecttypes
 * [:objects-api:`550`] add OBJECTTYPE_VERSION_CACHE_TIMEOUT environment variable (see `documentation for environment variables for caching <https://objects-and-objecttypes-api.readthedocs.io/en/latest/installation/config.html>`_)
-* [:objects-api:`572`] Add db connection pooling environment variables (see `documentation for environment variables for database <https://objects-and-objecttypes-api.readthedocs.io/en/latest/installation/config.html#database>`_)
+* [:objects-api:`572`] Add db connection pooling environment variables (see `documentation for environment variables for database <https://objects-and-objecttypes-api.readthedocs.io/en/latest/installation/config.html#Database>`_)
 
   * DB_POOL_ENABLED
   * DB_POOL_MIN_SIZE
@@ -421,7 +421,7 @@ Change history
     Use this feature cautiously and test thoroughly before deployment.
     See the :ref:`documentation <database_connections>` for details.
 
-* [:objects-api:`566`] Add DB_CONN_MAX_AGE environment variable (see `documentation for environment variables for database <https://objects-and-objecttypes-api.readthedocs.io/en/latest/installation/config.html#database>`_)
+* [:objects-api:`566`] Add DB_CONN_MAX_AGE environment variable (see `documentation for environment variables for database <https://objects-and-objecttypes-api.readthedocs.io/en/latest/installation/config.html#Database>`_)
 
 .. warning::
 
