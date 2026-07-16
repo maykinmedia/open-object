@@ -94,4 +94,4 @@ Installation
 
 
 .. _`Ansible`: https://www.ansible.com/
-.. _`deployment files`: https://github.com/maykinmedia/objects-api/tree/master/deployment/single-server
+.. _`deployment files`: https://github.com/maykinmedia/objects-api/tree/2.5.0/deployment/single-server
