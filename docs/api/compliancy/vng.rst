@@ -44,7 +44,7 @@ for both APIs. This checklist is only available in Dutch.
    1;Modellen zijn gemodelleerd in Archi (Archimate 3.x) conform conventies GEMMA;No;Unclear
    2;Modellen zijn opgeslagen op GitLab / Github en ingericht voor samenwerking (main/develop branches);No;
    3;De stakeholders van de API-standaard zijn beschreven;`Yes <https://objects-and-objecttypes-api.readthedocs.io/en/latest/introduction/team.html>`__;
-   4;Interactiepatronen zijn gemodelleerd;`Yes <https://objects-and-objecttypes-api.readthedocs.io/en/latest/introduction/visualization.html>`__;
+   4;Interactiepatronen zijn gemodelleerd;`Yes <https://objects-and-objecttypes-api.readthedocs.io/en/2.5.0/introduction/visualization.html>`__;
    5;Positie van de API-standaard in de GEMMA informatiearchitectuur is gemodelleerd;No;Unclear
    6;Verwacht gedrag van een API is gemodelleerd als applicatieproces;No;Unclear
    7;De referentiecomponenten die het koppelvlak moeten realiseren zijn beschreven;`Yes <https://objects-and-objecttypes-api.readthedocs.io/en/latest/api/index.html>`__;

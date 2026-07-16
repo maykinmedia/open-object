@@ -22,7 +22,7 @@ projects that are related or similar to this project.
 * The municipality of Amsterdam has a similar initiative using Amsterdam Schema
   (`link <https://github.com/Amsterdam/amsterdam-schema>`__)
 * Information models in Norway use JSON schema
-  (`link <https://data.norge.no/informationModels/b133bafa-c089-45b7-93e0-19387cefc89e>`__)
+  (`link <https://datalandsbyen.norge.no/categories>`__)
 
 Various data sources
 --------------------

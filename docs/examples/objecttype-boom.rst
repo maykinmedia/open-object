@@ -12,7 +12,7 @@ The "Boom" objecttype is based on the open source `Gemeentelijk Gegevensmodel`_
 A `small script`_ was used to convert the GGM EAP model to JSON schema.
 
 .. _`Gemeentelijk Gegevensmodel`: https://github.com/Gemeente-Delft/Gemeentelijk-Gegevensmodel
-.. _`Informatiemodel Beheer Openbare Ruimte`: https://www.crow.nl/thema-s/management-openbare-ruimte/imbor
+.. _`Informatiemodel Beheer Openbare Ruimte`: https://www.crow.nl/Onderwerpen/assetmanagement-en-beheer-openbare-ruimte/Data-en-informatie/imbor-de-standaard-voor-beheer-van-de-openbare-ruimte
 .. _`Basisregistratie Grootschalige Topografie`: https://www.kadaster.nl/zakelijk/registraties/basisregistraties/bgt
 .. _`Informatiemodel geografie`: https://www.geonovum.nl/geo-standaarden/bgt-imgeo
 .. _`small script`: https://github.com/maykinmedia/imvertor-lite
