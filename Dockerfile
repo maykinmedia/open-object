@@ -27,8 +27,7 @@ WORKDIR /app
 COPY ./*.json /app/
 RUN npm ci
 
-COPY ./webpack.config.js ./.babelrc /app/
-COPY ./build /app/build/
+COPY ./*.json ./*.js /app/
 
 COPY src/objects/scss/ /app/src/objects/scss/
 COPY src/objects/js/ /app/src/objects/js/
