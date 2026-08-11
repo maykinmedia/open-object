@@ -215,7 +215,7 @@ jobs:
         id: image-name
 
   open-api-ci:
-    uses: maykinmedia/open-api-workflows/.github/workflows/ci.yml@0a5525c13f8eea10be40c8eaee5e535ea3a10721 # v6.4.1
+    uses: maykinmedia/open-api-workflows/.github/workflows/ci.yml@31eaea25acd18bb681fe0d01b2452c3dd8d299b9 # v7.0.0
     needs:
       - store-reusable-workflow-vars
     permissions:
@@ -230,7 +230,7 @@ jobs:
       docker-image-name: ${{ needs.store-reusable-workflow-vars.outputs.image-name }}
 
   open-api-publish:
-    uses: maykinmedia/open-api-workflows/.github/workflows/publish.yml@0a5525c13f8eea10be40c8eaee5e535ea3a10721 # v6.4.1
+    uses: maykinmedia/open-api-workflows/.github/workflows/publish.yml@31eaea25acd18bb681fe0d01b2452c3dd8d299b9 # v7.0.0
     needs:
       - store-reusable-workflow-vars
       - open-api-ci
