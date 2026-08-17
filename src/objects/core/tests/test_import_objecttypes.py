@@ -1,9 +1,12 @@
+from uuid import uuid4
+
 from django.core.management import CommandError, call_command
 
 import hypothesis.strategies as st
 import requests_mock
 from hypothesis import HealthCheck, Phase, given, settings
 from hypothesis.extra.django import TestCase
+from zgw_consumers.constants import AuthTypes
 from zgw_consumers.models import Service
 
 from objects.core.models import ObjectType, ObjectTypeVersion
@@ -69,7 +72,13 @@ class TestImportObjectTypesCommand(TestCase):
     @classmethod
     def setUpTestData(cls) -> None:
         cls.url = "http://127.0.0.1:8000/api/v2/"
-        cls.service = Service.objects.create(api_root=cls.url, slug="objecttypes-api")
+        cls.service = Service.objects.create(
+            api_root=cls.url,
+            slug="objecttypes-api",
+            auth_type=AuthTypes.zgw,
+            client_id=uuid4(),
+            secret=uuid4(),
+        )
         return super().setUpTestData()
 
     def setUp(self):

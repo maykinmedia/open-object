@@ -59,6 +59,7 @@ class Migration(migrations.Migration):
 
     dependencies = [
         ("zgw_consumers", "0011_remove_service_extra"),
+        ("zgw_consumers", "0026_remove_service_oas_remove_service_oas_file"),
     ]
 
     operations = [
