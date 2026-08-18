@@ -1,4 +1,4 @@
-API_VERSION = "2.7.0"
+API_VERSION = "2.8.0"
 
 # api settings
 REST_FRAMEWORK = {
@@ -38,6 +38,17 @@ OBJECTTYPE-VERSION is used, shown in the `RECORD.typeVersion` attribute.
 
 Using these 2 attributes, the appropriate JSON schema is retrieved from the
 Objecttypes API and the OBJECT data is validated against this JSON schema.
+
+### JSON Schema format validation
+
+Since version API version 2.8.0 (Open Object version 4.2.0), the API supports strict
+JSON Schema `format` validation, controlled per OBJECTTYPE through the `strict_format_checker` field.
+
+When set to `True`, format validation is enabled; when `False`, it is disabled.
+When set to `None`, the `JSONSCHEMA_USE_FORMAT_CHECKER` setting is used.
+
+For backwards compatibility, existing OBJECTTYPEs default to `False`, while
+newly created OBJECTTYPEs default to `True`.
 
 ## History
 

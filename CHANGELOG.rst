@@ -2,19 +2,62 @@
 Change history
 ==============
 
-4.2.0 (XXXX-XX-XX)
+4.2.0 (2026-08-18)
 ------------------
 
 .. note::
 
-    A new ``JSONSCHEMA_USE_FORMAT_CHECKER`` setting has been introduced (default: ``False`` for existing objecttypes when upgrading to 4.2.0, default: ``True`` for newly created objecttypes after that).
+    The API now allows for strict JSON schema format checking for objects via the environment
+    variable ``JSONSCHEMA_USE_FORMAT_CHECKER`` (default: ``False`` for existing objecttypes
+    when upgrading to 4.2.0, default: ``True`` for newly created objecttypes after that).
     A new boolean field, ``strict_format_checker``, has also been added to the ObjectType model to control
     whether JSON Schema ``format`` validation is applied for that specific objecttype.
     When set to ``None``, the value of the ``JSONSCHEMA_USE_FORMAT_CHECKER`` setting is used.
+
     To preserve backward compatibility, existing object types have ``strict_format_checker`` set to ``False``,
     effectively disabling JSON Schema ``format`` validation unless it is explicitly enabled for that objecttype.
 
+.. note::
+
+  The environment variable used to configure the uWSGI port in the Docker
+  entrypoint has been renamed from ``UWSGI_PORT`` to ``OPENOBJECT_PORT``
+  (see :ref:`installation_env_config`). Deployments that override the uWSGI
+  port need to update their configuration accordingly.
+
+**New features**
+
 * [:open-object:`731`] Add validation for custom JSON Schema ``format`` attributes, introduce per objecttype control over ``format`` validation, and update the ``data_attrs`` filter accordingly.
+* [:open-object:`757`] Improve the notifications error queue by adding an admin view to display
+  failed notifications and make it possible to reschedule them.
+
+**Project maintenance**
+
+* [:open-api-framework:`224`] Migrate frontend toolchain from ``webpack`` to ``esbuild``
+* [:open-object:`771`] Set sensible boundaries for Bencher alarms.
+* [:open-api-workflows:`60`] Upgrade ``open-api-workflows`` to ``v7.0.0`` and reenable OAS workflow and replace spectral-cli with vacuum.
+* Remove unnecessary objecttypes db creation from dockercompose init.
+* Fix uwsgi strict-mode crash by renaming ``UWSGI_PORT`` to ``OPENOBJECT_PORT``.
+* Prevent npm post-install scripts from running via ``.npmrc``.
+* Configure Dependabot to keep GitHub Actions up to date, group these updates into a single PR and move the configuration to the ``.github`` directory.
+* Configure ``actions/stale`` to automatically close stale issues and PRs.
+* [:open-api-framework:`224`] Upgrade to nodejs 26.
+* Upgrade python dependencies
+
+    * ``django`` to 5.2.17
+    * ``cryptography`` to 50.0.0
+    * ``vcrpy`` to 8.3.0
+    * ``pyjwt`` to 2.13.0
+    * ``setuptools`` to 84.0.0
+    * ``zgw-consumers`` to 2.0.3
+    * ``django-simple-certmanager`` to 4.0.0
+    * ``django-privates`` to 4.0.3
+    * ``commonground-api-common`` to 2.13.0
+    * ``open-api-framework`` to 0.14.1
+    * ``notifications-api-common`` to 0.13.0
+
+**Documentation**
+
+* [:open-api-workflows:`64`] Add action to generate and update Docker Hub description
 
 4.1.1 (2026-07-16)
 ------------------
