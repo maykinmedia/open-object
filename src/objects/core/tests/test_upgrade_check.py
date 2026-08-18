@@ -14,7 +14,7 @@ from objects.token.tests.test_migrations import BaseMigrationTest
 class TestUpgradeCheckBefore40(BaseMigrationTest):
     app = "core"
     migrate_from = "0036_objecttype_is_imported"
-    migrate_to = "0037_alter_objecttype_unique_together_and_more"
+    migrate_to = "0037_reference"
 
     def setUp(self):
         super().setUp()

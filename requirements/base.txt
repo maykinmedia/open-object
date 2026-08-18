@@ -26,7 +26,7 @@ attrs==25.4.0
     #   referencing
 billiard==4.2.1
     # via celery
-bleach==6.1.0
+bleach==6.4.0
     # via open-api-framework
 boltons==21.0.0
     # via
@@ -43,7 +43,6 @@ celery==5.5.3
     #   open-api-framework
 certifi==2024.7.4
     # via
-    #   django-simple-certmanager
     #   elastic-apm
     #   requests
     #   sentry-sdk
@@ -63,17 +62,17 @@ click-plugins==1.1.1
     # via celery
 click-repl==0.3.0
     # via celery
-commonground-api-common==2.11.0
+commonground-api-common==2.13.0
     # via
     #   -r requirements/base.in
     #   open-api-framework
-cryptography==46.0.7
+cryptography==50.0.0
     # via
     #   django-simple-certmanager
     #   mozilla-django-oidc
     #   pyopenssl
     #   webauthn
-django==5.2.15
+django==5.2.17
     # via
     #   commonground-api-common
     #   django-admin-index
@@ -153,10 +152,11 @@ django-otp==1.0.6
     # via django-two-factor-auth
 django-phonenumber-field==5.2.0
     # via django-two-factor-auth
-django-privates==3.1.1
+django-privates==4.0.3
     # via
     #   django-simple-certmanager
     #   open-api-framework
+    #   zgw-consumers
 django-redis==5.4.0
     # via open-api-framework
 django-relativedelta==2.0.0
@@ -174,7 +174,7 @@ django-setup-configuration==0.11.0
     #   notifications-api-common
     #   open-api-framework
     #   zgw-consumers
-django-simple-certmanager==1.4.1
+django-simple-certmanager==4.0.0
     # via
     #   open-api-framework
     #   zgw-consumers
@@ -288,7 +288,7 @@ notifications-api-common==0.10.0
     # via
     #   -r requirements/base.in
     #   commonground-api-common
-open-api-framework==0.14.0
+open-api-framework==0.14.1
     # via -r requirements/base.in
 opentelemetry-api==1.38.0
     # via
@@ -405,15 +405,13 @@ pydantic-settings==2.6.1
     # via django-setup-configuration
 pygments==2.20.0
     # via django-log-outgoing-requests
-pyjwt==2.12.1
+pyjwt==2.13.0
     # via
     #   commonground-api-common
     #   mozilla-django-oidc
     #   zgw-consumers
-pyopenssl==26.0.0
-    # via
-    #   django-simple-certmanager
-    #   webauthn
+pyopenssl==26.4.0
+    # via webauthn
 python-dateutil==2.9.0.post0
     # via
     #   arrow
@@ -476,7 +474,6 @@ sentry-sdk==2.12.0
     #   open-api-framework
 six==1.16.0
     # via
-    #   bleach
     #   furl
     #   orderedmultidict
     #   python-dateutil
@@ -488,7 +485,7 @@ structlog==25.4.0
     # via
     #   django-structlog
     #   open-api-framework
-tornado==6.5.5
+tornado==6.5.8
     # via flower
 tqdm==4.67.1
     # via -r requirements/base.in
@@ -542,7 +539,7 @@ wrapt==1.14.1
     #   opentelemetry-instrumentation
     #   opentelemetry-instrumentation-dbapi
     #   opentelemetry-instrumentation-redis
-zgw-consumers==1.0.0
+zgw-consumers==2.0.3
     # via
     #   -r requirements/base.in
     #   commonground-api-common

@@ -2,8 +2,11 @@ import importlib
 import threading
 import time
 from unittest.mock import patch
+from uuid import uuid4
 
 from django.test import override_settings
+
+from zgw_consumers.constants import AuthTypes
 
 from objects.token.tests.test_migrations import BaseMigrationTest
 
@@ -19,7 +22,12 @@ class TestBackfillDenormalizedObjectType(BaseMigrationTest):
         ObjectRecord = self.old_app_state.get_model("core", "ObjectRecord")
         Service = self.old_app_state.get_model("zgw_consumers", "Service")
 
-        service = Service.objects.create(api_root="http://example.local:8001/api/v2/")
+        service = Service.objects.create(
+            api_root="http://example.local:8001/api/v2/",
+            auth_type=AuthTypes.zgw,
+            client_id=uuid4(),
+            secret=uuid4(),
+        )
 
         object_type1 = ObjectType.objects.create(
             uuid="5741f306-0b6d-4597-9bab-c7d5dafe6d75", service=service

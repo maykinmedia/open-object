@@ -53,7 +53,7 @@ billiard==4.2.1
     #   -c requirements/base.txt
     #   -r requirements/base.txt
     #   celery
-bleach==6.1.0
+bleach==6.4.0
     # via
     #   -c requirements/base.txt
     #   -r requirements/base.txt
@@ -78,7 +78,6 @@ certifi==2024.7.4
     # via
     #   -c requirements/base.txt
     #   -r requirements/base.txt
-    #   django-simple-certmanager
     #   elastic-apm
     #   requests
     #   sentry-sdk
@@ -117,7 +116,7 @@ click-repl==0.3.0
     #   celery
 codecov==2.1.13
     # via -r requirements/test-tools.in
-commonground-api-common==2.11.0
+commonground-api-common==2.13.0
     # via
     #   -c requirements/base.txt
     #   -r requirements/base.txt
@@ -127,7 +126,7 @@ coverage==7.10.1
     # via
     #   -r requirements/test-tools.in
     #   codecov
-cryptography==46.0.7
+cryptography==50.0.0
     # via
     #   -c requirements/base.txt
     #   -r requirements/base.txt
@@ -137,7 +136,7 @@ cryptography==46.0.7
     #   webauthn
 cssselect==1.1.0
     # via pyquery
-django==5.2.15
+django==5.2.17
     # via
     #   -c requirements/base.txt
     #   -r requirements/base.txt
@@ -256,12 +255,13 @@ django-phonenumber-field==5.2.0
     #   -c requirements/base.txt
     #   -r requirements/base.txt
     #   django-two-factor-auth
-django-privates==3.1.1
+django-privates==4.0.3
     # via
     #   -c requirements/base.txt
     #   -r requirements/base.txt
     #   django-simple-certmanager
     #   open-api-framework
+    #   zgw-consumers
 django-redis==5.4.0
     # via
     #   -c requirements/base.txt
@@ -291,7 +291,7 @@ django-setup-configuration==0.11.0
     #   -c requirements/base.txt
     #   -r requirements/base.txt
     #   open-api-framework
-django-simple-certmanager==1.4.1
+django-simple-certmanager==4.0.0
     # via
     #   -c requirements/base.txt
     #   -r requirements/base.txt
@@ -442,7 +442,6 @@ idna==3.18
     #   -c requirements/base.txt
     #   -r requirements/base.txt
     #   requests
-    #   yarl
 imagesize==1.4.1
     # via sphinx
 importlib-metadata==8.7.0
@@ -518,14 +517,12 @@ mozilla-django-oidc-db==2.0.1
     #   -c requirements/base.txt
     #   -r requirements/base.txt
     #   open-api-framework
-multidict==6.0.5
-    # via yarl
 notifications-api-common==0.10.0
     # via
     #   -c requirements/base.txt
     #   -r requirements/base.txt
     #   commonground-api-common
-open-api-framework==0.14.0
+open-api-framework==0.14.1
     # via
     #   -c requirements/base.txt
     #   -r requirements/base.txt
@@ -734,7 +731,7 @@ pygments==2.20.0
     #   pytest
     #   sphinx
     #   sphinx-tabs
-pyjwt==2.12.1
+pyjwt==2.13.0
     # via
     #   -c requirements/base.txt
     #   -r requirements/base.txt
@@ -742,11 +739,10 @@ pyjwt==2.12.1
     #   commonground-api-common
     #   mozilla-django-oidc
     #   zgw-consumers
-pyopenssl==26.0.0
+pyopenssl==26.4.0
     # via
     #   -c requirements/base.txt
     #   -r requirements/base.txt
-    #   django-simple-certmanager
     #   webauthn
 pyquery==1.4.3
     # via -r requirements/test-tools.in
@@ -881,7 +877,6 @@ six==1.16.0
     # via
     #   -c requirements/base.txt
     #   -r requirements/base.txt
-    #   bleach
     #   furl
     #   orderedmultidict
     #   python-dateutil
@@ -892,7 +887,7 @@ snowballstemmer==2.2.0
     # via sphinx
 sortedcontainers==2.4.0
     # via hypothesis
-soupsieve==2.2.1
+soupsieve==2.9.2
     # via beautifulsoup4
 sphinx==9.1.0
     # via
@@ -931,7 +926,7 @@ structlog==25.4.0
     #   django-structlog
 tblib==1.7.0
     # via -r requirements/test-tools.in
-tornado==6.5.5
+tornado==6.5.8
     # via
     #   -c requirements/base.txt
     #   -r requirements/base.txt
@@ -982,12 +977,11 @@ urllib3==2.7.0
     #   elastic-apm
     #   requests
     #   sentry-sdk
-    #   vcrpy
 uwsgi==2.0.31
     # via
     #   -c requirements/base.txt
     #   -r requirements/base.txt
-vcrpy==7.0.0
+vcrpy==8.3.0
     # via -r requirements/test-tools.in
 vine==5.1.0
     # via
@@ -1030,9 +1024,7 @@ wrapt==1.14.1
     #   opentelemetry-instrumentation-dbapi
     #   opentelemetry-instrumentation-redis
     #   vcrpy
-yarl==1.9.4
-    # via vcrpy
-zgw-consumers==1.0.0
+zgw-consumers==2.0.3
     # via
     #   -c requirements/base.txt
     #   -r requirements/base.txt
