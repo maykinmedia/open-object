@@ -1,0 +1,23 @@
+{
+    "supportedTags": [
+        {
+            "gitRef": "master",
+            "tag": "latest"
+        },
+        {
+            "gitRef": "4.2.0",
+            "tag": "4.2.0"
+        },
+        {
+            "gitRef": "4.1.1",
+            "tag": "4.1.1"
+        }
+    ],
+    "dockerOrg": "maykinmedia",
+    "dockerRepo": "open-object",
+    "githubOrg": "maykinmedia",
+    "githubRepo": "open-object",
+    "projectName": "Open Object",
+    "projectDocumentation": "https://open-object.readthedocs.io/en/latest/",
+    "projectDescription": "The Open Object API consists of two main resources: Objecttypes & Objects. Objecttypes contains the object definitions and Objects the instances of these Objecttypes. \n\nDesigned in line with the Common Ground model, they can be used by other APIs that need to store object specific data. \n\nOpen Object is and only uses Open-source."
+}
