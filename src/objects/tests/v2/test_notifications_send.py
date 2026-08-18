@@ -99,6 +99,7 @@ class SendNotifTestCase(TokenAuthMixin, APITestCase):
                     "objectType": f"http://testserver{reverse('objecttype-detail', args=[self.object_type.uuid])}",
                 },
             },
+            None,
         )
 
     @patch("notifications_api_common.viewsets.send_notification.delay")
@@ -130,7 +131,6 @@ class SendNotifTestCase(TokenAuthMixin, APITestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK, response.data)
 
         data = response.json()
-
         mock_task.assert_called_once_with(
             {
                 "kanaal": "objecten",
@@ -143,6 +143,7 @@ class SendNotifTestCase(TokenAuthMixin, APITestCase):
                     "objectType": f"http://testserver{reverse('objecttype-detail', args=[self.object_type.uuid])}",
                 },
             },
+            None,
         )
 
     @patch("notifications_api_common.viewsets.send_notification.delay")
@@ -187,6 +188,7 @@ class SendNotifTestCase(TokenAuthMixin, APITestCase):
                     "objectType": f"http://testserver{reverse('objecttype-detail', args=[self.object_type.uuid])}",
                 },
             },
+            None,
         )
 
     @patch("notifications_api_common.viewsets.send_notification.delay")
@@ -219,6 +221,7 @@ class SendNotifTestCase(TokenAuthMixin, APITestCase):
                     "objectType": f"http://testserver{reverse('objecttype-detail', args=[self.object_type.uuid])}",
                 },
             },
+            None,
         )
 
     @patch("notifications_api_common.tasks.send_cloudevent.delay")
@@ -280,6 +283,7 @@ class SendNotifTestCase(TokenAuthMixin, APITestCase):
                     "objectType": f"http://testserver{reverse('objecttype-detail', args=[self.object_type.uuid])}",
                 },
             },
+            None,
         )
 
     @patch("notifications_api_common.tasks.send_cloudevent.delay")
@@ -369,6 +373,7 @@ class SendNotifTestCase(TokenAuthMixin, APITestCase):
                 },
                 "source": "open-object-test",
             },
+            None,
         )
 
     @patch("notifications_api_common.tasks.send_cloudevent.delay")
@@ -426,6 +431,7 @@ class SendNotifTestCase(TokenAuthMixin, APITestCase):
                 },
                 "source": "open-object-test",
             },
+            None,
         )
 
     @patch("notifications_api_common.tasks.send_cloudevent.delay")
@@ -485,6 +491,7 @@ class SendNotifTestCase(TokenAuthMixin, APITestCase):
                 },
                 "source": "open-object-test",
             },
+            None,
         )
 
     @patch("notifications_api_common.tasks.send_cloudevent.delay")
@@ -546,6 +553,7 @@ class SendNotifTestCase(TokenAuthMixin, APITestCase):
                 },
                 "source": "open-object-test",
             },
+            None,
         )
 
     @override_settings(

@@ -63,6 +63,10 @@
             [
                 "log_outgoing_requests",
                 "outgoingrequestslogconfig"
+            ],
+            [
+                "notifications_api_common",
+                "failednotification"
             ]
         ]
     }
