@@ -2,8 +2,24 @@
 Change history
 ==============
 
+4.2.1 (2026-08-21)
+------------------
+
+**Bugfixes**
+
+* [:open-object:`757`] Add missing environment variables for failed notification rescheduling (see :ref:`installation_env_config`).
+
+  * ``LOG_NOTIFICATIONS_IN_DB``
+  * ``NOTIFICATION_NUMBER_OF_DAYS_RETAINED``
+
 4.2.0 (2026-08-18)
 ------------------
+
+.. warning::
+
+    This version is missing the necessary environment variables to make use of the manual failed
+    notification rescheduling mechanism implemented in :open-object:`757`. If you wish to make use of that,
+    upgrade to 4.2.1
 
 .. note::
 
