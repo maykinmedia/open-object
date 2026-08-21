@@ -132,6 +132,23 @@ NOTIFICATIONS_SOURCE = config(
 if ENABLE_CLOUD_EVENTS and not NOTIFICATIONS_SOURCE:
     raise ImproperlyConfigured("NOTIFICATIONS_SOURCE is REQUIRED for CloudEvents")
 
+
+LOG_NOTIFICATIONS_IN_DB = config(
+    "LOG_NOTIFICATIONS_IN_DB",
+    default=True,
+    documentation=DocumentationParams(
+        help_text="Indicates whether or not failed notifications/cloud events should be saved to the database"
+    ),
+)
+
+NOTIFICATION_NUMBER_OF_DAYS_RETAINED = config(
+    "NOTIFICATION_NUMBER_OF_DAYS_RETAINED",
+    default=60,
+    documentation=DocumentationParams(
+        help_text="the number of days for which you wish to keep failed notifications/cloud events in the database"
+    ),
+)
+
 #
 # CELERY
 #

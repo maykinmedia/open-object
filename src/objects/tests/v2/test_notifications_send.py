@@ -28,7 +28,7 @@ from .utils import reverse
 
 
 @freeze_time("2018-09-07T00:00:00Z")
-@override_settings(NOTIFICATIONS_DISABLED=False)
+@override_settings(NOTIFICATIONS_DISABLED=False, LOG_NOTIFICATIONS_IN_DB=False)
 class SendNotifTestCase(TokenAuthMixin, APITestCase):
     @classmethod
     def setUpTestData(cls):
