@@ -20,5 +20,6 @@ this.
    config_cli
    deployment/index
    observability/index
+   health_checks
    oidc
    hardware
