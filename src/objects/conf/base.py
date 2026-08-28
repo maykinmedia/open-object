@@ -13,6 +13,7 @@ from django.core.exceptions import ImproperlyConfigured
 
 from maykin_common.branding import ProductDefinition
 from maykin_common.config import ENVVAR_REGISTRY, config
+from maykin_common.health_checks import default_health_check_apps
 from open_api_framework.conf.base import *  # noqa
 
 from .api import *  # noqa
@@ -38,6 +39,8 @@ DATABASES["default"]["ENGINE"] = "django.contrib.gis.db.backends.postgis"
 
 INSTALLED_APPS = INSTALLED_APPS + [
     "maykin_common",
+    # health check + plugins
+    *default_health_check_apps,
     "capture_tag",
     # Optional applications.
     "django.contrib.gis",

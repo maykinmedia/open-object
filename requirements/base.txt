@@ -2,6 +2,8 @@
 #    ./bin/compile_dependencies.sh
 amqp==5.2.0
     # via kombu
+annotated-doc==0.0.5
+    # via typer
 annotated-types==0.7.0
     # via pydantic
 ape-pie==0.2.0
@@ -82,6 +84,7 @@ django==5.2.17
     #   django-csp
     #   django-filter
     #   django-formtools
+    #   django-health-check
     #   django-jsonform
     #   django-jsonsuit
     #   django-log-outgoing-requests
@@ -134,6 +137,8 @@ django-filter==24.2
     #   open-api-framework
 django-formtools==2.5.1
     # via django-two-factor-auth
+django-health-check==4.5.1
+    # via maykin-common
 django-ipware==7.0.1
     # via django-structlog
 django-jsonform==2.22.0
@@ -207,6 +212,8 @@ djangorestframework-gis==1.0
     # via open-api-framework
 djangorestframework-inclusions==1.2.0
     # via open-api-framework
+dnspython==2.8.0
+    # via django-health-check
 docutils==0.21.2
     # via django-setup-configuration
 drf-nested-routers==0.94.1
@@ -270,6 +277,8 @@ kombu==5.5.4
     #   celery
 lark==1.3.1
     # via rfc3987-syntax
+markdown-it-py==4.2.0
+    # via rich
 maykin-2fa==1.0.1
     # via
     #   maykin-common
@@ -278,6 +287,8 @@ maykin-common==0.20.1
     # via
     #   -r requirements/base.in
     #   open-api-framework
+mdurl==0.1.2
+    # via markdown-it-py
 mozilla-django-oidc==5.0.2
     # via mozilla-django-oidc-db
 mozilla-django-oidc-db==2.0.1
@@ -404,7 +415,9 @@ pydantic-core==2.23.4
 pydantic-settings==2.6.1
     # via django-setup-configuration
 pygments==2.20.0
-    # via django-log-outgoing-requests
+    # via
+    #   django-log-outgoing-requests
+    #   rich
 pyjwt==2.13.0
     # via
     #   commonground-api-common
@@ -445,6 +458,7 @@ requests==2.33.1
     #   ape-pie
     #   commonground-api-common
     #   django-log-outgoing-requests
+    #   maykin-common
     #   mozilla-django-oidc
     #   open-api-framework
     #   opentelemetry-exporter-otlp-proto-http
@@ -458,6 +472,8 @@ rfc3986-validator==0.1.1
     # via jsonschema
 rfc3987-syntax==1.1.0
     # via jsonschema
+rich==15.0.0
+    # via typer
 rpds-py==2026.5.1
     # via
     #   jsonschema
@@ -472,6 +488,8 @@ sentry-sdk==2.12.0
     # via
     #   commonground-api-common
     #   open-api-framework
+shellingham==1.5.4
+    # via typer
 six==1.16.0
     # via
     #   furl
@@ -490,6 +508,8 @@ tornado==6.5.8
     # via flower
 tqdm==4.67.1
     # via -r requirements/base.in
+typer==0.27.1
+    # via maykin-common
 typing-extensions==4.15.0
     # via
     #   django-log-outgoing-requests
