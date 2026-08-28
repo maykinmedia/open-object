@@ -2,11 +2,11 @@ from django import forms
 from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
 
-from django_filters import filters
+from django_filters import fields as filter_fields, filters
 from vng_api_common.filters import URLModelChoiceFilter
 
 
-class ObjectTypeField(filters.ModelChoiceField):
+class ObjectTypeField(filter_fields.ModelChoiceField):
     default_error_messages = {
         "max_length": _("The value has too many characters"),
         "min_length": _("The value has too few characters"),
@@ -32,8 +32,10 @@ class ObjectTypeField(filters.ModelChoiceField):
         if self.min_length and len(value) < self.min_length:
             raise ValidationError(self.error_messages["min_length"], code="min_length")
 
+        assert self.queryset is not None
+
         try:
-            result = self.queryset.get_by_url(value)
+            result = self.queryset.get_by_url(value)  # type: ignore[reportAttributeAccessIssue]
         except self.queryset.model.DoesNotExist:
             raise ValidationError(
                 self.error_messages["invalid_choice"],
@@ -55,13 +57,13 @@ class ManyWidget(forms.Widget):
         if name not in data:
             return []
 
-        return data.getlist(name)
+        return data.getlist(name)  # type: ignore[reportIncompatibleMethodOverride]
 
 
 class ManyCharField(forms.CharField):
     widget = ManyWidget
 
-    def to_python(self, value):
+    def to_python(self, value):  # type: ignore[reportIncompatibleMethodOverride]
         if not value:
             return []
 

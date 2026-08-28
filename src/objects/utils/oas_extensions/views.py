@@ -9,7 +9,7 @@ logger = structlog.stdlib.get_logger(__name__)
 
 class AllowAllOriginsMixin:
     def dispatch(self, request, *args, **kwargs):
-        response = super().dispatch(request, *args, **kwargs)
+        response = super().dispatch(request, *args, **kwargs)  # type: ignore[reportAttributeAccessIssue]
         response["Access-Control-Allow-Origin"] = "*"
         return response
 
