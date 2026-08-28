@@ -41,6 +41,7 @@ INSTALLED_APPS = INSTALLED_APPS + [
     "maykin_common",
     # health check + plugins
     *default_health_check_apps,
+    "maykin_common.health_checks.celery",
     "capture_tag",
     # Optional applications.
     "django.contrib.gis",

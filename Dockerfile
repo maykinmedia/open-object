@@ -51,6 +51,7 @@ RUN pip install pip "setuptools>=70.0.0"
 COPY --from=backend-build /usr/local/lib/python3.12 /usr/local/lib/python3.12
 COPY --from=backend-build /usr/local/bin/uwsgi /usr/local/bin/uwsgi
 COPY --from=backend-build /usr/local/bin/celery /usr/local/bin/celery
+COPY --from=backend-build /usr/local/bin/maykin-common /usr/local/bin/maykin-common
 
 # Stage 3.2 - Copy source code
 WORKDIR /app
@@ -58,7 +59,7 @@ COPY ./bin/wait_for_db.sh /wait_for_db.sh
 COPY ./bin/docker_start.sh /start.sh
 COPY ./bin/celery_worker.sh /celery_worker.sh
 COPY ./bin/celery_flower.sh /celery_flower.sh
-COPY ./bin/check_celery_worker_liveness.py ./bin/
+COPY ./bin/celery_worker_liveness_probe.sh /celery_worker_liveness_probe.sh
 COPY ./bin/setup_configuration.sh /setup_configuration.sh
 COPY ./bin/dump_data.sh /dump_data.sh
 COPY ./bin/uwsgi.ini /
