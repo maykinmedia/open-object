@@ -359,3 +359,11 @@ MKN_BRANDING_DERIVED_PRODUCT_DEFINITION = (
     if custom_product_name
     else None
 )
+
+#
+# MAYKIN-COMMON health checks
+#
+MKN_HEALTH_CHECKS_WORKER_EVENT_LOOP_LIVENESS_FILE = (
+    BASE_DIR / "tmp" / "celery_worker_event_loop.live"
+)
+MKN_HEALTH_CHECKS_WORKER_READINESS_FILE = BASE_DIR / "tmp" / "celery_worker.ready"
