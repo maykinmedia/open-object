@@ -1,4 +1,5 @@
 from collections import defaultdict
+from collections.abc import Mapping
 
 from glom import SKIP, GlomError, glom
 from rest_framework import fields, serializers
@@ -31,13 +32,15 @@ def build_spec_field(spec, name, value, ui):
         spec[name] = value if ui else spec_val
 
 
-def get_field_names(data: dict[str, fields.Field]) -> list[str]:
+def get_field_names(data: Mapping[str, fields.Field]) -> list[str]:
     """return list of names for all serializer fields. Supports nesting"""
     names_and_sources = get_field_names_and_sources(data)
     return [name for name, source in names_and_sources]
 
 
-def get_field_names_and_sources(data: dict[str, fields.Field]) -> list[tuple[str, str]]:
+def get_field_names_and_sources(
+    data: Mapping[str, fields.Field],
+) -> list[tuple[str, str]]:
     """return list of (name, source) for all serializer fields. Supports nesting"""
     names_and_sources = []
     for key, value in data.items():
@@ -52,7 +55,8 @@ def get_field_names_and_sources(data: dict[str, fields.Field]) -> list[tuple[str
                 for name, source in get_field_names_and_sources(value.fields)
             ]
         elif isinstance(value, fields.Field):
-            names_and_sources.append((key, value.source.replace(".", "__")))
+            source = value.source or key
+            names_and_sources.append((key, source.replace(".", "__")))
         else:
             names_and_sources.append((key, key))
 
@@ -81,7 +85,7 @@ class DynamicFieldsMixin:
         self.not_allowed = NotAllowedDict(set)
 
     def to_representation(self, instance):
-        data = super().to_representation(instance)
+        data = super().to_representation(instance)  # type: ignore[reportAttributeAccessIssue]
 
         allowed_fields = self.get_allowed_fields(instance)
         query_fields = self.get_query_fields()
@@ -108,7 +112,7 @@ class DynamicFieldsMixin:
             if not_allowed:
                 self.not_allowed[
                     f"{
-                        self.context['request'].build_absolute_uri(
+                        self.context['request'].build_absolute_uri(  # type: ignore[reportAttributeAccessIssue]
                             reverse(
                                 'objecttype-detail', args=[instance._object_type.uuid]
                             )
@@ -129,7 +133,7 @@ class DynamicFieldsMixin:
             if not_allowed:
                 self.not_allowed[
                     f"{
-                        self.context['request'].build_absolute_uri(
+                        self.context['request'].build_absolute_uri(  # type: ignore[reportAttributeAccessIssue]
                             reverse(
                                 'objecttype-detail', args=[instance._object_type.uuid]
                             )
@@ -140,7 +144,7 @@ class DynamicFieldsMixin:
         return result_data
 
     def get_query_fields(self) -> list:
-        request = self.context.get("request")
+        request = self.context.get("request")  # type: ignore[reportAttributeAccessIssue]
         if not request:
             return []
 
@@ -151,7 +155,7 @@ class DynamicFieldsMixin:
         return list({field.strip() for field in fields.split(",")})
 
     def get_allowed_fields(self, instance) -> list:
-        request = self.context.get("request")
+        request = self.context.get("request")  # type: ignore[reportAttributeAccessIssue]
 
         # if not instance -> create or update -> all fields are allowed
         if not request:

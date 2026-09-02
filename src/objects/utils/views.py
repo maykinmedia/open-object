@@ -15,7 +15,7 @@ def jsonpath_database_error_handler(exc, context):
         return None
 
     exc.detail = ErrorDetail(
-        _("This search operation is not supported by the underlying data store."),
+        str(_("This search operation is not supported by the underlying data store.")),
         code="search-not-supported",
     )
     exc.default_detail = _("Internal Server Error")
@@ -28,4 +28,4 @@ def jsonpath_database_error_handler(exc, context):
 def register_handlers():
     from django.db.utils import Error
 
-    register_exception_handler(Error, jsonpath_database_error_handler)
+    register_exception_handler(Error, jsonpath_database_error_handler)  # type: ignore[reportArgumentType]

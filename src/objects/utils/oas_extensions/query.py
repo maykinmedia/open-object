@@ -21,6 +21,7 @@ class DjangoFilterExtension(_DjangoFilterExtension):
         """
         if isinstance(filter_field, ObjectTypeFilter):
             schema = build_basic_type(OpenApiTypes.URI)
+            assert schema is not None
             if "max_length" in filter_field.extra:
                 schema["maxLength"] = filter_field.extra.get("max_length")
             if "min_length" in filter_field.extra:

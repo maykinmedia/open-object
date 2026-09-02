@@ -1,9 +1,11 @@
 from django.core.cache import caches
 
+from rest_framework.test import APITestCase as APITestCaseDRF
+
 from objects.token.tests.factories import TokenAuthFactory
 
 
-class TokenAuthMixin:
+class TokenAuthMixin(APITestCaseDRF):
     @classmethod
     def setUpTestData(cls):
         super().setUpTestData()
@@ -18,7 +20,7 @@ class TokenAuthMixin:
         self.client.credentials(HTTP_AUTHORIZATION=f"Token {self.token_auth.token}")
 
 
-class ClearCachesMixin:
+class ClearCachesMixin(APITestCaseDRF):
     def setUp(self):
         super().setUp()
         self._clear_caches()

@@ -22,7 +22,7 @@ class PyInstrumentMiddleware:  # pragma:no cover
             return self._serve_profile()
 
         # Local import to avoid having to install this in production environments
-        from pyinstrument import Profiler
+        from pyinstrument import Profiler  # type: ignore[reportMissingImports]
 
         profiler = Profiler()
         profiler.start()

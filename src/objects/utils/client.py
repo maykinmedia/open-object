@@ -13,13 +13,13 @@ class ObjecttypesClient(NLXClient):
         endpoint: str,
         page: int | None = None,
         page_size: int | None = None,
-        query_params: dict[object, object] | None = None,
+        query_params: dict[str, str | int] | None = None,
     ):
         query_params = query_params or {}
         if page is None and page_size is None:
             response = self.get(endpoint, params=query_params)
             response.raise_for_status()
-            data: PaginatedResponseData[dict[str, object]] = response.json()
+            data: PaginatedResponseData = response.json()
             all_data = pagination_helper(self, data)
             return list(all_data)
 

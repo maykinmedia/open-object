@@ -10,6 +10,7 @@ class HyperlinkedRelatedFieldExtension(OpenApiSerializerFieldExtension):
 
     def map_serializer_field(self, auto_schema, direction):
         schema = build_basic_type(OpenApiTypes.URI)
+        assert schema is not None
         schema.update(
             {
                 "minLength": 1,

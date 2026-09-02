@@ -28,3 +28,26 @@ jobs:
       node-version: '26'
       postgres-image: 'postgis/postgis:17-3.5'
       django-settings-module: 'objects.conf.ci'
+  
+  type-checking:
+    name: Type checking (Pyright)
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.2.0
+        with:
+          python-version: "3.12"
+
+      - name: Install additional dependencies
+        run: |
+          pip install uv
+          uv pip install \
+            --system \
+            -r requirements/type-checking.txt
+      - uses: jakebailey/pyright-action@6baf8b2bcc1727b5a89249955f936d4a6f9f995b # v1.8.1
+        with:
+          version: 1.1.407
+          project: pyright.pyproject.toml

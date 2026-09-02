@@ -7,6 +7,7 @@ from drf_spectacular.extensions import OpenApiFilterExtension
 from drf_spectacular.openapi import AutoSchema as _AutoSchema
 from drf_spectacular.plumbing import build_parameter_type, get_view_model
 from drf_spectacular.utils import OpenApiParameter
+from rest_framework.viewsets import GenericViewSet
 from rest_framework_nested.viewsets import NestedViewSetMixin
 from vng_api_common.constants import VERSION_HEADER
 from vng_api_common.geo import DEFAULT_CRS, HEADER_ACCEPT, HEADER_CONTENT
@@ -22,7 +23,7 @@ object_path_parameter = OpenApiParameter(
 
 
 class AutoSchema(_AutoSchema):
-    def get_response_serializers(
+    def get_response_serializers(  # pyright: ignore[reportIncompatibleMethodOverride]
         self,
     ):
         if self.method == "DELETE":
@@ -34,9 +35,8 @@ class AutoSchema(_AutoSchema):
         """
         Use model name as a base for operation_id
         """
-        if hasattr(self.view, "basename"):
-            basename = self.view.basename
-            return f"{basename}_{self.view.action}"
+        if isinstance(self.view, GenericViewSet):
+            return f"{self.view.basename}_{self.view.action}"
         return super().get_operation_id()
 
     def get_override_parameters(self):
@@ -59,6 +59,7 @@ class AutoSchema(_AutoSchema):
 
     def _get_filter_parameters(self):
         """remove filter parameters from all actions except LIST"""
+        assert isinstance(self.view, GenericViewSet)
         if self.view.action != "list":
             return []
         return super()._get_filter_parameters()
@@ -192,9 +193,11 @@ class AutoSchema(_AutoSchema):
 
     def _get_request_body(self, direction="request"):
         """update search request body with filter parameters"""
+
+        assert isinstance(self.view, GenericViewSet)
         request_body = super()._get_request_body(direction)
 
-        if self.view.action == "search":
+        if request_body and self.view.action == "search":
             filter_params = self.get_filter_params_for_search()
 
             properties = {}
@@ -215,13 +218,14 @@ class AutoSchema(_AutoSchema):
 
     def get_filter_params_for_search(self):
         """copy paste of self._get_filter_parameters() without conditions"""
+        assert isinstance(self.view, GenericViewSet)
         parameters = []
         for filter_backend in self.view.filter_backends:
             filter_extension = OpenApiFilterExtension.get_match(filter_backend())
             if filter_extension:
                 parameters += filter_extension.get_schema_operation_parameters(self)
             else:
-                parameters += filter_backend().get_schema_operation_parameters(
+                parameters += filter_backend().get_schema_operation_parameters(  # pyright: ignore[reportAttributeAccessIssue]
                     self.view
                 )
         return parameters
@@ -251,11 +255,17 @@ class AutoSchema(_AutoSchema):
 
     def _resolve_path_parameters(self, variables):
         object_path = "uuid"
-        if variables == [object_path] and self.view.basename == "object":
+        if (
+            variables == [object_path]
+            and isinstance(self.view, GenericViewSet)
+            and self.view.basename == "object"
+        ):
             model = get_view_model(self.view)
+            assert model is not None
             object_field = model._meta.get_field("object")
             uuid_field = object_field.related_model._meta.get_field("uuid")
             schema = self._map_model_field(uuid_field, direction=None)
+            assert schema is not None
 
             return [
                 build_parameter_type(
