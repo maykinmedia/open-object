@@ -81,7 +81,6 @@ jobs:
           DB_POOL_ENABLED: ${{ matrix.use_pooling }}
 
           CELERY_BROKER_URL: 'redis://localhost:6379/0'
-          CELERY_ONCE_REDIS_URL: 'redis://localhost:6379/0'
 
       - name: Install Playwright browsers
         if: ${{ matrix.postgres == '17' && matrix.postgis == '3.5' && matrix.use_pooling == false }}
@@ -98,7 +97,6 @@ jobs:
           DB_PASSWORD: ''
           DB_POOL_ENABLED: ${{ matrix.use_pooling }}
           CELERY_BROKER_URL: 'redis://localhost:6379/0'
-          CELERY_ONCE_REDIS_URL: 'redis://localhost:6379/0'
 
       - name: Publish coverage report
         uses: codecov/codecov-action@fb8b3582c8e4def4969c97caa2f19720cb33a72f # v7.0.0

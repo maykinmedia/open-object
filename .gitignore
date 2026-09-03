@@ -23,6 +23,9 @@ src/objects/static/bundles/
 /reports/
 /htmlcov/
 
+# Tests
+.hypothesis/
+
 # Environment
 local.py
 /env/
