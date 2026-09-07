@@ -46,6 +46,8 @@ urlpatterns = [
         auth_views.PasswordResetCompleteView.as_view(),
         name="password_reset_complete",
     ),
+    # health_checks urls
+    path("", include("maykin_common.health_checks.urls")),
     # Simply show the master template.
     path(
         "",

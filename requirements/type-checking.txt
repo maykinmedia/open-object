@@ -10,6 +10,11 @@ amqp==5.2.0
     #   -c requirements/ci.txt
     #   -r requirements/ci.txt
     #   kombu
+annotated-doc==0.0.5
+    # via
+    #   -c requirements/ci.txt
+    #   -r requirements/ci.txt
+    #   typer
 annotated-types==0.7.0
     # via
     #   -c requirements/ci.txt
@@ -166,6 +171,7 @@ django==5.2.17
     #   django-csp
     #   django-filter
     #   django-formtools
+    #   django-health-check
     #   django-jsonform
     #   django-jsonsuit
     #   django-log-outgoing-requests
@@ -236,6 +242,10 @@ django-formtools==2.5.1
     #   -c requirements/ci.txt
     #   -r requirements/ci.txt
     #   django-two-factor-auth
+django-health-check==4.5.1
+    # via
+    #   -c requirements/ci.txt
+    #   -r requirements/ci.txt
 django-ipware==7.0.1
     # via
     #   -c requirements/ci.txt
@@ -376,6 +386,11 @@ djangorestframework-inclusions==1.2.0
     #   -r requirements/ci.txt
 djangorestframework-stubs==3.18.1
     # via -r requirements/type-checking.in
+dnspython==2.8.0
+    # via
+    #   -c requirements/ci.txt
+    #   -r requirements/ci.txt
+    #   django-health-check
 docutils==0.21.2
     # via
     #   -c requirements/ci.txt
@@ -546,6 +561,11 @@ lxml==6.1.1
     #   -c requirements/ci.txt
     #   -r requirements/ci.txt
     #   pyquery
+markdown-it-py==4.2.0
+    # via
+    #   -c requirements/ci.txt
+    #   -r requirements/ci.txt
+    #   rich
 markupsafe==2.1.3
     # via
     #   -c requirements/ci.txt
@@ -556,11 +576,16 @@ maykin-2fa==1.0.1
     #   -c requirements/ci.txt
     #   -r requirements/ci.txt
     #   open-api-framework
-maykin-common==0.19.1
+maykin-common==0.20.1
     # via
     #   -c requirements/ci.txt
     #   -r requirements/ci.txt
     #   open-api-framework
+mdurl==0.1.2
+    # via
+    #   -c requirements/ci.txt
+    #   -r requirements/ci.txt
+    #   markdown-it-py
 mozilla-django-oidc==5.0.2
     # via
     #   -c requirements/ci.txt
@@ -794,6 +819,7 @@ pygments==2.20.0
     #   -r requirements/ci.txt
     #   django-log-outgoing-requests
     #   pytest
+    #   rich
     #   sphinx
     #   sphinx-tabs
 pyjwt==2.13.0
@@ -908,6 +934,11 @@ rfc3987-syntax==1.1.0
     # via
     #   -c requirements/ci.txt
     #   -r requirements/ci.txt
+rich==15.0.0
+    # via
+    #   -c requirements/ci.txt
+    #   -r requirements/ci.txt
+    #   typer
 roman-numerals==4.1.0
     # via
     #   -c requirements/ci.txt
@@ -944,6 +975,11 @@ sentry-sdk==2.12.0
     #   -r requirements/ci.txt
     #   commonground-api-common
     #   open-api-framework
+shellingham==1.5.4
+    # via
+    #   -c requirements/ci.txt
+    #   -r requirements/ci.txt
+    #   typer
 six==1.16.0
     # via
     #   -c requirements/ci.txt
@@ -1041,6 +1077,10 @@ tornado==6.5.8
     #   -r requirements/ci.txt
     #   flower
 tqdm==4.67.1
+    # via
+    #   -c requirements/ci.txt
+    #   -r requirements/ci.txt
+typer==0.27.1
     # via
     #   -c requirements/ci.txt
     #   -r requirements/ci.txt
