@@ -596,12 +596,12 @@ mozilla-django-oidc-db==2.0.1
     #   -c requirements/ci.txt
     #   -r requirements/ci.txt
     #   open-api-framework
-notifications-api-common==0.13.0
+notifications-api-common==0.13.1
     # via
     #   -c requirements/ci.txt
     #   -r requirements/ci.txt
     #   commonground-api-common
-open-api-framework==0.14.1
+open-api-framework==0.14.2
     # via
     #   -c requirements/ci.txt
     #   -r requirements/ci.txt
