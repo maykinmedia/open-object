@@ -80,7 +80,7 @@ Change history
 
 **Security patches**
 
-* [CVE ID pending] See `GHSA-55w6-rqp5-j5wx`_ for more information.
+* [`CVE-2026-82411`_] See `GHSA-55w6-rqp5-j5wx`_ for more information.
 
   * Ensure authorizations linked to API token are properly applied to the object history detail endpoint
 
@@ -135,7 +135,7 @@ Change history
 
 **Security patches**
 
-* [CVE ID pending] See `GHSA-55w6-rqp5-j5wx`_ for more information.
+* [`CVE-2026-82411`_] See `GHSA-55w6-rqp5-j5wx`_ for more information.
 
   * Ensure authorizations linked to API token are properly applied to the object history detail endpoint
 
@@ -253,7 +253,7 @@ Major release
 
 **Security patches**
 
-* [CVE ID pending] See `GHSA-55w6-rqp5-j5wx`_ for more information.
+* [`CVE-2026-82411`_] See `GHSA-55w6-rqp5-j5wx`_ for more information.
 
   * Ensure authorizations linked to API token are properly applied to the object history detail endpoint
 
@@ -766,10 +766,11 @@ Major release
 
 **Security patches**
 
-* [CVE ID pending] See `GHSA-55w6-rqp5-j5wx`_ for more information.
+* [`CVE-2026-82411`_] See `GHSA-55w6-rqp5-j5wx`_ for more information.
 
   * Ensure authorizations linked to API token are properly applied to the object history detail endpoint
 
+.. _CVE-2026-82411: https://www.cve.org/CVERecord/SearchResults?query=CVE-2026-82411
 .. _GHSA-55w6-rqp5-j5wx: https://github.com/maykinmedia/open-object/security/advisories/GHSA-55w6-rqp5-j5wx
 
 2.5.0 (2025-01-09)
