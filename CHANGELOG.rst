@@ -2,6 +2,33 @@
 Change history
 ==============
 
+4.3.0 (2026-10-02)
+------------------
+
+**New features**
+
+* [:open-object:`816`] Implement **health checks** to monitor the status of each Docker container: ``web``, ``Celery worker``, ``Celery Flower``, ``postgres``
+  and ``redis``. See :ref:`installation_health_checks` for more information.
+
+**Project maintenance**
+
+* [:open-object:`778`] Configure type checking for python code
+
+* Upgrade python dependencies
+
+    * ``djangorestframework`` to 3.18.1
+    * ``open-api-framework`` to 0.16.0
+    * ``maykin-common`` to 0.22.0
+    * ``pip`` to 26.2.1
+    * ``pyjwt`` to 2.15.1
+    * ``sqlparse`` to 0.6.0 
+    * ``tornado`` to 6.5.10
+    * ``urllib3`` to 2.8.0
+    * ``webob`` to 1.8.11
+    * ``anyio`` to 4.14.2
+    * ``filelock`` to 4.0.9
+    * ``virtualenv`` to 21.14.3
+
 4.2.1 (2026-08-21)
 ------------------
 
