@@ -331,7 +331,7 @@ django-upgrade-check==1.1.0
     #   open-api-framework
 django-webtest==1.9.13
     # via -r requirements/test-tools.in
-djangorestframework==3.15.2
+djangorestframework==3.18.1
     # via
     #   -c requirements/base.txt
     #   -r requirements/base.txt
@@ -522,7 +522,7 @@ maykin-2fa==1.0.1
     #   -c requirements/base.txt
     #   -r requirements/base.txt
     #   open-api-framework
-maykin-common==0.20.1
+maykin-common==0.22.0
     # via
     #   -c requirements/base.txt
     #   -r requirements/base.txt
@@ -547,7 +547,7 @@ notifications-api-common==0.13.1
     #   -c requirements/base.txt
     #   -r requirements/base.txt
     #   commonground-api-common
-open-api-framework==0.14.2
+open-api-framework==0.16.0
     # via
     #   -c requirements/base.txt
     #   -r requirements/base.txt
@@ -757,7 +757,7 @@ pygments==2.20.0
     #   rich
     #   sphinx
     #   sphinx-tabs
-pyjwt==2.13.0
+pyjwt==2.15.1
     # via
     #   -c requirements/base.txt
     #   -r requirements/base.txt
@@ -950,7 +950,7 @@ sphinxcontrib-qthelp==2.0.0
     # via sphinx
 sphinxcontrib-serializinghtml==2.0.0
     # via sphinx
-sqlparse==0.5.5
+sqlparse==0.6.0
     # via
     #   -c requirements/base.txt
     #   -r requirements/base.txt
@@ -963,7 +963,7 @@ structlog==25.4.0
     #   notifications-api-common
 tblib==1.7.0
     # via -r requirements/test-tools.in
-tornado==6.5.8
+tornado==6.5.10
     # via
     #   -c requirements/base.txt
     #   -r requirements/base.txt
@@ -1011,7 +1011,7 @@ uritemplate==3.0.1
     #   -c requirements/base.txt
     #   -r requirements/base.txt
     #   drf-spectacular
-urllib3==2.7.0
+urllib3==2.8.0
     # via
     #   -c requirements/base.txt
     #   -r requirements/base.txt
@@ -1052,7 +1052,7 @@ webencodings==0.5.1
     #   -c requirements/base.txt
     #   -r requirements/base.txt
     #   bleach
-webob==1.8.10
+webob==1.8.11
     # via webtest
 webtest==2.0.35
     # via django-webtest
