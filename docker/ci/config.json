@@ -5,12 +5,12 @@
             "tag": "latest"
         },
         {
-            "gitRef": "4.2.0",
-            "tag": "4.2.0"
+            "gitRef": "4.3.0",
+            "tag": "4.3.0"
         },
         {
-            "gitRef": "4.1.1",
-            "tag": "4.1.1"
+            "gitRef": "4.2.1",
+            "tag": "4.2.1"
         }
     ],
     "dockerOrg": "maykinmedia",
