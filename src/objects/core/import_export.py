@@ -151,9 +151,17 @@ def import_data(
 
 
 def _flatten_drf_error(error: ValidationError) -> Iterable[str]:
+    detail = error.detail
+    # DRF >= 3.18 reports list-serializer errors as a dict keyed by (0-based)
+    # row index, older versions as a list with one entry per row.
+    rows = (
+        ((int(index) + 1, item) for index, item in detail.items())
+        if isinstance(detail, dict)
+        else enumerate(detail, 1)
+    )
     return (
         f"Row {index}, {field}: {err}"
-        for index, item in enumerate(error.detail, 1)
+        for index, item in rows
         if isinstance(item, dict)
         for field, errors in item.items()
         for err in errors

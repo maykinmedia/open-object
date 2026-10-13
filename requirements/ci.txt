@@ -121,7 +121,7 @@ click-repl==0.3.0
     #   celery
 codecov==2.1.13
     # via -r requirements/test-tools.in
-commonground-api-common==2.13.0
+commonground-api-common==3.0.1
     # via
     #   -c requirements/base.txt
     #   -r requirements/base.txt
@@ -959,6 +959,7 @@ structlog==25.4.0
     # via
     #   -c requirements/base.txt
     #   -r requirements/base.txt
+    #   commonground-api-common
     #   django-structlog
     #   notifications-api-common
 tblib==1.7.0
