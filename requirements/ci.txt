@@ -697,7 +697,7 @@ phonenumberslite==8.13.30
     #   -c requirements/base.txt
     #   -r requirements/base.txt
     #   django-two-factor-auth
-playwright==1.58.0
+playwright==1.64.1
     # via -r requirements/test-tools.in
 pluggy==1.5.0
     # via pytest
