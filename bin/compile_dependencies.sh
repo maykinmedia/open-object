@@ -27,12 +27,6 @@ uv pip compile \
     "$@" \
     requirements/base.in
 
-# Type checking stubs
-uv pip compile \
-    --output-file requirements/type-checking.txt \
-    "$@" \
-    requirements/type-checking.in
-
 # Dependencies for testing
 uv pip compile \
     --output-file requirements/ci.txt \
@@ -40,6 +34,12 @@ uv pip compile \
     requirements/test-tools.in \
     requirements/docs.in \
     requirements/performance-tests.in
+
+# Type checking stubs
+uv pip compile \
+    --output-file requirements/type-checking.txt \
+    "$@" \
+    requirements/type-checking.in
 
 # Dev depedencies - exact same set as CI + some extra tooling
 uv pip compile \

@@ -74,7 +74,7 @@ cryptography==50.0.0
     #   mozilla-django-oidc
     #   pyopenssl
     #   webauthn
-django==5.2.17
+django==5.2.19
     # via
     #   commonground-api-common
     #   django-admin-index
