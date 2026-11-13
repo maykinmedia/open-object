@@ -15,7 +15,8 @@ django-setup-configuration>=0.5.0
 notifications-api-common[setup-configuration]
 zgw-consumers[setup-configuration]
 mozilla-django-oidc-db[setup-configuration]
-commonground-api-common[oas]
+# commonground-api-common[oas]
+git+https://github.com/maykinmedia/commonground-api-common.git@issue/2624-add-protected-exception-handler
 maykin-common[axes,mfa,otel,cli,health-checks]
 
 # celery dependencies

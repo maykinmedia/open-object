@@ -45,6 +45,7 @@ celery==5.5.3
     #   open-api-framework
 certifi==2026.10.23
     # via
+    #   commonground-api-common
     #   elastic-apm
     #   requests
     #   sentry-sdk
@@ -64,7 +65,7 @@ click-plugins==1.1.1
     # via celery
 click-repl==0.3.0
     # via celery
-commonground-api-common==3.0.1
+commonground-api-common @ git+https://github.com/maykinmedia/commonground-api-common.git@7e5ec32fbb548a362cc791368001b1b34627f15a
     # via
     #   -r requirements/base.in
     #   open-api-framework
@@ -470,10 +471,7 @@ requests==2.33.1
     #   open-api-framework
     #   opentelemetry-exporter-http-transport
     #   opentelemetry-exporter-otlp-proto-http
-    #   requests-mock
     #   zgw-consumers
-requests-mock==1.12.1
-    # via commonground-api-common
 rfc3339-validator==0.1.4
     # via jsonschema
 rfc3986-validator==0.1.1
