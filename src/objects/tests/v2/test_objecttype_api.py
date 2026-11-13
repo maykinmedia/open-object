@@ -6,7 +6,11 @@ from rest_framework.test import APITestCase
 
 from objects.core.constants import DataClassificationChoices, UpdateFrequencyChoices
 from objects.core.models import ObjectType
-from objects.core.tests.factories import ObjectTypeFactory, ObjectTypeVersionFactory
+from objects.core.tests.factories import (
+    ObjectFactory,
+    ObjectTypeFactory,
+    ObjectTypeVersionFactory,
+)
 from objects.utils.test import TokenAuthMixin
 
 from .utils import reverse
@@ -178,3 +182,11 @@ class ObjectTypeAPITests(TokenAuthMixin, APITestCase):
 
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
         self.assertEqual(ObjectType.objects.count(), 0)
+
+    def test_delete_objecttype_protected(self):
+        obj = ObjectFactory.create()
+        object_type = obj.object_type
+        url = reverse("objecttype-detail", args=[object_type.uuid])
+        response = self.client.delete(url)
+        self.assertEqual(response.status_code, status.HTTP_409_CONFLICT)
+        self.assertEqual(response.data["title"], "Resource is protected.")
