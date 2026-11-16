@@ -32,9 +32,11 @@ def jsonschemas():
                 jsonschema_specifications.REGISTRY[meta_schema].contents,  # type: ignore
             )
             .map(
-                lambda schema: schema | {"$schema": meta_schema}
-                if isinstance(schema, dict)
-                else schema
+                lambda schema: (
+                    schema | {"$schema": meta_schema}
+                    if isinstance(schema, dict)
+                    else schema
+                )
             )
             .filter(_valid_schema)
         ),
