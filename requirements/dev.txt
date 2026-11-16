@@ -884,7 +884,7 @@ pygments==2.20.0
     #   rich
     #   sphinx
     #   sphinx-tabs
-pygraphviz==1.14
+pygraphviz==2.0.4
     # via -r requirements/dev.in
 pyjwt==2.15.1
     # via
