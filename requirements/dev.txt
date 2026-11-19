@@ -299,11 +299,12 @@ django-ordered-model==3.7.4
     #   -c requirements/ci.txt
     #   -r requirements/ci.txt
     #   django-admin-index
-django-otp==1.0.6
+django-otp==1.7.5
     # via
     #   -c requirements/ci.txt
     #   -r requirements/ci.txt
     #   django-two-factor-auth
+    #   maykin-2fa
 django-phonenumber-field==5.2.0
     # via
     #   -c requirements/ci.txt
@@ -365,7 +366,7 @@ django-structlog==9.1.1
     # via
     #   -c requirements/ci.txt
     #   -r requirements/ci.txt
-django-two-factor-auth==1.17.0
+django-two-factor-auth==1.18.1
     # via
     #   -c requirements/ci.txt
     #   -r requirements/ci.txt
@@ -602,12 +603,12 @@ markupsafe==2.1.3
     #   -c requirements/ci.txt
     #   -r requirements/ci.txt
     #   jinja2
-maykin-2fa==1.0.1
+maykin-2fa==3.0.0
     # via
     #   -c requirements/ci.txt
     #   -r requirements/ci.txt
     #   open-api-framework
-maykin-common==0.22.0
+maykin-common==0.23.0
     # via
     #   -c requirements/ci.txt
     #   -r requirements/ci.txt
@@ -787,11 +788,6 @@ packaging==25.0
     #   sphinx
     #   virtualenv
     #   wheel
-phonenumberslite==8.13.30
-    # via
-    #   -c requirements/ci.txt
-    #   -r requirements/ci.txt
-    #   django-two-factor-auth
 pip==26.2.1
     # via pip-tools
 pip-tools==7.4.1

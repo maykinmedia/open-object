@@ -255,11 +255,12 @@ django-ordered-model==3.7.4
     #   -c requirements/base.txt
     #   -r requirements/base.txt
     #   django-admin-index
-django-otp==1.0.6
+django-otp==1.7.5
     # via
     #   -c requirements/base.txt
     #   -r requirements/base.txt
     #   django-two-factor-auth
+    #   maykin-2fa
 django-phonenumber-field==5.2.0
     # via
     #   -c requirements/base.txt
@@ -319,7 +320,7 @@ django-structlog==9.1.1
     # via
     #   -c requirements/base.txt
     #   -r requirements/base.txt
-django-two-factor-auth==1.17.0
+django-two-factor-auth==1.18.1
     # via
     #   -c requirements/base.txt
     #   -r requirements/base.txt
@@ -512,12 +513,12 @@ markdown-it-py==4.2.0
     #   rich
 markupsafe==2.1.3
     # via jinja2
-maykin-2fa==1.0.1
+maykin-2fa==3.0.0
     # via
     #   -c requirements/base.txt
     #   -r requirements/base.txt
     #   open-api-framework
-maykin-common==0.22.0
+maykin-common==0.23.0
     # via
     #   -c requirements/base.txt
     #   -r requirements/base.txt
@@ -692,11 +693,6 @@ packaging==25.0
     #   opentelemetry-instrumentation
     #   pytest
     #   sphinx
-phonenumberslite==8.13.30
-    # via
-    #   -c requirements/base.txt
-    #   -r requirements/base.txt
-    #   django-two-factor-auth
 playwright==1.64.1
     # via -r requirements/test-tools.in
 pluggy==1.5.0
