@@ -20,10 +20,10 @@ which requires the postgis_ extension to be enabled.
 The supported versions in the table below are tested in the CI pipeline.
 
 ============ ==================== ============ ============ ============ ============
-Matrix       Postgres 13 or lower Postgres 14  Postgres 15  Postgres 16  Postgres 17
+Matrix       Postgres 14 or lower Postgres 15  Postgres 16  Postgres 17  Postgres 18
 ============ ==================== ============ ============ ============ ============
-Postgis 3.2  |cross|              |check|      |cross|      |cross|      |cross|
-Postgis 3.5  |cross|              |check|      |check|      |check|      |check|
+Postgis 3.6  |cross|              |check|      |check|      |check|      |check|
+Postgis 3.7  |cross|              |check|      |check|      |check|      |check|
 ============ ==================== ============ ============ ============ ============
 
 .. warning:: only maintained versions of PostgreSQL are supported. Once a version is
