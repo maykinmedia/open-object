@@ -170,6 +170,7 @@ django==5.2.19
     #   django-simple-certmanager
     #   django-solo
     #   django-structlog
+    #   django-stubs-ext
     #   django-two-factor-auth
     #   django-upgrade-check
     #   djangorestframework
@@ -317,6 +318,10 @@ django-solo==2.2.0
     #   notifications-api-common
     #   zgw-consumers
 django-structlog==9.1.1
+    # via
+    #   -c requirements/base.txt
+    #   -r requirements/base.txt
+django-stubs-ext==6.1.2
     # via
     #   -c requirements/base.txt
     #   -r requirements/base.txt
@@ -987,6 +992,7 @@ typing-extensions==4.15.0
     #   -c requirements/base.txt
     #   -r requirements/base.txt
     #   django-log-outgoing-requests
+    #   django-stubs-ext
     #   mozilla-django-oidc-db
     #   opentelemetry-api
     #   opentelemetry-exporter-otlp-proto-grpc
