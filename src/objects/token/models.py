@@ -1,4 +1,7 @@
+from __future__ import annotations
+
 import secrets
+from typing import TYPE_CHECKING
 
 from django.core import exceptions
 from django.db import models
@@ -9,8 +12,14 @@ from objects.token.validators import validate_no_empty, validate_no_whitespace
 
 from .constants import PermissionModes
 
+if TYPE_CHECKING:
+    from django.db.models.fields.related_descriptors import RelatedManager
+
 
 class TokenAuth(models.Model):
+    if TYPE_CHECKING:
+        permissions: RelatedManager[Permission]
+
     identifier = models.SlugField(
         unique=True,
         help_text=_("A human-friendly label to refer to this token"),
@@ -83,7 +92,9 @@ class TokenAuth(models.Model):
     def generate_token(self):
         return secrets.token_hex(20)
 
-    def get_permission_for_object_type(self, object_type: ObjectType):
+    def get_permission_for_object_type(
+        self, object_type: ObjectType
+    ) -> Permission | None:
         if not self.permissions.filter(object_type=object_type).exists():
             return None
         return self.permissions.get(object_type=object_type)

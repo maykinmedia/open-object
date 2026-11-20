@@ -1,3 +1,4 @@
+from django import forms
 from django.contrib import admin
 from django.contrib.admin.utils import unquote
 
@@ -104,7 +105,9 @@ class PermissionAdmin(admin.ModelAdmin):
         # the admin form now submits the UUID as the choice value.
         # to_field_name = "uuid" tells Django to resolve the submitted UUID to the correct ObjectType instance.
         # Django then automatically stores its PK internally
-        form.base_fields["object_type"].to_field_name = "uuid"
+        object_type_field = form.base_fields["object_type"]
+        assert isinstance(object_type_field, forms.ModelChoiceField)
+        object_type_field.to_field_name = "uuid"
 
         return form
 
