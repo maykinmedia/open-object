@@ -6,6 +6,7 @@ include = [
     "src/objects/utils",
     "src/objects/accounts",
     "src/objects/setup_configuration",
+    "src/objects/cloud_events",
 ]
 exclude = [
     "src/objects/conf/dev.py",
