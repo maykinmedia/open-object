@@ -72,11 +72,11 @@ def build_nested_dict(path: str, value: object) -> dict[str, object]:
         build_nested_dict("outer.inner", 123)
         -> {"outer": {"inner": 123}}
     """
-    keys = path.split("__")
+    first_key, *keys = path.split("__")
     nested = value
     for key in reversed(keys):
         nested = {key: nested}
-    return nested
+    return {first_key: nested}
 
 
 def filter_queryset_by_data_attr(
@@ -95,9 +95,7 @@ def filter_queryset_by_data_attr(
 
     if operator == "exact":
         #  for exact operator try to filter on string and numeric values
-        in_vals = [str_value]
-        if real_value != str_value:
-            in_vals.append(real_value)
+        in_vals = (str_value, real_value) if real_value != str_value else (str_value,)
 
         query = Q()
         for val in in_vals:
@@ -152,8 +150,8 @@ class ObjectTypeFilterSet(FilterSet):
 class ObjectRecordFilterForm(forms.Form):
     def clean(self):
         cleaned_data = super().clean()
-        date = cleaned_data.get("date")
-        registration_date = cleaned_data.get("registrationDate")
+        date = cleaned_data.get("date")  # pyright: ignore[reportOptionalMemberAccess]
+        registration_date = cleaned_data.get("registrationDate")  # pyright: ignore[reportOptionalMemberAccess]
 
         if date and registration_date:
             raise serializers.ValidationError(

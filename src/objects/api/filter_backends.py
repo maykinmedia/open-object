@@ -16,7 +16,7 @@ class OrderingBackend(OrderingFilter):
     """
 
     json_field = None
-    ordering_description = _(
+    ordering_description = _(  # pyright: ignore[reportAssignmentType]
         "Comma-separated fields, which are used to order results. "
         "For descending order use '-' as prefix. Nested fields are also supported. "
         "For example: '-record__data__length,record__index'."
@@ -34,7 +34,7 @@ class OrderingBackend(OrderingFilter):
 
         elif valid_fields == "__all__":
             # View explicitly allows filtering on any model field
-            serializer = view.get_serializer()
+            serializer = view.get_serializer()  # pyright: ignore[reportAttributeAccessIssue]
             all_serializer_fields = get_field_names_and_sources(serializer.fields)
             valid_fields = [
                 (name, source)
@@ -66,7 +66,7 @@ class OrderingBackend(OrderingFilter):
         ordering = [term for term in fields if term_valid(term)]
 
         # check that all fields are allowed
-        permissions = request.auth.permissions.filter(use_fields=True)
+        permissions = request.auth.permissions.filter(use_fields=True)  # pyright: ignore[reportAttributeAccessIssue]
         allowed_fields = sum([list(p.fields.values()) for p in permissions], [])
 
         def term_allowed(term):

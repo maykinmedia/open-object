@@ -55,4 +55,4 @@ class CachedObjectUrlField(CachedHyperlinkedIdentityField):
     def get_url(self, obj, view_name, request, format):
         if hasattr(obj, "pk") and obj.pk in (None, ""):
             return None
-        return super().get_url(obj.object, view_name, request, format)
+        return super().get_url(obj.object, view_name, request, format)  # pyright: ignore[reportAttributeAccessIssue]

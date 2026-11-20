@@ -37,7 +37,7 @@ logger = structlog.stdlib.get_logger(__name__)
 class ObjectTypeVersionSerializer(NestedHyperlinkedModelSerializer):
     parent_lookup_kwargs = {"objecttype_uuid": "object_type__uuid"}
 
-    class Meta:
+    class Meta:  # pyright: ignore[reportIncompatibleVariableOverride]
         model = ObjectTypeVersion
         fields = (
             "url",
@@ -111,7 +111,7 @@ class ObjectTypeSerializer(serializers.HyperlinkedModelSerializer[ObjectType]):
         help_text=_("list of URLs for the OBJECTTYPE versions"),
     )
 
-    class Meta:
+    class Meta:  # pyright: ignore[reportIncompatibleVariableOverride]
         model = ObjectType
         fields = (
             "url",
@@ -158,7 +158,7 @@ class ObjectTypeSerializer(serializers.HyperlinkedModelSerializer[ObjectType]):
 
 
 class ReferenceSerializer(serializers.ModelSerializer):
-    class Meta:
+    class Meta:  # pyright: ignore[reportIncompatibleVariableOverride]
         model = Reference
         fields = ["type", "url"]
 
@@ -179,7 +179,7 @@ class ObjectRecordSerializer(serializers.ModelSerializer[ObjectRecord]):
     )
     references = ReferenceSerializer(many=True, read_only=False, default=[])
 
-    class Meta:
+    class Meta:  # pyright: ignore[reportIncompatibleVariableOverride]
         model = ObjectRecord
         fields = (
             "index",
@@ -216,7 +216,7 @@ class HistoryRecordSerializer(serializers.ModelSerializer):
         help_text=_("Index of the record, which corrects the current record"),
     )
 
-    class Meta:
+    class Meta:  # pyright: ignore[reportIncompatibleVariableOverride]
         model = ObjectRecord
         fields = (
             "index",
@@ -260,7 +260,7 @@ class ObjectSerializer(DynamicFieldsMixin, serializers.HyperlinkedModelSerialize
         source="*", help_text=_("State of the OBJECT at a certain time")
     )
 
-    class Meta:
+    class Meta:  # pyright: ignore[reportIncompatibleVariableOverride]
         model = ObjectRecord
         fields = ("url", "uuid", "type", "record")
         extra_kwargs = {
@@ -349,6 +349,6 @@ class PermissionSerializer(serializers.ModelSerializer):
         validators=[IsImmutableValidator()],
     )
 
-    class Meta:
+    class Meta:  # pyright: ignore[reportIncompatibleVariableOverride]
         model = Permission
         fields = ("type", "mode", "use_fields", "fields")
