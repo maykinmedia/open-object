@@ -1,2 +1,2 @@
-ZAAK_GEKOPPELD = "nl.overheid.zaken.zaak-gekoppeld"
-ZAAK_ONTKOPPELD = "nl.overheid.zaken.zaak-ontkoppeld"
+ZAAK_GEKOPPELD: str = "nl.overheid.zaken.zaak-gekoppeld"
+ZAAK_ONTKOPPELD: str = "nl.overheid.zaken.zaak-ontkoppeld"

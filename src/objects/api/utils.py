@@ -18,7 +18,7 @@ def string_to_value(value: str) -> str | float | date | datetime | time | timede
     elif is_time(value):
         return time.fromisoformat(value)
     elif is_duration(value):
-        return parse_duration(value)
+        return parse_duration(value)  # pyright: ignore[reportReturnType]
 
     return value
 
@@ -74,7 +74,7 @@ def display_choice_values_for_help_text(choices: type[models.TextChoices]) -> st
     return "\n".join(items)
 
 
-def merge_patch(target: JSONValue, patch: JSONValue) -> dict[str, JSONValue]:
+def merge_patch(target: JSONValue, patch: JSONValue) -> JSONValue:
     """Merge two objects together recursively.
 
     This is inspired by https://datatracker.ietf.org/doc/html/rfc7396 - JSON Merge Patch,

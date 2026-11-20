@@ -18,7 +18,7 @@ from jsonschema.exceptions import SchemaError
 from jsonschema.validators import validator_for
 
 from objects.core import models
-from objects.typing import JSONObject
+from objects.typing import JSONObject, JSONValue
 
 logger = structlog.stdlib.get_logger(__name__)
 
@@ -66,12 +66,12 @@ def is_valid_email(value: str) -> bool:
 
 
 def validate_jsonschema(
-    instance: JSONObject, schema: JSONObject, use_format_checker: bool = True
+    instance: JSONValue, schema: JSONObject, use_format_checker: bool = True
 ) -> None:
     """
     Validate ``instance`` against the provided JSON ``schema``.
 
-    :param instance: The JSON object to validate.
+    :param instance: The JSON value to validate.
     :param schema: The JSON Schema to validate against.
     :param use_format_checker: When ``True``, format constraints are enforced
         using ``draft202012_format_checker``. Defaults to ``True``.
@@ -90,14 +90,14 @@ def validate_jsonschema(
 
 
 def check_objecttype(
-    object_type: "models.ObjectType", version: int, data: JSONObject
+    object_type: "models.ObjectType", version: int, data: JSONValue
 ) -> None:
     """
     Validate ``data`` against the JSON Schema of a specific ``ObjectType`` version.
 
     :param object_type: The ``ObjectType`` instance whose version schema to validate against.
     :param version: The version of the ``ObjectTypeVersion`` to use.
-    :param data: The JSON object to validate.
+    :param data: The JSON value to validate.
     :raises ValidationError: If requested version does not exist.
 
     """

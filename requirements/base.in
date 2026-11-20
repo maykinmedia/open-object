@@ -7,7 +7,7 @@ furl
 
 # Django libraries
 django-capture-tag
-
+django-stubs-ext
 django-jsonsuit
 
 # Common ground libraries

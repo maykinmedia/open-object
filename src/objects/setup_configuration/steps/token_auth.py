@@ -1,5 +1,5 @@
 from django.core.exceptions import ObjectDoesNotExist, ValidationError
-from django.db import IntegrityError
+from django.db import IntegrityError, models
 
 import structlog
 from django_setup_configuration.configuration import BaseConfigurationStep
@@ -8,6 +8,7 @@ from django_setup_configuration.exceptions import ConfigurationRunFailed
 from objects.core.models import ObjectType
 from objects.setup_configuration.models.token_auth import (
     TokenAuthGroupConfigurationModel,
+    TokenAuthPermissionConfigurationModel,
 )
 from objects.token.models import Permission, TokenAuth
 
@@ -27,7 +28,7 @@ class TokenAuthConfigurationStep(
     verbose_name = "Configuration to set up authentication tokens"
     config_model = TokenAuthGroupConfigurationModel
 
-    def _full_clean(self, instance: object) -> None:
+    def _full_clean(self, instance: models.Model) -> None:
         try:
             instance.full_clean(exclude=("id",), validate_unique=False)
         except ValidationError as exception:
@@ -35,7 +36,9 @@ class TokenAuthConfigurationStep(
                 ("Validation error(s) during instance cleaning: %s" % type(instance))
             ) from exception
 
-    def _configure_permissions(self, token: TokenAuth, permissions: list) -> None:
+    def _configure_permissions(
+        self, token: TokenAuth, permissions: list[TokenAuthPermissionConfigurationModel]
+    ) -> None:
         if len(permissions) == 0 and not token.is_superuser:
             logger.warning("no_permissions_defined", token_identifier=token.identifier)
 
@@ -101,7 +104,7 @@ class TokenAuthConfigurationStep(
                     },
                 )
 
-                self._configure_permissions(token, item.permissions)
+                self._configure_permissions(token, item.permissions or [])
 
             except IntegrityError as exception:
                 logger.exception(

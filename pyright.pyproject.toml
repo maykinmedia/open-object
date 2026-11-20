@@ -3,8 +3,16 @@ pythonVersion = "3.12"
 pythonPlatform = "Linux"
 reportUnnecessaryTypeIgnoreComment = "error"
 include = [
-    "src/objects/utils"
+    "src/objects/utils",
+    "src/objects/accounts",
+    "src/objects/setup_configuration",
+    "src/objects/cloud_events",
+    "src/objects/token",
+    "src/objects/api",
 ]
 exclude = [
-    "src/objects/conf/dev.py"
+    "src/objects/conf/dev.py",
+    "src/objects/**/migrations",
+    "src/objects/**/tests",
+    "src/objects/**/management",
 ]

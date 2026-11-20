@@ -101,6 +101,7 @@ django==5.2.19
     #   django-simple-certmanager
     #   django-solo
     #   django-structlog
+    #   django-stubs-ext
     #   django-two-factor-auth
     #   django-upgrade-check
     #   djangorestframework
@@ -195,6 +196,8 @@ django-structlog==9.1.1
     # via
     #   maykin-common
     #   open-api-framework
+django-stubs-ext==6.1.2
+    # via -r requirements/base.in
 django-two-factor-auth==1.18.1
     # via maykin-2fa
 django-upgrade-check==1.1.0
@@ -525,6 +528,7 @@ typer==0.27.1
 typing-extensions==4.15.0
     # via
     #   django-log-outgoing-requests
+    #   django-stubs-ext
     #   mozilla-django-oidc-db
     #   opentelemetry-api
     #   opentelemetry-exporter-otlp-proto-grpc

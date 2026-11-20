@@ -172,7 +172,7 @@ class GeometryValidator:
 
     def __call__(self, attrs, serializer):
         instance = getattr(serializer, "instance", None)
-        object_type = attrs.get("_object_type") or instance._object_type
+        object_type = attrs.get("_object_type") or instance._object_type  # pyright: ignore[reportOptionalMemberAccess]
         geometry = attrs.get("geometry")
 
         if not geometry:
