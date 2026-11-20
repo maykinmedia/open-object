@@ -5,6 +5,7 @@ reportUnnecessaryTypeIgnoreComment = "error"
 include = [
     "src/objects/utils",
     "src/objects/accounts",
+    "src/objects/setup_configuration",
 ]
 exclude = [
     "src/objects/conf/dev.py",
