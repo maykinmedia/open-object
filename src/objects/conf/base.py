@@ -1,5 +1,6 @@
 import os
 
+import django_stubs_ext
 from upgrade_check.constraints import (
     CommandCheck,
     UpgradeCheck,
@@ -17,6 +18,10 @@ from maykin_common.health_checks import default_health_check_apps
 from open_api_framework.conf.base import *  # noqa
 
 from .api import *  # noqa
+
+# Make the generic classes of django-stubs (e.g. ``ModelAdmin[User]``) subscriptable
+# at runtime.
+django_stubs_ext.monkeypatch()
 
 DATABASES["default"]["DISABLE_SERVER_SIDE_CURSORS"] = config(
     "DB_DISABLE_SERVER_SIDE_CURSORS",
