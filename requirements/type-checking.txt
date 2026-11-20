@@ -340,7 +340,7 @@ django-structlog==9.1.1
     # via
     #   -c requirements/ci.txt
     #   -r requirements/ci.txt
-django-stubs==6.1.0
+django-stubs==6.1.1
     # via
     #   -r requirements/type-checking.in
     #   djangorestframework-stubs
