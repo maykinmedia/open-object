@@ -5,7 +5,7 @@ from django.core.management import call_command
 from django.db.models.signals import post_migrate
 
 
-def update_admin_index(sender, **kwargs):
+def update_admin_index(sender: AppConfig, **kwargs: object) -> None:
     from django_admin_index.models import AppGroup
 
     AppGroup.objects.all().delete()
@@ -22,7 +22,7 @@ def update_admin_index(sender, **kwargs):
 class AccountsConfig(AppConfig):
     name = "objects.accounts"
 
-    def ready(self):
+    def ready(self) -> None:
         from . import metrics  # noqa
         from . import signals  # noqa
 

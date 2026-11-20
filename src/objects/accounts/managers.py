@@ -1,10 +1,16 @@
-from django.contrib.auth.models import BaseUserManager
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 
 
-class UserManager(BaseUserManager):
+class UserManager[T: AbstractBaseUser](BaseUserManager[T]):
     use_in_migrations = True
 
-    def _create_user(self, username, email, password, **extra_fields):
+    def _create_user(
+        self,
+        username: str,
+        email: str | None,
+        password: str | None,
+        **extra_fields: object,
+    ) -> T:
         """
         Creates and saves a User with the given username, email and password.
         """
@@ -17,12 +23,24 @@ class UserManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
-    def create_user(self, username, email=None, password=None, **extra_fields):
+    def create_user(
+        self,
+        username: str,
+        email: str | None = None,
+        password: str | None = None,
+        **extra_fields: object,
+    ) -> T:
         extra_fields.setdefault("is_staff", False)
         extra_fields.setdefault("is_superuser", False)
         return self._create_user(username, email, password, **extra_fields)
 
-    def create_superuser(self, username, email, password, **extra_fields):
+    def create_superuser(
+        self,
+        username: str,
+        email: str,
+        password: str,
+        **extra_fields: object,
+    ) -> T:
         extra_fields.setdefault("is_staff", True)
         extra_fields.setdefault("is_superuser", True)
 

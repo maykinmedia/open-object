@@ -16,7 +16,7 @@ from .models import User
 
 @receiver(user_logged_in, dispatch_uid="user_logged_in.increment_counter")
 def increment_logins_counter(
-    sender: type[User], request: HttpRequest | None, user: User, **kwargs
+    sender: type[User], request: HttpRequest | None, user: User, **kwargs: object
 ) -> None:
     logins.add(
         1,
@@ -29,7 +29,7 @@ def increment_logins_counter(
 
 @receiver(user_logged_out, dispatch_uid="user_logged_out.increment_counter")
 def increment_logouts_counter(
-    sender: type[User], request: HttpRequest | None, user: User | None, **kwargs
+    sender: type[User], request: HttpRequest | None, user: User | None, **kwargs: object
 ) -> None:
     if user is None:
         return
@@ -38,8 +38,8 @@ def increment_logouts_counter(
 
 @receiver(user_login_failed, dispatch_uid="user_login_failed.increment_counter")
 def increment_login_failure_counter(
-    sender, request: HttpRequest | None = None, **kwargs
-):
+    sender: str, request: HttpRequest | None = None, **kwargs: object
+) -> None:
     login_failures.add(
         1,
         attributes={"http_target": request.path if request else ""},
@@ -52,7 +52,7 @@ def increment_user_locked_out_counter(
     request: HttpRequest,
     username: str,
     ip_address: str,
-    **kwargs,
+    **kwargs: object,
 ) -> None:
     user_lockouts.add(
         1,
