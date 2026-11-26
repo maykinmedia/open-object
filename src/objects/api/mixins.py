@@ -74,15 +74,17 @@ class ObjectNotificationMixin(
     NotificationDestroyMixin,
     metaclass=ObjectNotificationMixinBase,
 ):
-    def construct_message(self, data: dict, instance: models.Model = None) -> dict:
-        message = super().construct_message(data, instance)
+    def construct_message(  # pyright: ignore[reportIncompatibleMethodOverride]
+        self, data: dict, instance: models.Model | None = None
+    ) -> dict:
+        message = super().construct_message(data, instance)  # pyright: ignore[reportAttributeAccessIssue]
         message["resource"] = "object"
         return message
 
     def update(self, request, *args, **kwargs):
         with conditional_atomic(self.notifications_wrap_in_atomic_block)():
-            response = super().update(request, *args, **kwargs)
+            response = super().update(request, *args, **kwargs)  # pyright: ignore[reportAttributeAccessIssue]
 
-            instance = self.get_object()
+            instance = self.get_object()  # pyright: ignore[reportAttributeAccessIssue]
             self.notify(response.status_code, response.data, instance=instance)
             return response

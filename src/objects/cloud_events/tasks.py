@@ -43,8 +43,8 @@ def send_zaak_events(object_record_id: int, object_url: str):
         )
     }
 
-    gekoppeld = current - previous
-    ontkoppeld = previous - current
+    gekoppeld: set[str] = current - previous
+    ontkoppeld: set[str] = previous - current
 
     for zaak_url in gekoppeld:
         process_cloudevent(

@@ -7,17 +7,17 @@ from django.utils.dateparse import parse_date
 from django.utils.translation import gettext_lazy as _
 
 import structlog
+from drf_spectacular.types import OpenApiTypes
 from drf_spectacular.utils import (
     OpenApiParameter,
     OpenApiResponse,
-    OpenApiTypes,
     extend_schema,
     extend_schema_view,
     inline_serializer,
 )
 from notifications_api_common.cloudevents import process_cloudevent
 from rest_framework import mixins, serializers, status, viewsets
-from rest_framework.authentication import SessionAuthentication
+from rest_framework.authentication import BaseAuthentication, SessionAuthentication
 from rest_framework.decorators import action
 from rest_framework.exceptions import ValidationError
 from rest_framework.generics import get_object_or_404
@@ -103,11 +103,11 @@ class ObjectTypeViewSet(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         super().perform_create(serializer)
         obj = serializer.instance
-        token_auth: TokenAuth = self.request.auth
+        token_auth: TokenAuth = self.request.auth  # pyright: ignore[reportAssignmentType]
         logger.info(
             "objecttype_created",
-            uuid=str(obj.uuid),
-            name=obj.name,
+            uuid=str(obj.uuid),  # pyright: ignore[reportOptionalMemberAccess]
+            name=obj.name,  # pyright: ignore[reportOptionalMemberAccess]
             token_identifier=token_auth.identifier,
             token_application=token_auth.application,
         )
@@ -116,11 +116,11 @@ class ObjectTypeViewSet(viewsets.ModelViewSet):
     def perform_update(self, serializer):
         super().perform_update(serializer)
         obj = serializer.instance
-        token_auth: TokenAuth = self.request.auth
+        token_auth: TokenAuth = self.request.auth  # pyright: ignore[reportAssignmentType]
         logger.info(
             "objecttype_updated",
-            uuid=str(obj.uuid),
-            name=obj.name,
+            uuid=str(obj.uuid),  # pyright: ignore[reportOptionalMemberAccess]
+            name=obj.name,  # pyright: ignore[reportOptionalMemberAccess]
             token_identifier=token_auth.identifier,
             token_application=token_auth.application,
         )
@@ -140,7 +140,7 @@ class ObjectTypeViewSet(viewsets.ModelViewSet):
             )
 
         super().perform_destroy(instance)
-        token_auth: TokenAuth = self.request.auth
+        token_auth: TokenAuth = self.request.auth  # pyright: ignore[reportAssignmentType]
         logger.info(
             "objecttype_deleted",
             uuid=str(instance.uuid),
@@ -183,7 +183,7 @@ class ObjectTypeVersionViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
     lookup_field = "version"
     pagination_class = DynamicPageSizePagination
 
-    def get_authenticators(self):
+    def get_authenticators(self) -> list[BaseAuthentication]:
         request = getattr(self, "request", None)
 
         if request and request.method in ("GET", "HEAD", "OPTIONS"):
@@ -210,10 +210,10 @@ class ObjectTypeVersionViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
         token_auth = self.request.auth
         logger.info(
             "object_version_created",
-            version=str(obj.version),
-            objecttype_uuid=str(obj.object_type.uuid),
-            token_identifier=token_auth.identifier,
-            token_application=token_auth.application,
+            version=str(obj.version),  # pyright: ignore[reportOptionalMemberAccess]
+            objecttype_uuid=str(obj.object_type.uuid),  # pyright: ignore[reportOptionalMemberAccess]
+            token_identifier=token_auth.identifier,  # pyright: ignore[reportAttributeAccessIssue]
+            token_application=token_auth.application,  # pyright: ignore[reportAttributeAccessIssue]
         )
 
     def perform_update(self, serializer):
@@ -222,10 +222,10 @@ class ObjectTypeVersionViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
         token_auth = self.request.auth
         logger.info(
             "object_version_updated",
-            version=str(obj.version),
-            objecttype_uuid=str(obj.object_type.uuid),
-            token_identifier=token_auth.identifier,
-            token_application=token_auth.application,
+            version=str(obj.version),  # pyright: ignore[reportOptionalMemberAccess]
+            objecttype_uuid=str(obj.object_type.uuid),  # pyright: ignore[reportOptionalMemberAccess]
+            token_identifier=token_auth.identifier,  # pyright: ignore[reportAttributeAccessIssue]
+            token_application=token_auth.application,  # pyright: ignore[reportAttributeAccessIssue]
         )
 
     def perform_destroy(self, instance):
@@ -245,8 +245,8 @@ class ObjectTypeVersionViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
             "object_version_deleted",
             version=str(instance.version),
             objecttype_uuid=str(instance.object_type.uuid),
-            token_identifier=token_auth.identifier,
-            token_application=token_auth.application,
+            token_identifier=token_auth.identifier,  # pyright: ignore[reportAttributeAccessIssue]
+            token_application=token_auth.application,  # pyright: ignore[reportAttributeAccessIssue]
         )
 
 
@@ -341,7 +341,7 @@ class ObjectViewSet(
             return base
 
         # show only allowed objects
-        base = base.filter_for_token(token_auth)
+        base = base.filter_for_token(token_auth)  # pyright: ignore[reportAttributeAccessIssue]
         return base
 
     def filter_queryset(self, queryset):
@@ -353,16 +353,16 @@ class ObjectViewSet(
             )
 
             if date and is_date(date):
-                queryset = queryset.filter_for_date(parse_date(date))
+                queryset = queryset.filter_for_date(parse_date(date))  # pyright: ignore[reportAttributeAccessIssue]
             elif registration_date and is_date(registration_date):
-                queryset = queryset.filter_for_registration_date(
+                queryset = queryset.filter_for_registration_date(  # pyright: ignore[reportAttributeAccessIssue]
                     parse_date(registration_date)
                 )
             else:
-                queryset = queryset.filter_for_date(datetime.date.today())
+                queryset = queryset.filter_for_date(datetime.date.today())  # pyright: ignore[reportAttributeAccessIssue]
 
         # keep only records with max index per object
-        queryset = queryset.keep_max_record_per_object()
+        queryset = queryset.keep_max_record_per_object()  # pyright: ignore[reportAttributeAccessIssue]
 
         # filter on the rest of query params
         return super().filter_queryset(queryset)
@@ -376,7 +376,7 @@ class ObjectViewSet(
                 "v2:object-detail", kwargs={"uuid": str(record.object.uuid)}
             )
             object_url = self.request.build_absolute_uri(object_path)
-            send_zaak_events.delay(record.pk, object_url)
+            send_zaak_events.delay(record.pk, object_url)  # pyright: ignore[reportFunctionMemberAccess]
         else:
             logger.warning("missing_record")  # will this happen?
 
@@ -389,7 +389,7 @@ class ObjectViewSet(
                 "v2:object-detail", kwargs={"uuid": str(record.object.uuid)}
             )
             object_url = self.request.build_absolute_uri(object_path)
-            send_zaak_events.delay(record.pk, object_url)
+            send_zaak_events.delay(record.pk, object_url)  # pyright: ignore[reportFunctionMemberAccess]
         else:
             logger.warning("missing_record")  # will this happen?
 
@@ -400,7 +400,7 @@ class ObjectViewSet(
 
         object_path = reverse("v2:object-detail", kwargs={"uuid": str(obj.uuid)})
         object_url = self.request.build_absolute_uri(object_path)
-        zaak_references = obj.last_record.references.filter(type=ReferenceType.zaak)
+        zaak_references = obj.last_record.references.filter(type=ReferenceType.zaak)  # pyright: ignore[reportOptionalMemberAccess]
 
         match settings.ENABLE_CLOUD_EVENTS and list(
             zaak_references.values_list("url", flat=True)
@@ -525,7 +525,7 @@ class ObjectViewSet(
         return result
 
     # for OAS generation
-    search.is_search_action = True
+    search.is_search_action = True  # pyright: ignore[reportAttributeAccessIssue]
 
     def finalize_response(self, request, response, *args, **kwargs):
         """add warning header if not all data is allowed to display"""
@@ -534,14 +534,14 @@ class ObjectViewSet(
             serializer = getattr(response.data, "serializer", None) or getattr(
                 response.data.get("results"), "serializer", None
             )
-            if self.action == "retrieve" and serializer.not_allowed:
+            if self.action == "retrieve" and serializer.not_allowed:  # pyright: ignore[reportOptionalMemberAccess]
                 self.headers[settings.UNAUTHORIZED_FIELDS_HEADER] = (
-                    serializer.not_allowed.pretty()
+                    serializer.not_allowed.pretty()  # pyright: ignore[reportOptionalMemberAccess]
                 )
 
-            elif self.action in ("list", "search") and serializer.child.not_allowed:
+            elif self.action in ("list", "search") and serializer.child.not_allowed:  # pyright: ignore[reportOptionalMemberAccess]
                 self.headers[settings.UNAUTHORIZED_FIELDS_HEADER] = (
-                    serializer.child.not_allowed.pretty()
+                    serializer.child.not_allowed.pretty()  # pyright: ignore[reportOptionalMemberAccess]
                 )
 
         return super().finalize_response(request, response, *args, **kwargs)

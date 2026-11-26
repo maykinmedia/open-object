@@ -12,7 +12,10 @@ from objects.tests.v2.utils import reverse
 
 class ObjectKanaal(Kanaal):
     def __init__(
-        self, label: str, main_resource: models.base.ModelBase, kenmerken: tuple = None
+        self,
+        label: str,
+        main_resource: models.base.ModelBase,
+        kenmerken: tuple | None = None,
     ):
         self.label = label
         self.main_resource = main_resource
@@ -27,15 +30,15 @@ class ObjectKanaal(Kanaal):
     def get_kenmerken(
         self,
         obj: models.Model,
-        data: dict = None,
+        data: dict | None = None,
         request: Request | None = None,  # noqa
     ) -> dict:
         data = data or {}
         return {
             kenmerk: (
                 data.get("type")
-                or request.build_absolute_url(
-                    reverse("objecttype-detail", args=[data.object_type.uuid])
+                or request.build_absolute_url(  # pyright: ignore[reportAttributeAccessIssue, reportOptionalMemberAccess]
+                    reverse("objecttype-detail", args=[data.object_type.uuid])  # pyright: ignore[reportAttributeAccessIssue]
                 )
                 if kenmerk == "object_type"
                 else data.get(kenmerk, getattr(obj, kenmerk))
@@ -47,7 +50,7 @@ class ObjectKanaal(Kanaal):
     def description(self):
         """For Objects endpoint main resource is ObjectRecord, so adjust info here"""
         kenmerk_template = "* `{kenmerk}`: {help_text}"
-        main_resource = self.main_resource.object.field.related_model
+        main_resource = getattr(self.main_resource, "object").field.related_model
         kenmerken = [
             kenmerk_template.format(
                 kenmerk=kenmerk,
