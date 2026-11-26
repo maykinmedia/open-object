@@ -174,7 +174,7 @@ django-sendfile2==0.7.0
     # via django-privates
 django-sessionprofile==3.0.0
     # via open-api-framework
-django-setup-configuration==0.11.0
+django-setup-configuration==0.13.0
     # via
     #   -r requirements/base.in
     #   mozilla-django-oidc-db
@@ -297,7 +297,7 @@ mozilla-django-oidc-db==2.0.1
     # via
     #   -r requirements/base.in
     #   open-api-framework
-notifications-api-common==0.13.1
+notifications-api-common==0.13.2
     # via
     #   -r requirements/base.in
     #   commonground-api-common

@@ -297,7 +297,7 @@ django-sessionprofile==3.0.0
     #   -c requirements/base.txt
     #   -r requirements/base.txt
     #   open-api-framework
-django-setup-configuration==0.11.0
+django-setup-configuration==0.13.0
     # via
     #   -c requirements/base.txt
     #   -r requirements/base.txt
@@ -538,7 +538,7 @@ mozilla-django-oidc-db==2.0.1
     #   -c requirements/base.txt
     #   -r requirements/base.txt
     #   open-api-framework
-notifications-api-common==0.13.1
+notifications-api-common==0.13.2
     # via
     #   -c requirements/base.txt
     #   -r requirements/base.txt
