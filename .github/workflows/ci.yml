@@ -120,7 +120,7 @@ jobs:
           persist-credentials: false
 
       - name: Set up backend environment
-        uses: maykinmedia/setup-django-backend@4a6c5facc65bb1dd510cf06be20871db11a156b3 # v1.4.2
+        uses: maykinmedia/setup-django-backend@de45f894bd82c649e07f8343abe4f2afdd89a111 # v1.4.3
         with:
           apt-packages: "gdal-bin postgresql-client"
           python-version: "3.12"
@@ -205,7 +205,7 @@ jobs:
         id: image-name
 
   open-api-ci:
-    uses: maykinmedia/open-api-workflows/.github/workflows/ci.yml@31eaea25acd18bb681fe0d01b2452c3dd8d299b9 # v7.0.0
+    uses: maykinmedia/open-api-workflows/.github/workflows/ci.yml@776c60ffef1d34cbdee5a2402322cae6278ec237 # v7.0.1
     needs:
       - store-reusable-workflow-vars
     permissions:
@@ -220,7 +220,7 @@ jobs:
       docker-image-name: ${{ needs.store-reusable-workflow-vars.outputs.image-name }}
 
   open-api-publish:
-    uses: maykinmedia/open-api-workflows/.github/workflows/publish.yml@31eaea25acd18bb681fe0d01b2452c3dd8d299b9 # v7.0.0
+    uses: maykinmedia/open-api-workflows/.github/workflows/publish.yml@776c60ffef1d34cbdee5a2402322cae6278ec237 # v7.0.1
     needs:
       - store-reusable-workflow-vars
       - open-api-ci
